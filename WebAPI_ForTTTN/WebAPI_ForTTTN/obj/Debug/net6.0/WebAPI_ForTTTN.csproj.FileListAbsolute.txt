@@ -74,3 +74,4 @@ C:\Users\ADMIN\Desktop\TTTN\WebAPI_ForTTTN\WebAPI_ForTTTN\obj\Debug\net6.0\refin
 C:\Users\ADMIN\Desktop\TTTN\WebAPI_ForTTTN\WebAPI_ForTTTN\obj\Debug\net6.0\WebAPI_ForTTTN.pdb
 C:\Users\ADMIN\Desktop\TTTN\WebAPI_ForTTTN\WebAPI_ForTTTN\obj\Debug\net6.0\WebAPI_ForTTTN.genruntimeconfig.cache
 C:\Users\ADMIN\Desktop\TTTN\WebAPI_ForTTTN\WebAPI_ForTTTN\obj\Debug\net6.0\ref\WebAPI_ForTTTN.dll
+C:\Users\ADMIN\Desktop\TTTN\WebAPI_ForTTTN\WebAPI_ForTTTN\obj\Debug\net6.0\WebAPI_ForTTTN.sourcelink.json

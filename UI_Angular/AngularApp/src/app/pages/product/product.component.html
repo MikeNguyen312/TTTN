@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Danh sách sản phẩm</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên</th>
+          <th>Giá</th>
+          <th>Hãng</th>
+          <th>Size</th>
+          <th>Thông tin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sp of sanPhams">
+          <td>{{ sp.idSanPham }}</td>
+          <td>{{ sp.ten }}</td>
+          <td>{{ sp.gia }}</td>
+          <td>{{ sp.hang }}</td>
+          <td>{{ sp.size }}</td>
+          <td>{{ sp.thongtin }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
