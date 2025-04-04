@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Danh Sách Khách Hàng</h2>
+      <button class="btn btn-success">Thêm Khách Hàng</button>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID_KhachHang</th>
+          <th>Họ Tên</th>
+          <th>Số Điện thoại</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Địa chỉ</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let kh of khachHangs">
+          <td>{{ kh.idKhachHang }}</td>
+          <td>{{ kh.hoTen }}</td>
+          <td>{{ kh.soDienThoai }}</td>
+          <td>{{ kh.email }}</td>
+          <td>{{ kh.passwords }}</td>
+          <td>{{ kh.diaChi }}</td>
+          <td class="abc">
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
