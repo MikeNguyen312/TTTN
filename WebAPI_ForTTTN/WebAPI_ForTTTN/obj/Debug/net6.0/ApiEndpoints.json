@@ -1,0 +1,42 @@
+[
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.DonHangController",
+    "Method": "getDSDonHang",
+    "RelativePath": "api/DonHang",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
+    "Method": "getDSKhachHang",
+    "RelativePath": "api/KhachHang",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
+    "Method": "getDSKho",
+    "RelativePath": "api/Kho",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.SanPhamController",
+    "Method": "getDSSanPham",
+    "RelativePath": "api/SanPham",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
