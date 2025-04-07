@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WebAPI_ForTTTN",
+    "\\WebAPI_ForTTTN\\Models"
   ],
   "SelectedNode": "\\WebAPI_ForTTTN.sln",
   "PreviewInSolutionExplorer": false

@@ -28,7 +28,7 @@ namespace WebAPI_ForTTTN.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=localhost;Database=DBThuctap;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=SQLVM,1433;Database=DBThuctap;User Id=admin;Password=1;TrustServerCertificate=True;Encrypt=True;");
             }
         }
 
@@ -39,7 +39,7 @@ namespace WebAPI_ForTTTN.Models
                 entity.HasKey(e => new { e.IdDonHang, e.IdSanPham })
                     .HasName("PK__ChiTietD__AFA0CC00483FE7BD");
 
-                entity.ToTable("ChiTietDonHang");
+                entity.ToTable("ChiTietDonHang", "dbo");
 
                 entity.Property(e => e.IdDonHang)
                     .HasMaxLength(150)
@@ -69,7 +69,7 @@ namespace WebAPI_ForTTTN.Models
                 entity.HasKey(e => e.IdDonHang)
                     .HasName("PK__DonHang__99B72639199FE2CC");
 
-                entity.ToTable("DonHang");
+                entity.ToTable("DonHang", "dbo");
 
                 entity.Property(e => e.IdDonHang)
                     .HasMaxLength(150)
@@ -96,7 +96,7 @@ namespace WebAPI_ForTTTN.Models
                 entity.HasKey(e => e.IdKhachHang)
                     .HasName("PK__KhachHan__263C4E85F8109121");
 
-                entity.ToTable("KhachHang");
+                entity.ToTable("KhachHang", "dbo");
 
                 entity.Property(e => e.IdKhachHang)
                     .HasMaxLength(150)
@@ -121,7 +121,7 @@ namespace WebAPI_ForTTTN.Models
                 entity.HasKey(e => e.IdPhieuKho)
                     .HasName("PK__PhieuKho__FEBF2F1A5E1C4AB2");
 
-                entity.ToTable("PhieuKho");
+                entity.ToTable("PhieuKho", "dbo");
 
                 entity.Property(e => e.IdPhieuKho)
                     .HasMaxLength(150)
@@ -136,7 +136,7 @@ namespace WebAPI_ForTTTN.Models
                 entity.HasKey(e => e.IdSanPham)
                     .HasName("PK__SanPham__617EA39217EF6E76");
 
-                entity.ToTable("SanPham");
+                entity.ToTable("SanPham", "dbo");
 
                 entity.Property(e => e.IdSanPham)
                     .HasMaxLength(150)
@@ -157,7 +157,7 @@ namespace WebAPI_ForTTTN.Models
                 entity.HasKey(e => new { e.IdPhieuKho, e.IdSanPham })
                     .HasName("PK__SanPham___C8A8C523DE6185F2");
 
-                entity.ToTable("SanPham_PhieuKho");
+                entity.ToTable("SanPham_PhieuKho", "dbo");
 
                 entity.Property(e => e.IdPhieuKho)
                     .HasMaxLength(150)
