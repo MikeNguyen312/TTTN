@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Danh Sách Đơn Hàng</h2>
+      <button class="btn btn-success">Tạo Đơn</button>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID_DonHang</th>
+          <th>ID_KhachHang</th>
+          <th>Ngày Đặt Hàng</th>
+          <th>Tổng Tiền</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dh of donHangs">
+          <td>{{ dh.idDonHang }}</td>
+          <td>{{ dh.idKhachHang }}</td>
+          <td>{{ dh.ngayDatHang| date:'dd/MM/yyyy' }}</td>
+          <td>{{ dh.tongTien }}</td>
+          <td class="abc">
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
