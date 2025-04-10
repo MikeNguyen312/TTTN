@@ -17,6 +17,7 @@ namespace WebAPI_ForTTTN.Models
         public string? Hang { get; set; }
         public string? Size { get; set; }
         public string? ThongTin { get; set; }
+        public byte[]? Anh { get; set; }
 
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual ICollection<SanPhamPhieuKho> SanPhamPhieuKhos { get; set; }
