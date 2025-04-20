@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'; // Import RouterModule và Routes
-import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductComponent } from './pages/product/product.component';
@@ -10,16 +9,23 @@ import { KhachhangComponent } from './pages/khachhang/khachhang.component';
 import { TrangChuComponent } from './giaodien/trang-chu/trang-chu.component';
 import { ThanhDieuHuongComponent } from './giaodien/thanh-dieu-huong/thanh-dieu-huong.component';
 import { LienHeComponent } from './giaodien/lien-he/lien-he.component';
+import { LoginComponent } from './giaodien/login/login.component';
+import { RegisterComponent } from './giaodien/register/register.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'trang-chu',
+        redirectTo: 'trang-chu/guest',
         pathMatch: 'full',
     },
     {
         path: 'login',
         component: LoginComponent
+    },
+    
+    {
+        path: 'register',
+        component: RegisterComponent
     },
     {
         path: 'admin',
@@ -59,6 +65,9 @@ export const routes: Routes = [
                 path: 'lien-he',
                 component: LienHeComponent
             },
+            { path: 'trang-chu/:id', component: TrangChuComponent },
+            { path: 'dashboard', component: DashboardComponent },
+            { path: '**', redirectTo: 'trang-chu/guest' },
         ]
     },
 ];

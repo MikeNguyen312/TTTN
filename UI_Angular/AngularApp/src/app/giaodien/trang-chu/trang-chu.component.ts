@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';  
 import { SanPhamService } from '../../services/product.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-trang-chu',
@@ -9,10 +10,10 @@ import { SanPhamService } from '../../services/product.service';
   templateUrl: './trang-chu.component.html',
   styleUrls: ['./trang-chu.component.css']
 })
-export class TrangChuComponent implements OnInit {
+export class TrangChuComponent implements OnInit, OnDestroy {
   slides = [
     {
-      image: 'assets/slide/anh1.jpg', // Replace with your sneaker image path
+      image: 'assets/slide/anh1.jpg',
       subtitle: 'Sneaker Collection',
       title: 'GOOD SHOES TAKE YOU GOOD PLACES',
       buttonText: 'Shop Now'
@@ -32,7 +33,9 @@ export class TrangChuComponent implements OnInit {
   ];
 
   currentSlide = 0;
-
+  sanPhams: any[] = [];
+  slideInterval: any;
+  slideDuration: number = 5000; // Change slide every 5 seconds
 
   // Navigate to the previous slide
   prevSlide(): void {
@@ -48,24 +51,39 @@ export class TrangChuComponent implements OnInit {
   goToSlide(index: number): void {
     this.currentSlide = index;
   }
-    // Inject the service in the constructor
-    constructor(private sanphamService: SanPhamService) {}
-    sanPhams: any[] = [];
-    ngOnInit(): void {
-      // Load products when the component initializes
-      this.loadSanPhams();
-    }
-  
-    loadSanPhams(): void {
-      this.sanphamService.getSanPhams().subscribe({
-        next: (data) => {
-          console.log('Fetched data:', data); 
-          this.sanPhams = Array.isArray(data) ? data : []; // Ensure data is an array
-        },
-        error: (err) => {
-          console.error('Error fetching SanPhams:', err);
-        }
-      });
-    }
-}
 
+  constructor(private sanphamService: SanPhamService) {}
+
+  ngOnInit(): void {
+    // Load products when the component initializes
+    this.loadSanPhams();
+
+    // Start auto-sliding
+    this.startSlideShow();
+  }
+
+  ngOnDestroy(): void {
+    // Clean up the interval when the component is destroyed
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+    }
+  }
+
+  loadSanPhams(): void {
+    this.sanphamService.getSanPhams().subscribe({
+      next: (data) => {
+        console.log('Fetched data:', data); 
+        this.sanPhams = Array.isArray(data) ? data : []; // Ensure data is an array
+      },
+      error: (err) => {
+        console.error('Error fetching SanPhams:', err);
+      }
+    });
+  }
+
+  startSlideShow(): void {
+    this.slideInterval = setInterval(() => {
+      this.nextSlide(); // Change to the next slide every few seconds
+    }, this.slideDuration);
+  }
+}

@@ -32,7 +32,7 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
-        [HttpPost]
+        [HttpPost("ThemKhachHang")]
         public IActionResult postDSKhachHang(CKhachHang x)
         {
 
@@ -49,7 +49,7 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
-        [HttpDelete]
+        [HttpDelete("XoaKhachHang")]
         public IActionResult deleteKhachHang(string id)
         {
             try
@@ -72,7 +72,7 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
-        [HttpPut]
+        [HttpPut("SuaKhachHang")]
         public IActionResult EditKhachHang(CKhachHang x)
         {
             try
@@ -92,5 +92,43 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+        [HttpPost("/api/login")]
+        public IActionResult Login([FromBody] LoginRequest request)
+        {
+            try
+            {
+                var db = new DBThuctapContext();
+
+                // Tìm đúng khách hàng theo email + password
+                var user = db.KhachHangs
+                    .Where(kh => kh.Email == request.Email && kh.Passwords == request.Password)
+                    .Select(kh => new
+                    {
+                        ID_KhachHang = kh.IdKhachHang,
+                        HoTen = kh.HoTen,
+                        Email = kh.Email,
+                        SoDienThoai = kh.SoDienThoai
+                    })
+                    .FirstOrDefault();
+
+                if (user == null)
+                {
+                    return Unauthorized(new { message = "Email hoặc mật khẩu không đúng" });
+                }
+
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Lỗi server", error = ex.Message });
+            }
+        }
+
+        public class LoginRequest
+        {
+            public string Email { get; set; }
+            public string Password { get; set; }
+        }
+
     }
 }

@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>Thêm Khách Hàng</h2>
+    <form [formGroup]="khachHangForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="IdKhachHang">Mã Khách Hàng</label>
+        <input id="IdKhachHang" formControlName="IdKhachHang" class="form-control" placeholder="Nhập mã khách hàng">
+        <div *ngIf="khachHangForm.get('IdKhachHang')?.invalid && khachHangForm.get('IdKhachHang')?.touched" class="text-danger">
+          Mã khách hàng là bắt buộc.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="HoTen">Họ Tên</label>
+        <input id="HoTen" formControlName="HoTen" class="form-control" placeholder="Nhập họ tên">
+        <div *ngIf="khachHangForm.get('HoTen')?.invalid && khachHangForm.get('HoTen')?.touched" class="text-danger">
+          Họ tên là bắt buộc.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="SoDienThoai">Số Điện Thoại</label>
+        <input id="SoDienThoai" formControlName="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại">
+        <div *ngIf="khachHangForm.get('SoDienThoai')?.invalid && khachHangForm.get('SoDienThoai')?.touched" class="text-danger">
+          Số điện thoại phải là 10 chữ số.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Email">Email</label>
+        <input id="Email" formControlName="Email" class="form-control" placeholder="Nhập email">
+        <div *ngIf="khachHangForm.get('Email')?.invalid && khachHangForm.get('Email')?.touched" class="text-danger">
+          Email không hợp lệ.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Passwords">Mật Khẩu</label>
+        <input id="Passwords" type="password" formControlName="Passwords" class="form-control" placeholder="Nhập mật khẩu">
+        <div *ngIf="khachHangForm.get('Passwords')?.invalid && khachHangForm.get('Passwords')?.touched" class="text-danger">
+          Mật khẩu phải có ít nhất 6 ký tự.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="khachHangForm.invalid">Thêm Khách Hàng</button>
+      <a type="submit" routerLink="/login" class="btn btn-primary px-4">Back</a>
+    </form>
+    <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+  </div>
