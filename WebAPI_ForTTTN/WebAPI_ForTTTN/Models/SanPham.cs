@@ -8,6 +8,7 @@ namespace WebAPI_ForTTTN.Models
         public SanPham()
         {
             ChiTietDonHangs = new HashSet<ChiTietDonHang>();
+            KhuyenMais = new HashSet<KhuyenMai>();
             SanPhamPhieuKhos = new HashSet<SanPhamPhieuKho>();
         }
 
@@ -18,8 +19,10 @@ namespace WebAPI_ForTTTN.Models
         public string? Size { get; set; }
         public string? ThongTin { get; set; }
         public byte[]? Anh { get; set; }
+        public string? Loai { get; set; }
 
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual ICollection<KhuyenMai> KhuyenMais { get; set; }
         public virtual ICollection<SanPhamPhieuKho> SanPhamPhieuKhos { get; set; }
     }
 }
