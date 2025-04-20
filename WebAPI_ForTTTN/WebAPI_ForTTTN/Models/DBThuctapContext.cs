@@ -19,6 +19,7 @@ namespace WebAPI_ForTTTN.Models
         public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; } = null!;
         public virtual DbSet<DonHang> DonHangs { get; set; } = null!;
         public virtual DbSet<KhachHang> KhachHangs { get; set; } = null!;
+        public virtual DbSet<KhuyenMai> KhuyenMais { get; set; } = null!;
         public virtual DbSet<PhieuKho> PhieuKhos { get; set; } = null!;
         public virtual DbSet<SanPham> SanPhams { get; set; } = null!;
         public virtual DbSet<SanPhamPhieuKho> SanPhamPhieuKhos { get; set; } = null!;
@@ -28,7 +29,7 @@ namespace WebAPI_ForTTTN.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=SQLVM,1433;Database=DBThuctap;User Id=db_user;Password=1;TrustServerCertificate=True;Encrypt=True;");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=DBThuctap;Trusted_Connection=True;");
             }
         }
 
@@ -76,12 +77,16 @@ namespace WebAPI_ForTTTN.Models
                     .IsUnicode(false)
                     .HasColumnName("ID_DonHang");
 
+                entity.Property(e => e.DiaChi).HasMaxLength(255);
+
                 entity.Property(e => e.IdKhachHang)
                     .HasMaxLength(150)
                     .IsUnicode(false)
                     .HasColumnName("ID_KhachHang");
 
                 entity.Property(e => e.NgayDatHang).HasColumnType("date");
+
+                entity.Property(e => e.PhuongThuc).HasMaxLength(100);
 
                 entity.Property(e => e.TongTien).HasColumnType("decimal(18, 2)");
 
@@ -103,8 +108,6 @@ namespace WebAPI_ForTTTN.Models
                     .IsUnicode(false)
                     .HasColumnName("ID_KhachHang");
 
-                entity.Property(e => e.DiaChi).HasMaxLength(255);
-
                 entity.Property(e => e.Email).HasMaxLength(255);
 
                 entity.Property(e => e.HoTen).HasMaxLength(255);
@@ -114,6 +117,31 @@ namespace WebAPI_ForTTTN.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.SoDienThoai).HasMaxLength(20);
+            });
+
+            modelBuilder.Entity<KhuyenMai>(entity =>
+            {
+                entity.HasKey(e => e.IdKhuyenMai)
+                    .HasName("PK__KhuyenMa__E93749B42FE79697");
+
+                entity.ToTable("KhuyenMai");
+
+                entity.Property(e => e.IdKhuyenMai)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("ID_KhuyenMai");
+
+                entity.Property(e => e.IdSanPham)
+                    .HasMaxLength(150)
+                    .IsUnicode(false)
+                    .HasColumnName("ID_SanPham");
+
+                entity.Property(e => e.PhanTramKm).HasColumnName("PhanTramKM");
+
+                entity.HasOne(d => d.IdSanPhamNavigation)
+                    .WithMany(p => p.KhuyenMais)
+                    .HasForeignKey(d => d.IdSanPham)
+                    .HasConstraintName("FK__KhuyenMai__ID_Sa__02FC7413");
             });
 
             modelBuilder.Entity<PhieuKho>(entity =>
@@ -143,6 +171,8 @@ namespace WebAPI_ForTTTN.Models
                     .HasColumnName("ID_SanPham");
 
                 entity.Property(e => e.Hang).HasMaxLength(255);
+
+                entity.Property(e => e.Loai).HasMaxLength(100);
 
                 entity.Property(e => e.Size).HasMaxLength(255);
 

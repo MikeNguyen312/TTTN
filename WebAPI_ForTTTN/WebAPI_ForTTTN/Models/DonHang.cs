@@ -14,6 +14,8 @@ namespace WebAPI_ForTTTN.Models
         public string? IdKhachHang { get; set; }
         public DateTime? NgayDatHang { get; set; }
         public decimal? TongTien { get; set; }
+        public string? DiaChi { get; set; }
+        public string? PhuongThuc { get; set; }
 
         public virtual KhachHang? IdKhachHangNavigation { get; set; }
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
