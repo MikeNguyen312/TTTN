@@ -11,6 +11,10 @@ import { ThanhDieuHuongComponent } from './giaodien/thanh-dieu-huong/thanh-dieu-
 import { LienHeComponent } from './giaodien/lien-he/lien-he.component';
 import { LoginComponent } from './giaodien/login/login.component';
 import { RegisterComponent } from './giaodien/register/register.component';
+import { GiaynamComponent } from './giaodien/giaynam/giaynam.component';
+import { ChiTietSanPhamComponent } from './giaodien/chi-tiet-san-pham/chi-tiet-san-pham.component';
+import { GiaynuComponent } from './giaodien/giaynu/giaynu.component';
+import { KhuyenmaiComponent } from './giaodien/khuyenmai/khuyenmai.component';
 
 export const routes: Routes = [
     {
@@ -65,7 +69,26 @@ export const routes: Routes = [
                 path: 'lien-he',
                 component: LienHeComponent
             },
-            { path: 'trang-chu/:id', component: TrangChuComponent },
+            {
+                path: 'giaynam',
+                component: GiaynamComponent
+            },
+            {
+                path:'chi-tiet-san-pham/:id',
+                component: ChiTietSanPhamComponent
+            },
+            {
+                path: 'giaynu',
+                component: GiaynuComponent
+            },
+            {
+                path: 'khuyenmai',
+                component: KhuyenmaiComponent
+            },
+            { 
+                path: 'trang-chu/:id',
+                component: TrangChuComponent,
+            },
             { path: 'dashboard', component: DashboardComponent },
             { path: '**', redirectTo: 'trang-chu/guest' },
         ]

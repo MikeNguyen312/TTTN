@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SanPhamService } from '../../services/product.service'; // Adjust the path if needed
+import { ProductService } from '../../services/product.service'; // Adjust the path if needed
 
 @Component({
   selector: 'app-product',
@@ -13,7 +13,7 @@ export class ProductComponent implements OnInit {
   sanPhams: any[] = [];
 
   // Inject the service in the constructor
-  constructor(private sanphamService: SanPhamService) {}
+  constructor(private sanphamService: ProductService) {}
 
   ngOnInit(): void {
     // Load products when the component initializes
