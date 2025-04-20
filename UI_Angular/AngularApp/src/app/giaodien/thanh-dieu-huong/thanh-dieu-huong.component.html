@@ -6,21 +6,21 @@
     </div>
     <nav>
         <a href="#">Trang Chủ</a>
-        <a href="#">Giày Nam</a>
-        <a href="#">Giày Nữ</a>
-        <a href="#">Khuyến Mãi</a>
+        <a routerLink="/giaynam">Giày Nam</a>
+        <a href="giaynu">Giày Nữ</a>
+        <a href="khuyenmai">Khuyến Mãi</a>
         <a href="lien-he">Liên Hệ</a>
     </nav>
     <div class="icons">
         <i class="bi bi-search"></i>
         <i class="bi bi-bag"></i>
-        <i routerLink="/login" class="bi bi-person"></i>
-
-        <!-- Hiển thị tên người dùng nếu có -->
-        <span *ngIf="username" class="username">Hello {{ username }}</span>
+        <a href="login"><i class="bi bi-person"></i></a>
     </div>
-</header>
 
+</header>
 <div>
     <router-outlet></router-outlet>
+</div>
+<div>
+    <app-footer></app-footer>
 </div>

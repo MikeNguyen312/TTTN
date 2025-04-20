@@ -1,5 +1,4 @@
 <div class="slideshow-container">
-  <!-- Slides -->
   <div class="slide" *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlide">
     <div class="slide-content">
       <div class="text-content">
@@ -8,31 +7,56 @@
         <button class="shop-now">{{ slide.buttonText }}</button>
       </div>
       <div class="image-content">
-        <img [src]="slide.image" alt="Sneaker" />
+        <img [src]="slide.image" [alt]="slide.title" />
       </div>
     </div>
   </div>
 
-  <!-- Navigation Arrows -->
-  <button class="prev" (click)="prevSlide()">&#10094;</button>
-  <button class="next" (click)="nextSlide()">&#10095;</button>
+  <button class="prev" aria-label="Previous Slide" (click)="prevSlide()">&#10094;</button>
+  <button class="next" aria-label="Next Slide" (click)="nextSlide()">&#10095;</button>
 
-  <!-- Dots -->
   <div class="dots">
-    <span *ngFor="let slide of slides; let i = index" 
-          class="dot" 
-          [class.active]="i === currentSlide" 
-          (click)="goToSlide(i)"></span>
+    <span 
+      *ngFor="let slide of slides; let i = index"
+      class="dot"
+      [class.active]="i === currentSlide"
+      (click)="goToSlide(i)"
+      [attr.aria-label]="'Go to slide ' + (i + 1)">
+    </span>
   </div>
 </div>
-<div class="product-list">
+<div class="item-container">
+  <div class="text-content">Sản Phẩm:</div>
+  <div class="product-list">
     <div class="product-card" *ngFor="let sp of sanPhams">
-      <img [src]="sp.image || 'assets/images/default.jpg'" alt="Sản phẩm" class="product-image" />
-      <div class="product-info">
-        <h5 class="product-name">{{ sp.ten }}</h5>
-        <p class="product-brand">Hãng: {{ sp.hang }}</p>
-        <p class="product-price">{{ sp.gia | currency:'VND' }}</p>
-        <button class="btn btn-primary">Mua ngay</button>
-      </div>
+      <img *ngIf="sp.anh" [src]="'data:image/jpeg;base64,' + sp.anh" alt="{{ sp.ten }}" class="product-image" />
+      <h3>{{ sp.ten }}</h3>
+      <p>Hãng: {{ sp.hang }}</p>
+      <p>Giá: {{ sp.gia | currency:'VND' }}</p>
     </div>
+  </div>
+</div>
+
+<div class="item-container">
+  <div class="text-content">Giày Nam</div>
+  <div class="product-list">
+    <div class="product-card" *ngFor="let sp of giayNam">
+      <img *ngIf="sp.anh" [src]="'data:image/jpeg;base64,' + sp.anh" alt="{{ sp.ten }}" class="product-image" />
+      <h3>{{ sp.ten }}</h3>
+      <p>Hãng: {{ sp.hang }}</p>
+      <p>Giá: {{ sp.gia | currency:'VND' }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="item-container">
+  <div class="text-content">Giày Nữ</div>
+  <div class="product-list">
+    <div class="product-card" *ngFor="let sp of giayNu">
+      <img *ngIf="sp.anh" [src]="'data:image/jpeg;base64,' + sp.anh" alt="{{ sp.ten }}" class="product-image" />
+      <h3>{{ sp.ten }}</h3>
+      <p>Hãng: {{ sp.hang }}</p>
+      <p>Giá: {{ sp.gia | currency:'VND' }}</p>
+    </div>
+  </div>
 </div>
