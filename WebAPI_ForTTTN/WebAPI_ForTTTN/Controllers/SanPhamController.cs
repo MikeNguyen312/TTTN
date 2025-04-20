@@ -23,7 +23,13 @@ namespace WebAPI_ForTTTN.Controllers
                         Hang = t.Hang,
                         Size = t.Size,
                         Thongtin =t.ThongTin,
+<<<<<<< HEAD
                         Anh = t.Anh != null ? Convert.ToBase64String(t.Anh) : null
+=======
+                        Loai = t.Loai,
+                        Anh = t.Anh != null ? Convert.ToBase64String(t.Anh) : null
+
+>>>>>>> fe
                     }).ToList()
                     );
             }
@@ -32,5 +38,38 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+<<<<<<< HEAD
+=======
+        [HttpGet("{id}")]
+        public IActionResult GetSanPhamById(string id)
+        {
+            try
+            {
+                DBThuctapContext db = new DBThuctapContext();
+                var sanPham = db.SanPhams.FirstOrDefault(sp => sp.IdSanPham == id);
+
+                if (sanPham == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(new
+                {
+                    IdSanPham = sanPham.IdSanPham,
+                    Ten = sanPham.Ten,
+                    Gia = sanPham.Gia,
+                    Hang = sanPham.Hang,
+                    Size = sanPham.Size,
+                    ThongTin = sanPham.ThongTin,
+                    Loai = sanPham.Loai,
+                    Anh = sanPham.Anh != null ? Convert.ToBase64String(sanPham.Anh) : null
+                });
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+>>>>>>> fe
     }
 }

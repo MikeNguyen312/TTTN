@@ -32,7 +32,11 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+<<<<<<< HEAD
         [HttpPost("ThemKhachHang")]
+=======
+        [HttpPost]
+>>>>>>> fe
         public IActionResult postDSKhachHang(CKhachHang x)
         {
 
@@ -49,7 +53,11 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+<<<<<<< HEAD
         [HttpDelete("XoaKhachHang")]
+=======
+        [HttpDelete]
+>>>>>>> fe
         public IActionResult deleteKhachHang(string id)
         {
             try
@@ -72,7 +80,11 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+<<<<<<< HEAD
         [HttpPut("SuaKhachHang")]
+=======
+        [HttpPut]
+>>>>>>> fe
         public IActionResult EditKhachHang(CKhachHang x)
         {
             try
@@ -92,6 +104,7 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+<<<<<<< HEAD
         [HttpPost("/api/login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
@@ -130,5 +143,7 @@ namespace WebAPI_ForTTTN.Controllers
             public string Password { get; set; }
         }
 
+=======
+>>>>>>> fe
     }
 }

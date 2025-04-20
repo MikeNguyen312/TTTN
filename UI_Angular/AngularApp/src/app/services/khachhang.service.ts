@@ -7,13 +7,18 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class KhachhangService {
   private apiUrl = 'https://localhost:7141/api/KhachHang'; // Replace with your actual API URL
+<<<<<<< HEAD
   private apiUrlThem = 'https://localhost:7141/api/KhachHang/ThemKhachHang';
   private apiUrlLogin = 'https://localhost:7141/api/login';
+=======
+
+>>>>>>> fe
   constructor(private http: HttpClient) { }
 
   getKhachHangs(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+<<<<<<< HEAD
   addKhachHang(khachHang: any): Observable<any> {
     return this.http.post(this.apiUrlThem, khachHang);
   }
@@ -21,4 +26,6 @@ export class KhachhangService {
     const body = { email, password }; // Không cần model
     return this.http.post(this.apiUrlLogin, body);
   }
+=======
+>>>>>>> fe
 }

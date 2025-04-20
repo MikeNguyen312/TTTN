@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
+=======
+import { Component } from '@angular/core';
+>>>>>>> fe
 
 @Component({
   selector: 'app-dashboard',
@@ -6,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
+<<<<<<< HEAD
 export class DashboardComponent implements OnInit {
   constructor() {}
 
@@ -18,4 +23,8 @@ export class DashboardComponent implements OnInit {
       // this.router.navigate(['/']);
     }
   }
+=======
+export class DashboardComponent {
+
+>>>>>>> fe
 }

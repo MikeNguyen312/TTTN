@@ -1,0 +1,11 @@
+<div class="item-container">
+    <div class="text-content">Giày Nam</div>
+    <div class="product-list">
+      <div class="product-card" *ngFor="let sp of giayNam" (click)="viewProductDetail(sp.idSanPham)">
+        <img *ngIf="sp.anh" [src]="'data:image/jpeg;base64,' + sp.anh" alt="{{ sp.ten }}" class="product-image" />
+        <h3>{{ sp.ten }}</h3>
+        <p>Hãng: {{ sp.hang }}</p>
+        <p>Giá: {{ sp.gia | currency:'VND' }}</p>
+      </div>
+    </div>
+  </div>

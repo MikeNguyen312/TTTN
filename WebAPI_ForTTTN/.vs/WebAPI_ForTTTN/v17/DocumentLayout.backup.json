@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\",
   "Documents": [
     {
@@ -45,6 +46,53 @@
     {
       "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|c:\\users\\admin\\desktop\\tttn\\webapi_fortttn\\webapi_fortttn\\controllers\\donhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\controllers\\donhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+  "WorkspaceRootPath": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\controllers\\sanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\controllers\\sanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\controllers\\khachhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\controllers\\khachhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\mymodels\\csanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\mymodels\\csanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\mymodels\\ckhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\mymodels\\ckhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\models\\dbthuctapcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\models\\dbthuctapcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\webapi_fortttn.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\webapi_fortttn.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\controllers\\khocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\controllers\\khocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\controllers\\donhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\controllers\\donhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tt\\tttn\\webapi_fortttn\\webapi_fortttn\\models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> fe
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +102,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 6,
+=======
+          "SelectedChildIndex": 5,
+>>>>>>> fe
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,6 +130,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Program.cs",
@@ -87,10 +140,22 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T14:10:13.555Z",
+=======
+              "DocumentIndex": 0,
+              "Title": "SanPhamController.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
+              "RelativeToolTip": "WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAYwCcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T07:01:07.74Z",
+>>>>>>> fe
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 0,
               "Title": "KhachHangController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\KhachHangController.cs",
@@ -100,11 +165,23 @@
               "ViewState": "AgIAAFwAAAAAAAAAAAAgwF4AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T07:14:42.236Z",
+=======
+              "DocumentIndex": 5,
+              "Title": "DBThuctapContext.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\DBThuctapContext.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Models\\DBThuctapContext.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\DBThuctapContext.cs",
+              "RelativeToolTip": "WebAPI_ForTTTN\\Models\\DBThuctapContext.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA1wBsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T06:59:15.887Z",
+>>>>>>> fe
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+<<<<<<< HEAD
               "Title": "CSanPham.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\MyModels\\CSanPham.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\MyModels\\CSanPham.cs",
@@ -121,6 +198,51 @@
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
+=======
+              "Title": "CKhachHang.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\MyModels\\CKhachHang.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\MyModels\\CKhachHang.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\MyModels\\CKhachHang.cs",
+              "RelativeToolTip": "WebAPI_ForTTTN\\MyModels\\CKhachHang.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA5wB4AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T07:14:55.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CSanPham.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\MyModels\\CSanPham.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\MyModels\\CSanPham.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\MyModels\\CSanPham.cs",
+              "RelativeToolTip": "WebAPI_ForTTTN\\MyModels\\CSanPham.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA9wBsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T07:02:28.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SanPham.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\SanPham.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Models\\SanPham.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\SanPham.cs",
+              "RelativeToolTip": "WebAPI_ForTTTN\\Models\\SanPham.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T07:02:32.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "WebAPI_ForTTTN.csproj",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
+>>>>>>> fe
               "RelativeToolTip": "WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -128,6 +250,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 3,
               "Title": "SanPhamController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
@@ -137,11 +260,23 @@
               "ViewState": "AgIAAAQAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T07:01:07.74Z",
+=======
+              "DocumentIndex": 2,
+              "Title": "KhachHangController.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\KhachHangController.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Controllers\\KhachHangController.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\KhachHangController.cs",
+              "RelativeToolTip": "WebAPI_ForTTTN\\Controllers\\KhachHangController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA+wBgAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T07:14:42.236Z",
+>>>>>>> fe
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+<<<<<<< HEAD
               "Title": "SanPham.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\SanPham.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Models\\SanPham.cs",
@@ -162,10 +297,21 @@
               "ViewState": "AgIAABQAAAAAAAAAAAA3wBMAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T06:59:15.887Z"
+=======
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Program.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Program.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Program.cs",
+              "RelativeToolTip": "WebAPI_ForTTTN\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T14:10:13.555Z"
+>>>>>>> fe
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+<<<<<<< HEAD
               "Title": "CKhachHang.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\MyModels\\CKhachHang.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\MyModels\\CKhachHang.cs",
@@ -182,6 +328,12 @@
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\KhoController.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Controllers\\KhoController.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\KhoController.cs",
+=======
+              "Title": "KhoController.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\KhoController.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Controllers\\KhoController.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\KhoController.cs",
+>>>>>>> fe
               "RelativeToolTip": "WebAPI_ForTTTN\\Controllers\\KhoController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -189,6 +341,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 1,
               "Title": "KhachHang.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\KhachHang.cs",
@@ -207,10 +360,32 @@
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\DonHangController.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Controllers\\DonHangController.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\DonHangController.cs",
+=======
+              "DocumentIndex": 9,
+              "Title": "DonHangController.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\DonHangController.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Controllers\\DonHangController.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\DonHangController.cs",
+>>>>>>> fe
               "RelativeToolTip": "WebAPI_ForTTTN\\Controllers\\DonHangController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAIBJwA8AAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T11:02:44.211Z"
+<<<<<<< HEAD
+=======
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "KhachHang.cs",
+              "DocumentMoniker": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\KhachHang.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Models\\KhachHang.cs",
+              "ToolTip": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\KhachHang.cs",
+              "RelativeToolTip": "WebAPI_ForTTTN\\Models\\KhachHang.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T07:14:21.27Z"
+>>>>>>> fe
             }
           ]
         },

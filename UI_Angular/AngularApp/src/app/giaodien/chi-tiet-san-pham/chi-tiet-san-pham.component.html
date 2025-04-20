@@ -1,0 +1,23 @@
+<div class="product-detail-container" *ngIf="!loading">
+    <div *ngIf="product">
+      <div class="product-image">
+        <img *ngIf="product.anh" [src]="'data:image/jpeg;base64,' + product.anh" alt="{{ product.ten }}" />
+      </div>
+      <div class="product-info">
+        <h1>{{ product.ten }}</h1>
+        <p class="price">{{ product.gia | currency:'VND' }}</p>
+        <p><strong>Hãng:</strong> {{ product.hang }}</p>
+        <p><strong>Size:</strong> {{ product.size }}</p>
+        <p><strong>Loại:</strong> {{ product.loai }}</p>
+        <div class="description">
+          <h3>Thông tin sản phẩm</h3>
+          <p>{{ product.thongTin }}</p>
+        </div>
+        <button class="add-to-cart">Thêm vào giỏ hàng</button>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="loading" class="loading">
+    Đang tải thông tin sản phẩm...
+  </div>

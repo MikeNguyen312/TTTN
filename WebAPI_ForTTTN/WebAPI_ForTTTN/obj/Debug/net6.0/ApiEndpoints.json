@@ -21,6 +21,7 @@
   },
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
+<<<<<<< HEAD
     "Method": "EditKhachHang",
     "RelativePath": "api/KhachHang/SuaKhachHang",
     "HttpMethod": "PUT",
@@ -39,6 +40,10 @@
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
     "Method": "postDSKhachHang",
     "RelativePath": "api/KhachHang/ThemKhachHang",
+=======
+    "Method": "postDSKhachHang",
+    "RelativePath": "api/KhachHang",
+>>>>>>> fe
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -54,7 +59,11 @@
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
     "Method": "deleteKhachHang",
+<<<<<<< HEAD
     "RelativePath": "api/KhachHang/XoaKhachHang",
+=======
+    "RelativePath": "api/KhachHang",
+>>>>>>> fe
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -68,6 +77,25 @@
     "ReturnTypes": []
   },
   {
+<<<<<<< HEAD
+=======
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
+    "Method": "EditKhachHang",
+    "RelativePath": "api/KhachHang",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "x",
+        "Type": "WebAPI_ForTTTN.MyModels.CKhachHang",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+>>>>>>> fe
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
     "Method": "getDSKho",
     "RelativePath": "api/Kho",
@@ -78,6 +106,7 @@
     "ReturnTypes": []
   },
   {
+<<<<<<< HEAD
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
     "Method": "Login",
     "RelativePath": "api/login",
@@ -94,6 +123,8 @@
     "ReturnTypes": []
   },
   {
+=======
+>>>>>>> fe
     "ContainingType": "WebAPI_ForTTTN.Controllers.SanPhamController",
     "Method": "getDSSanPham",
     "RelativePath": "api/SanPham",
@@ -102,5 +133,24 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+<<<<<<< HEAD
+=======
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.SanPhamController",
+    "Method": "GetSanPhamById",
+    "RelativePath": "api/SanPham/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+>>>>>>> fe
   }
 ]

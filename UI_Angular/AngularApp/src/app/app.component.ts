@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TrangChuComponent } from './giaodien/trang-chu/trang-chu.component';
 import { ThanhDieuHuongComponent } from "./giaodien/thanh-dieu-huong/thanh-dieu-huong.component";
 
+=======
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+>>>>>>> fe
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,6 +15,7 @@ import { ThanhDieuHuongComponent } from "./giaodien/thanh-dieu-huong/thanh-dieu-
   templateUrl:'./app.component.html',
   styleUrl: './app.component.css'
 })
+<<<<<<< HEAD
 export class AppComponent implements OnInit {
   ngOnInit() {
     const isLoggedIn = localStorage.getItem('username');
@@ -19,4 +25,8 @@ export class AppComponent implements OnInit {
       localStorage.setItem('isAdmin', 'false');
     }
   }
+=======
+export class AppComponent {
+  title = 'av';
+>>>>>>> fe
 }

@@ -2467,13 +2467,19 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\ADMIN\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+=======
+    "C:\\Users\\DELL\\.nuget\\packages\\": {},
+    "D:\\VSStudioSDK\\NuGetPackages": {}
+>>>>>>> fe
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
       "projectName": "WebAPI_ForTTTN",
       "projectPath": "C:\\Users\\ADMIN\\Desktop\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
@@ -2486,6 +2492,19 @@
       ],
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
+      "projectName": "WebAPI_ForTTTN",
+      "projectPath": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "D:\\TT\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\VSStudioSDK\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> fe
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2494,7 +2513,10 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< HEAD
         "C:\\Program Files\\dotnet\\library-packs": {},
+=======
+>>>>>>> fe
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2512,7 +2534,12 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
+<<<<<<< HEAD
       }
+=======
+      },
+      "SdkAnalysisLevel": "9.0.200"
+>>>>>>> fe
     },
     "frameworks": {
       "net6.0": {
@@ -2552,7 +2579,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+>>>>>>> fe
       }
     }
   }
