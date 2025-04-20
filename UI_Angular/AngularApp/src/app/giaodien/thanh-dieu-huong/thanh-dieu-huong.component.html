@@ -14,10 +14,13 @@
     <div class="icons">
         <i class="bi bi-search"></i>
         <i class="bi bi-bag"></i>
-        <i class="bi bi-person"></i>
-    </div>
+        <i routerLink="/login" class="bi bi-person"></i>
 
+        <!-- Hiển thị tên người dùng nếu có -->
+        <span *ngIf="username" class="username">Hello {{ username }}</span>
+    </div>
 </header>
+
 <div>
     <router-outlet></router-outlet>
 </div>

@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Đăng nhập</h2>
+        <form (ngSubmit)="onLogin()">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" required>
+            <label for="email">Email</label>
+          </div>
+  
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" required>
+            <label for="password">Mật khẩu</label>
+          </div>
+  
+          <div class="d-flex justify-content-between">
+            <!-- Nút Đăng nhập -->
+            <button type="submit" class="btn btn-primary w-48">
+              Đăng nhập
+            </button>
+  
+            <!-- Nút Đăng ký -->
+            <a routerLink="/register" class="btn btn-outline-secondary w-48">
+              Đăng ký
+            </a>
+          </div>
+  
+          <div *ngIf="errorMessage" class="text-danger mt-3 text-center">
+            {{ errorMessage }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

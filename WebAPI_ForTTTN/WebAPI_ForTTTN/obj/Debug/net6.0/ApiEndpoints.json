@@ -21,8 +21,24 @@
   },
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
+    "Method": "EditKhachHang",
+    "RelativePath": "api/KhachHang/SuaKhachHang",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "x",
+        "Type": "WebAPI_ForTTTN.MyModels.CKhachHang",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
     "Method": "postDSKhachHang",
-    "RelativePath": "api/KhachHang",
+    "RelativePath": "api/KhachHang/ThemKhachHang",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -38,7 +54,7 @@
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
     "Method": "deleteKhachHang",
-    "RelativePath": "api/KhachHang",
+    "RelativePath": "api/KhachHang/XoaKhachHang",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -52,22 +68,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
-    "Method": "EditKhachHang",
-    "RelativePath": "api/KhachHang",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "x",
-        "Type": "WebAPI_ForTTTN.MyModels.CKhachHang",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
     "Method": "getDSKho",
     "RelativePath": "api/Kho",
@@ -75,6 +75,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
+    "Method": "Login",
+    "RelativePath": "api/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "WebAPI_ForTTTN.Controllers.KhachHangController\u002BLoginRequest",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
