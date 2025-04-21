@@ -37,15 +37,19 @@ table {
     cursor: pointer; /* Indicates interactivity */
   }
   
-  /* Ensure the Delete button stays aligned */
+  /* Ensure the Thao Tác buttons stay aligned */
   .abc {
     text-align: center;
-    width: 33%;
-  }
+}
   
-  .btn-danger {
+  .btn-primary, .btn-danger {
     padding: 6px 12px;
     transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #007bff;
+    transform: scale(1.1);
   }
   
   .btn-danger:hover {
@@ -53,7 +57,7 @@ table {
     transform: scale(1.1);
   }
   
-  /* Other Styling */
+  /* Styling for the Heading and Button */
   h2 {
     font-size: 1.75rem;
     color: #333;
@@ -69,3 +73,38 @@ table {
     background-color: #28a745;
     transform: scale(1.05);
   }
+  .button-under{
+    margin-left: 50%;
+    height: 80px;
+  }
+  .btn-info{
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+  .btn-info:hover{
+    background-color: rgb(125, 217, 245);
+    transform: scale(1.05);
+  }
+  .confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .confirm-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 350px;
+    max-width: 90%;
+  }
+  
