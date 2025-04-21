@@ -15,6 +15,7 @@ import { GiaynamComponent } from './giaodien/giaynam/giaynam.component';
 import { ChiTietSanPhamComponent } from './giaodien/chi-tiet-san-pham/chi-tiet-san-pham.component';
 import { GiaynuComponent } from './giaodien/giaynu/giaynu.component';
 import { KhuyenmaiComponent } from './giaodien/khuyenmai/khuyenmai.component';
+import { ChitietphieukhoComponent } from './pages/kho/chitietphieukho/chitietphieukho.component';
 
 export const routes: Routes = [
     {
@@ -46,6 +47,10 @@ export const routes: Routes = [
             {
                 path: 'kho',
                 component: KhoComponent
+            },
+            {
+                path: 'phieukho/:id',
+                component:ChitietphieukhoComponent
             },
             {
                 path: 'donhang',
