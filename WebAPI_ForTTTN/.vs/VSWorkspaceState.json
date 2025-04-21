@@ -3,8 +3,9 @@
     "",
     "\\WebAPI_ForTTTN",
     "\\WebAPI_ForTTTN\\Controllers",
+    "\\WebAPI_ForTTTN\\Models",
     "\\WebAPI_ForTTTN\\MyModels"
   ],
-  "SelectedNode": "\\WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
+  "SelectedNode": "\\WebAPI_ForTTTN.sln",
   "PreviewInSolutionExplorer": false
 }
