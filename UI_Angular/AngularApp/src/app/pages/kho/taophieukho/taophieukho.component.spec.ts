@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaophieukhoComponent } from './taophieukho.component';
+import { TaoPhieuKhoComponent } from './taophieukho.component';
 
 describe('TaophieukhoComponent', () => {
-  let component: TaophieukhoComponent;
-  let fixture: ComponentFixture<TaophieukhoComponent>;
+  let component: TaoPhieuKhoComponent;
+  let fixture: ComponentFixture<TaoPhieuKhoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TaophieukhoComponent]
+      imports: [TaoPhieuKhoComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TaophieukhoComponent);
+    fixture = TestBed.createComponent(TaoPhieuKhoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
