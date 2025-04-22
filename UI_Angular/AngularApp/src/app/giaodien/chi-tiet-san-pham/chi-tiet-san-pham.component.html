@@ -1,23 +1,40 @@
 <div class="product-detail-container" *ngIf="!loading">
-    <div *ngIf="product">
-      <div class="product-image">
-        <img *ngIf="product.anh" [src]="'data:image/jpeg;base64,' + product.anh" alt="{{ product.ten }}" />
+  <div *ngIf="product" class="product-three-columns">
+    <div class="product-left">
+      <div class="option-label-size">CHỌN KÍCH THƯỚC</div>
+      <div class="size-options">
+        <span *ngFor="let s of [38, 39, 40, 41, 42]" class="size-box">{{
+          s
+        }}</span>
       </div>
-      <div class="product-info">
-        <h1>{{ product.ten }}</h1>
-        <p class="price">{{ product.gia | currency:'VND' }}</p>
-        <p><strong>Hãng:</strong> {{ product.hang }}</p>
-        <p><strong>Size:</strong> {{ product.size }}</p>
-        <p><strong>Loại:</strong> {{ product.loai }}</p>
-        <div class="description">
-          <h3>Thông tin sản phẩm</h3>
-          <p>{{ product.thongTin }}</p>
-        </div>
-        <button class="add-to-cart">Thêm vào giỏ hàng</button>
+
+      <div class="option-label-color">CHỌN MÀU</div>
+      <div class="color-options">
+        <span class="color-circle" style="background-color: #c2b49a"></span>
+        <span class="color-circle" style="background-color: #000000"></span>
+        <span class="color-circle" style="background-color: #3a5ba0"></span>
+        <span class="color-circle" style="background-color: #eacb53"></span>
       </div>
     </div>
+
+    <div class="product-center">
+      <img
+        *ngIf="product.anh"
+        [src]="'data:image/jpeg;base64,' + product.anh"
+        alt="{{ product.ten }}"
+      />
+    </div>
+
+    <div class="product-right">
+      <p class="subheading">Giày Nam</p>
+      <div class="thong-tin">
+        <h1 class="product-name">{{ product.ten }}</h1>
+        <p class="product-price">{{ product.gia | currency : "VND" }}</p>
+        <p class="product-description">{{ product.thongTin }}</p>
+      </div>
+      <button class="add-to-cart">Thêm vào giỏ hàng</button>
+    </div>
   </div>
-  
-  <div *ngIf="loading" class="loading">
-    Đang tải thông tin sản phẩm...
-  </div>
+</div>
+
+<div *ngIf="loading" class="loading">Đang tải thông tin sản phẩm...</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';  
 import { ProductService } from '../../services/product.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-trang-chu',
   standalone: true,
@@ -45,7 +45,7 @@ export class TrangChuComponent implements OnInit {
     this.currentSlide = index;
   }
 
-  constructor(private sanphamService: ProductService) {}
+  constructor(private sanphamService: ProductService, private router: Router) {}
 
   sanPhams: any[] = [];
   giayNam: any[] = [];
@@ -67,5 +67,8 @@ export class TrangChuComponent implements OnInit {
         console.error('Error fetching SanPhams:', err);
       }
     });
+  }
+  viewProductDetail(productId: string): void {
+    this.router.navigate(['/chi-tiet-san-pham', productId]);
   }
 }
