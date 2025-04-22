@@ -5,7 +5,7 @@ import { KhachhangService } from '../../services/khachhang.service';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-register',
-  imports: [RouterLink,CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
