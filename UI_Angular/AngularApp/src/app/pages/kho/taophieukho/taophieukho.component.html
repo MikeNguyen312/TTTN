@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Tạo Phiếu Kho Mới</h2>
+    <form (ngSubmit)="taoPhieuKho()">
+      <div class="form-group mb-2">
+        <label for="idPhieuKho">ID Phiếu Kho</label>
+        <input type="text" id="idPhieuKho" class="form-control" required [(ngModel)]="formModel.idPhieuKho" name="idPhieuKho">
+      </div>
+      <div class="form-group mb-2">
+        <label for="ngayLap">Ngày Lập</label>
+        <input type="date" id="ngayLap" class="form-control" required [(ngModel)]="formModel.ngayLap" name="ngayLap">
+      </div>
+      <button type="submit" class="btn btn-primary" >Tạo Phiếu Kho</button>
+    </form>
+  </div>
+  <div *ngIf="thongBaoThanhCong" class="thong-bao-thanh-cong">
+    ✅ Thêm phiếu kho thành công!
+  </div>
