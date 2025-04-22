@@ -28,32 +28,6 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
-        [HttpDelete]
-        public IActionResult xoaDSKho(string id)
-        {
-            try
-            {
-                DBThuctapContext db = new DBThuctapContext();
-                var pk = db.PhieuKhos.FirstOrDefault(p => p.IdPhieuKho == id);
-                if (pk == null)
-                {
-                    return NotFound("Khong tim thay Phieu Kho");
-                }
-
-                var ktra = db.SanPhamPhieuKhos.Any(sp => sp.IdPhieuKho == id);
-                if (ktra)
-                {
-                    return BadRequest("Con Item");
-                }
-                db.PhieuKhos.Remove(pk);
-                db.SaveChanges();
-                return Ok();
-            }
-            catch
-            {
-                return BadRequest();
-            }
-        }
         [HttpGet("{id}")]
         public IActionResult GetDSKhoID(string id)
         {
@@ -85,6 +59,33 @@ namespace WebAPI_ForTTTN.Controllers
                 return StatusCode(500, "Lỗi server: " + ex.Message);
             }
         }
+        [HttpDelete]
+        public IActionResult xoaDSKho(string id)
+        {
+            try
+            {
+                DBThuctapContext db = new DBThuctapContext();
+                var pk = db.PhieuKhos.FirstOrDefault(p => p.IdPhieuKho == id);
+                if (pk == null)
+                {
+                    return NotFound("Khong tim thay Phieu Kho");
+                }
+
+                var ktra = db.SanPhamPhieuKhos.Any(sp => sp.IdPhieuKho == id);
+                if (ktra)
+                {
+                    return BadRequest("Con Item");
+                }
+                db.PhieuKhos.Remove(pk);
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        
         [HttpDelete("XoaID")]
         public IActionResult xoaItemtrongPK(string idPK, string idSanPham)
         {
@@ -97,6 +98,52 @@ namespace WebAPI_ForTTTN.Controllers
                     return NotFound("Khong tim thay san pham trong PK");
                 }
                 db.SanPhamPhieuKhos.Remove(a);
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost("TaoPhieuKho")]
+        public IActionResult TaoPhieuKho(CPhieuKho pk)
+        {
+            try
+            {
+                DBThuctapContext db = new DBThuctapContext();
+                db.PhieuKhos.Add(CPhieuKho.chuyendoi(pk));
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        [HttpPost("{idPhieuKho}/SanPham")]
+        public IActionResult ThemItemvaoPK(CSanPhamPhieuKho x, string idPhieuKho)
+        {
+            try
+            {
+                DBThuctapContext db = new DBThuctapContext();
+
+                var pk = db.PhieuKhos.Find(idPhieuKho);
+                if (pk == null)
+                {
+                    return NotFound("Phiếu kho không tồn tại.");
+                }
+
+                var a = new CSanPhamPhieuKho
+                {
+                    IdPhieuKho = idPhieuKho,
+                    IdSanPham = x.IdSanPham,
+                    SoLuong = x.SoLuong,
+                    SoLuongNhap = x.SoLuongNhap,
+                    SoLuongXuat = x.SoLuongXuat,
+                };
+                db.SanPhamPhieuKhos.Add(CSanPhamPhieuKho.chuyendoi(a));
                 db.SaveChanges();
                 return Ok();
             }
