@@ -18,6 +18,7 @@ namespace WebAPI_ForTTTN.Controllers
                     db.SanPhams.Select(t => new
                     {
                         IdSanPham = t.IdSanPham,
+                        Loai = t.Loai,
                         Ten = t.Ten,
                         Gia = t.Gia,
                         Hang = t.Hang,

@@ -111,6 +111,43 @@
   },
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
+    "Method": "ThemItemvaoPK",
+    "RelativePath": "api/Kho/{idPhieuKho}/SanPham",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "x",
+        "Type": "WebAPI_ForTTTN.MyModels.CSanPhamPhieuKho",
+        "IsRequired": true
+      },
+      {
+        "Name": "idPhieuKho",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
+    "Method": "TaoPhieuKho",
+    "RelativePath": "api/Kho/TaoPhieuKho",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pk",
+        "Type": "WebAPI_ForTTTN.MyModels.CPhieuKho",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
     "Method": "xoaItemtrongPK",
     "RelativePath": "api/Kho/XoaID",
     "HttpMethod": "DELETE",

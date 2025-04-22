@@ -2,9 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 
+export interface PhieuKho {
+  idPhieuKho: string;
+  ngayLap: string; // ISO date string: "2025-04-21"
+}
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class KhoService {
   private apiUrl = 'https://localhost:7141/api/Kho'; // Replace with your actual API URL
 
@@ -23,5 +30,9 @@ export class KhoService {
 
   xoaPhieuKho(idPhieuKho: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}?id=${idPhieuKho}`);
+  }
+
+  taoPhieuKho(pk: PhieuKho): Observable<any> {
+    return this.http.post(`https://localhost:7141/api/Kho/TaoPhieuKho`, pk);
   }
 }

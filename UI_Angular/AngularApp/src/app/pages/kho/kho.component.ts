@@ -1,16 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { KhoService } from '../../services/kho.service';
+import { KhoService, PhieuKho } from '../../services/kho.service';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-kho',
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,FormsModule],
   templateUrl: './kho.component.html',
   styleUrl: './kho.component.css'
 })
 export class KhoComponent {
+  
+  hienForm = false;
+  thongbaoXoaThanhCong = false;
+
   phieuKhos: any[] = [];
+  formModel: PhieuKho = {
+    idPhieuKho: '',
+    ngayLap: ''
+  };
   
     // Inject the service in the constructor
     constructor(private phieuKhoService: KhoService) {}
@@ -38,8 +47,11 @@ export class KhoComponent {
           // Gửi yêu cầu xóa Phiếu Kho
           this.phieuKhoService.xoaPhieuKho(idPhieuKho).subscribe({
             next: () => {
-              alert('Đã xóa Phiếu Kho!');
-              this.loadPhieuKho(); // Reload lại danh sách
+              this.thongbaoXoaThanhCong = true;
+              setTimeout(()=>{
+                this.thongbaoXoaThanhCong = false;
+                this.loadPhieuKho(); // Reload lại danh sách
+              },2000);
             },
             error: (error) => {
               console.error('Lỗi khi xóa Phiếu Kho:', error);
@@ -48,6 +60,21 @@ export class KhoComponent {
           });
         } else {
           alert('Phiếu Kho vẫn còn sản phẩm, không thể xóa!');
+        }
+      });
+    }
+
+    taoPhieuKho(): void {
+      this.phieuKhoService.taoPhieuKho(this.formModel).subscribe({
+        next: () => {
+          alert('Tạo phiếu kho thành công!');
+          this.hienForm = false;
+          this.formModel = { idPhieuKho: '', ngayLap: '' };
+          this.loadPhieuKho();
+        },
+        error: err => {
+          console.error(err);
+          alert('Lỗi khi tạo phiếu kho');
         }
       });
     }
