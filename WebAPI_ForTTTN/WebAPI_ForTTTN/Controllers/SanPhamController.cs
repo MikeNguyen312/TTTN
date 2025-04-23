@@ -22,6 +22,7 @@ namespace WebAPI_ForTTTN.Controllers
                         Ten = t.Ten,
                         Gia = t.Gia,
                         Hang = t.Hang,
+                        SoLuong = t.SoLuong,
                         Size = t.Size,
                         Thongtin =t.ThongTin,
                         Anh = t.Anh != null ? Convert.ToBase64String(t.Anh) : null
@@ -53,6 +54,7 @@ namespace WebAPI_ForTTTN.Controllers
                     Gia = sanPham.Gia,
                     Hang = sanPham.Hang,
                     Size = sanPham.Size,
+                    SoLuong = sanPham.SoLuong,
                     ThongTin = sanPham.ThongTin,
                     Loai = sanPham.Loai,
                     Anh = sanPham.Anh != null ? Convert.ToBase64String(sanPham.Anh) : null

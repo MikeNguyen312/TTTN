@@ -12,6 +12,7 @@
         <th>Hãng</th>
         <th>Size</th>
         <th>Thông tin</th>
+        <th>Số lượng</th>
         <th>Ảnh</th> 
         <th></th>
       </tr>
@@ -24,6 +25,7 @@
         <td>{{ sp.hang }}</td>
         <td>{{ sp.size }}</td>
         <td>{{ sp.thongtin }}</td>
+        <td>{{ sp.soLuong }}</td>
         <td>
           <img *ngIf="sp.anh" [src]="'data:image/png;base64,' + sp.anh" width="100" height="100" alt="Ảnh sản phẩm" />
         </td>

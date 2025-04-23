@@ -51,12 +51,12 @@
                     component: KhoComponent
                 },
                 {
-                    path: 'kho/:id',
-                    component:ChitietphieukhoComponent
-                },
-                {
                     path: 'kho/taophieukho',
                     component:TaoPhieuKhoComponent
+                },
+                {
+                    path: 'kho/:id',
+                    component:ChitietphieukhoComponent
                 },
                 {
                     path: 'kho/:id/formthemsanpham',

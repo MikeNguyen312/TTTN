@@ -3,7 +3,7 @@
     <form (ngSubmit)="themSanPham()" #formSP="ngForm">
         <div class="mb-3">
             <label for="idSanPham">ID Sản Phẩm</label>
-            <select class="form-select" [(ngModel)]="sanPham.idSanPham" name="idSanPham" required #idSanPham="ngModel">
+            <select class="form-select" [(ngModel)]="sanPham.idSanPham" name="idSanPham"  (change)="onSanPhamChange()" required #idSanPham="ngModel">
                 <option value="" disabled selected>-- Chọn sản phẩm --</option>
                 <option *ngFor="let sp of danhSachSanPham" [value]="sp.idSanPham">
                   {{ sp.ten }} ----- {{ sp.idSanPham }}
@@ -15,23 +15,31 @@
           </div>
       <div class="mb-3">
         <label>Số Lượng</label>
-        <input type="number" class="form-control" [(ngModel)]="sanPham.soLuong" name="soLuong" min="1" required  #soLuong="ngModel">
+        <input
+         type="number" class="form-control" [(ngModel)]="sanPham.soLuong" (ngModelChange)="capNhatSoLuongTuDong()"
+          name="soLuong" min="-1" required  #soLuong="ngModel" [readonly]="true">
         <div *ngIf="soLuong.invalid && soLuong.touched" class="text-danger">
-          Nhập số lượng > 0.
+          Nhập số lượng.
         </div>
       </div>
       <div class="mb-3">
         <label>Số Lượng Nhập</label>
-        <input type="number" class="form-control" [(ngModel)]="sanPham.soLuongNhap" name="soLuongNhap" min="1" required #soLuongNhap="ngModel">
+        <input
+            type="number" class="form-control" [(ngModel)]="sanPham.soLuongNhap"
+            name="soLuongNhap" min="-1" required #soLuongNhap="ngModel"
+            (ngModelChange)="capNhatSoLuongTuDong()">
         <div *ngIf="soLuongNhap.invalid && soLuongNhap.touched" class="text-danger">
-          Số lượng nhập phải ≥ 0.
+          Số lượng nhập.
         </div>
       </div>
       <div class="mb-3">
         <label>Số Lượng Xuất</label>
-        <input type="number" class="form-control" [(ngModel)]="sanPham.soLuongXuat" name="soLuongXuat" min="1" required #soLuongXuat="ngModel">
+        <input
+            type="number" class="form-control" [(ngModel)]="sanPham.soLuongXuat"
+            name="soLuongXuat" min="-1" required #soLuongXuat="ngModel"
+            (ngModelChange)="capNhatSoLuongTuDong()">
         <div *ngIf="soLuongXuat.invalid && soLuongXuat.touched" class="text-danger">
-          Số lượng xuất phải ≥ 0.
+          Số lượng xuất.
         </div>
       </div>
       <button type="submit" class="btn btn-success" [disabled]="formSP.invalid">Thêm</button>

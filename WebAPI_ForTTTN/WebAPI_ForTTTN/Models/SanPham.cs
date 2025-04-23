@@ -20,6 +20,7 @@ namespace WebAPI_ForTTTN.Models
         public string? ThongTin { get; set; }
         public byte[]? Anh { get; set; }
         public string? Loai { get; set; }
+        public int? SoLuong { get; set; }
 
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual ICollection<KhuyenMai> KhuyenMais { get; set; }
