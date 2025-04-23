@@ -41,4 +41,5 @@ export class KhoService {
   taoPhieuKho(pk: PhieuKho): Observable<any> {
     return this.http.post(`https://localhost:7141/api/Kho/TaoPhieuKho`, pk);
   }
+
 }

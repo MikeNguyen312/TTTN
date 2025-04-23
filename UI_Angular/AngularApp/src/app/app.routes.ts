@@ -52,7 +52,7 @@ export const routes: Routes = [
                 component: KhoComponent
             },
             {
-                path: 'phieukho/:id',
+                path: 'kho/:id',
                 component:ChitietphieukhoComponent
             },
             {
@@ -114,9 +114,9 @@ export const routes: Routes = [
     },
 ];
 
-// Tạo module để cấu hình RouterModule
-@NgModule({
-  imports: [RouterModule.forRoot(routes)], // Import routes vào RouterModule
-  exports: [RouterModule]  // Xuất RouterModule để có thể sử dụng trong các component
-})
-export class AppRoutingModule { }
+    // Tạo module để cấu hình RouterModule
+    @NgModule({
+    imports: [RouterModule.forRoot(routes)], // Import routes vào RouterModule
+    exports: [RouterModule]  // Xuất RouterModule để có thể sử dụng trong các component
+    })
+    export class AppRoutingModule { }

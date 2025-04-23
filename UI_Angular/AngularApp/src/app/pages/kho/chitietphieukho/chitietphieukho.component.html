@@ -4,6 +4,19 @@
       <button class="btn btn-success" [routerLink]="['/admin/kho', idPhieuKho, 'formthemsanpham']">
         Thêm Sản Phẩm
       </button>
+      <!-- Button ẩn/hiện biểu đồ -->
+      <button class="btn btn-info" (click)="toggleChartVisibility()">
+        {{ isChartVisible ? 'Ẩn Biểu Đồ' : 'Hiện Biểu Đồ' }}
+      </button>
+    </div>
+    <div *ngIf="isChartVisible">
+      <div style="display: block; width: 100%; height: 80%;">
+        <canvas baseChart
+          [data]="{ labels: barChartLabels, datasets: barChartData }"
+          [options]="barChartOptions"
+          [type]="barChartType">
+        </canvas>
+      </div>
     </div>
     <table class="table table-bordered">
       <thead>
@@ -31,7 +44,7 @@
     </table>
   </div>
   <div class="button-under">
-    <button class="btn btn-info" [routerLink]="['/admin/kho']">Tro Lai</button>
+    <button class="btn btn-info" [routerLink]="['/admin/kho']">Trở lại</button>
   </div>
   <!-- Overlay xác nhận xóa -->
 <div class="confirm-overlay" *ngIf="showConfirmPopup">

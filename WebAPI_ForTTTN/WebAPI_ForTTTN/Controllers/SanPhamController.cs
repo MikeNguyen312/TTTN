@@ -58,6 +58,7 @@ namespace WebAPI_ForTTTN.Controllers
                     Gia = sanPham.Gia,
                     Hang = sanPham.Hang,
                     Size = sanPham.Size,
+                    SoLuong = sanPham.SoLuong,
                     ThongTin = sanPham.ThongTin,
                     Loai = sanPham.Loai,
                     Anh = sanPham.Anh != null ? Convert.ToBase64String(sanPham.Anh) : null,
