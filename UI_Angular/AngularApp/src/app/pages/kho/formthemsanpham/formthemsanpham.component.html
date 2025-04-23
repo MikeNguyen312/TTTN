@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <h3>Thêm Sản Phẩm vào Phiếu Kho: {{ idPhieuKho }}</h3>
+    <form (ngSubmit)="themSanPham()">
+        <div class="mb-3">
+            <label for="idSanPham">ID Sản Phẩm</label>
+            <select class="form-select" [(ngModel)]="sanPham.idSanPham" name="idSanPham" required>
+                <option value="" disabled selected>-- Chọn sản phẩm --</option>
+                <option *ngFor="let sp of danhSachSanPham" [value]="sp.idSanPham">
+                  {{ sp.ten }} ----- {{ sp.idSanPham }}
+                </option>
+              </select>
+          </div>
+      <div class="mb-3">
+        <label>Số Lượng</label>
+        <input type="number" class="form-control" [(ngModel)]="sanPham.soLuong" name="soLuong" required>
+      </div>
+      <div class="mb-3">
+        <label>Số Lượng Nhập</label>
+        <input type="number" class="form-control" [(ngModel)]="sanPham.soLuongNhap" name="soLuongNhap" required>
+      </div>
+      <div class="mb-3">
+        <label>Số Lượng Xuất</label>
+        <input type="number" class="form-control" [(ngModel)]="sanPham.soLuongXuat" name="soLuongXuat" required>
+      </div>
+      <button type="submit" class="btn btn-success">Thêm</button>
+      <button class="btn btn-secondary ms-2" [routerLink]="['/admin/kho', idPhieuKho]">Hủy</button>
+    </form>
+  </div>
+  

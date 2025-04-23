@@ -6,6 +6,12 @@ export interface PhieuKho {
   idPhieuKho: string;
   ngayLap: string; // ISO date string: "2025-04-21"
 }
+export interface ThemSanPhamPK {
+  SoLuongNhap: number;
+  SoLuongXuat: number;
+  SoLuong: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
