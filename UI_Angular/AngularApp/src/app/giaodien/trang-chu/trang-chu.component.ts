@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';  
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-trang-chu',
   standalone: true,
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './trang-chu.component.html',
   styleUrls: ['./trang-chu.component.css']
 })
-export class TrangChuComponent implements OnInit {
+export class TrangChuComponent implements OnInit, OnDestroy {
   slides = [
     {
       image: 'assets/slide/anh1.jpg',
@@ -32,6 +33,22 @@ export class TrangChuComponent implements OnInit {
   ];
 
   currentSlide = 0;
+  slideInterval: any;
+
+  sanPhams: any[] = [];
+  giayNam: any[] = [];
+  giayNu: any[] = [];
+
+  constructor(private sanphamService: ProductService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.loadSanPhams();
+    this.startAutoSlide();
+  }
+
+  ngOnDestroy(): void {
+    this.stopAutoSlide();
+  }
 
   prevSlide(): void {
     this.currentSlide = (this.currentSlide === 0) ? this.slides.length - 1 : this.currentSlide - 1;
@@ -45,29 +62,47 @@ export class TrangChuComponent implements OnInit {
     this.currentSlide = index;
   }
 
-  constructor(private sanphamService: ProductService, private router: Router) {}
+  startAutoSlide(): void {
+    this.slideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 3000); // Chuyển slide mỗi 3 giây
+  }
 
-  sanPhams: any[] = [];
-  giayNam: any[] = [];
-  giayNu: any[] = [];
-
-  ngOnInit(): void {
-    this.loadSanPhams();
+  stopAutoSlide(): void {
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+    }
   }
 
   loadSanPhams(): void {
     this.sanphamService.getSanPhams().subscribe({
       next: (data) => {
-        console.log('Fetched data:', data); 
         this.sanPhams = Array.isArray(data) ? data : [];
-        this.giayNam = this.sanPhams.filter(sp => sp.loai === 'Nam');
-        this.giayNu = this.sanPhams.filter(sp => sp.loai === 'Nữ');
+
+        // Lọc giày nam
+        this.giayNam = this.sanPhams
+          .filter((sp) => sp.loai === 'Nam')
+          .map((sp) => ({
+            ...sp,
+            soLuongTon: sp.soLuong || 0,
+            hetHang: (sp.soLuong || 0) <= 0
+          }));
+
+        // Lọc giày nữ
+        this.giayNu = this.sanPhams
+          .filter((sp) => sp.loai === 'Nữ')
+          .map((sp) => ({
+            ...sp,
+            soLuongTon: sp.soLuong || 0,
+            hetHang: (sp.soLuong || 0) <= 0
+          }));
       },
       error: (err) => {
-        console.error('Error fetching SanPhams:', err);
+        console.error('Lỗi khi tải danh sách sản phẩm:', err);
       }
     });
   }
+
   viewProductDetail(productId: string): void {
     this.router.navigate(['/chi-tiet-san-pham', productId]);
   }

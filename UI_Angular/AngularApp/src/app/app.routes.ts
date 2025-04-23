@@ -16,6 +16,7 @@ import { ChiTietSanPhamComponent } from './giaodien/chi-tiet-san-pham/chi-tiet-s
 import { GiaynuComponent } from './giaodien/giaynu/giaynu.component';
 import { KhuyenmaiComponent } from './giaodien/khuyenmai/khuyenmai.component';
 import { ChitietphieukhoComponent } from './pages/kho/chitietphieukho/chitietphieukho.component';
+import { GioHangComponent } from './giaodien/gio-hang/gio-hang.component';
 import { TaoPhieuKhoComponent } from './pages/kho/taophieukho/taophieukho.component';
 import { FormThemSanPhamComponent } from './pages/kho/formthemsanpham/formthemsanpham.component';
 
@@ -99,6 +100,10 @@ export const routes: Routes = [
             {
                 path: 'khuyenmai',
                 component: KhuyenmaiComponent
+            },
+            {
+                path: 'giohang',
+                component: GioHangComponent
             },
             { 
                 path: 'trang-chu/:id',

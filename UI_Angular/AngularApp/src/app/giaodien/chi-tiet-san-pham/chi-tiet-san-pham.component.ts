@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-chi-tiet-san-pham',
   imports: [CommonModule],
   templateUrl: './chi-tiet-san-pham.component.html',
   styleUrl: './chi-tiet-san-pham.component.css'
 })
-export class ChiTietSanPhamComponent implements OnInit{
+export class ChiTietSanPhamComponent implements OnInit {
   product: any;
   loading = true;
 

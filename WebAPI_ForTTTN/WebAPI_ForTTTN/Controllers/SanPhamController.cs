@@ -24,6 +24,7 @@ namespace WebAPI_ForTTTN.Controllers
                         Hang = t.Hang,
                         Size = t.Size,
                         Thongtin =t.ThongTin,
+                        SoLuong = t.SoLuong,
                         Anh = t.Anh != null ? Convert.ToBase64String(t.Anh) : null
                     }).ToList()
                     );
@@ -46,6 +47,10 @@ namespace WebAPI_ForTTTN.Controllers
                     return NotFound();
                 }
 
+                var soLuongTon = db.SanPhamPhieuKhos
+                    .Where(spk => spk.IdSanPham == id)
+                    .Sum(spk => spk.SoLuong) ?? 0;
+
                 return Ok(new
                 {
                     IdSanPham = sanPham.IdSanPham,
@@ -55,7 +60,8 @@ namespace WebAPI_ForTTTN.Controllers
                     Size = sanPham.Size,
                     ThongTin = sanPham.ThongTin,
                     Loai = sanPham.Loai,
-                    Anh = sanPham.Anh != null ? Convert.ToBase64String(sanPham.Anh) : null
+                    Anh = sanPham.Anh != null ? Convert.ToBase64String(sanPham.Anh) : null,
+                    SoLuongTon = soLuongTon 
                 });
             }
             catch

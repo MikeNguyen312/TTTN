@@ -224,6 +224,78 @@
         }
       }
     },
+    "/api/Kho/TaoPhieuKho": {
+      "post": {
+        "tags": [
+          "Kho"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CPhieuKho"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CPhieuKho"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CPhieuKho"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Kho/{idPhieuKho}/SanPham": {
+      "post": {
+        "tags": [
+          "Kho"
+        ],
+        "parameters": [
+          {
+            "name": "idPhieuKho",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CSanPhamPhieuKho"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CSanPhamPhieuKho"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CSanPhamPhieuKho"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/SanPham": {
       "get": {
         "tags": [
@@ -282,6 +354,50 @@
           },
           "passwords": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CPhieuKho": {
+        "type": "object",
+        "properties": {
+          "idPhieuKho": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngayLap": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CSanPhamPhieuKho": {
+        "type": "object",
+        "properties": {
+          "idPhieuKho": {
+            "type": "string",
+            "nullable": true
+          },
+          "idSanPham": {
+            "type": "string",
+            "nullable": true
+          },
+          "soLuong": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "soLuongXuat": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "soLuongNhap": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           }
         },

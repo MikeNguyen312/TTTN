@@ -1,0 +1,36 @@
+<div class="cart-container">
+  <div class="cart-content">
+    <div class="cart-items">
+        <h2>Giỏ Hàng Của Bạn</h2>
+      <div class="cart-item" *ngFor="let item of cartItems; index as i">
+        <img [src]="item.image" alt="{{item.name}}" class="product-img" />
+        <div class="product-details">
+          <h4>{{ item.name }}</h4>
+        </div>
+
+        <div class="quantity">
+          <button (click)="decreaseQty(i)">−</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="increaseQty(i)">+</button>
+        </div>
+
+
+        <button class="remove-btn" (click)="removeItem(i)">🗑️</button>
+      </div>
+    </div>
+
+    <div class="order-summary">
+      <h4>Chi Tiết Đơn Hàng</h4>
+      <div class="summary-row">
+        <span>Giá</span>
+      </div>
+      <div class="summary-row">
+        <span>Giao Hàng</span>
+      </div>
+      <div class="summary-row total">
+        <span>Tổng Tiền</span>
+      </div>
+      <button class="checkout-btn" (click)="checkout()">Thanh Toán</button>
+    </div>
+  </div>
+</div>
