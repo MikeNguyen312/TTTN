@@ -17,11 +17,12 @@ import { GiaynuComponent } from './giaodien/giaynu/giaynu.component';
 import { KhuyenmaiComponent } from './giaodien/khuyenmai/khuyenmai.component';
 import { ChitietphieukhoComponent } from './pages/kho/chitietphieukho/chitietphieukho.component';
 import { TaoPhieuKhoComponent } from './pages/kho/taophieukho/taophieukho.component';
+import { FormThemSanPhamComponent } from './pages/kho/formthemsanpham/formthemsanpham.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'trang-chu/guest',
+        redirectTo: 'trang-chu',
         pathMatch: 'full',
     },
     {
@@ -56,6 +57,10 @@ export const routes: Routes = [
             {
                 path: 'kho/taophieukho',
                 component:TaoPhieuKhoComponent
+            },
+            {
+                path: 'kho/:id/formthemsanpham',
+                component:FormThemSanPhamComponent
             },
             {
                 path: 'donhang',
@@ -100,7 +105,6 @@ export const routes: Routes = [
                 component: TrangChuComponent,
             },
             { path: 'dashboard', component: DashboardComponent },
-            { path: '**', redirectTo: 'trang-chu/guest' },
         ]
     },
 ];
