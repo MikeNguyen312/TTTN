@@ -10,6 +10,7 @@ namespace WebAPI_ForTTTN.MyModels
         public string? Hang { get; set; }
         public string? Size { get; set; }
         public string? ThongTin { get; set; }
+        public string? Loai { get; set; }
         public static SanPham chuyendoi(CSanPham x)
         {
             return new SanPham
@@ -19,7 +20,8 @@ namespace WebAPI_ForTTTN.MyModels
                 Gia = x.Gia,
                 Hang = x.Hang,
                 Size = x.Size,
-                ThongTin = x.ThongTin
+                ThongTin = x.ThongTin,
+                Loai = x.Loai
             };
         }
         public static CSanPham chuyendoi(SanPham x)
@@ -31,7 +33,8 @@ namespace WebAPI_ForTTTN.MyModels
                 Gia = x.Gia,
                 Hang = x.Hang,
                 Size = x.Size,
-                ThongTin = x.ThongTin
+                ThongTin = x.ThongTin,
+                Loai = x.Loai
             };
         }
     }
