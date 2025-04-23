@@ -37,5 +37,9 @@ export class GiaynamComponent {
     }
     viewProductDetail(productId: string): void {
       this.router.navigate(['/chi-tiet-san-pham', productId]);
+      this.giayNam = this.sanPhams.filter(sp => sp.loai === 'Nam').map(sp => {
+        const soLuongTon = sp.sanPhamPhieuKhos?.reduce((sum: number, spk: any) => sum + (spk.soLuong || 0), 0) || 0;
+        return { ...sp, soLuongTon };
+      });      
     }
 }
