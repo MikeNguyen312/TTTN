@@ -132,6 +132,16 @@
   },
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
+    "Method": "CapNhatSoLuong",
+    "RelativePath": "api/Kho/CapNhatSoLuongMoiNhat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
     "Method": "TaoPhieuKho",
     "RelativePath": "api/Kho/TaoPhieuKho",
     "HttpMethod": "POST",
