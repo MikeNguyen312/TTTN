@@ -23,6 +23,7 @@ namespace WebAPI_ForTTTN.Controllers
                         Hang = t.Hang,
                         Size = t.Size,
                         Thongtin =t.ThongTin,
+                        Loai = t.Loai,
                         Anh = t.Anh != null ? Convert.ToBase64String(t.Anh) : null
                     }).ToList()
                     );
