@@ -103,6 +103,32 @@
   line-height: 1.5;
 }
 
+/* Thêm các style mới */
+.stock-status {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.in-stock {
+  color: #28a745;
+}
+
+.out-of-stock {
+  color: #dc3545;
+}
+
+.out-of-stock-button {
+  padding: 12px 24px;
+  background-color: #f8f9fa;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  cursor: not-allowed;
+  margin-top: 20px;
+}
+
 .add-to-cart {
   background-color: #000;
   color: white;

@@ -8,39 +8,132 @@ header {
     position: sticky;
     top: 0;
     z-index: 50;
-}
-
-header .logo img {
+  }
+  
+  header .logo img {
     width: 100px;
     height: auto;
-}
-
-header nav a {
+  }
+  
+  header nav a {
     margin-right: 2rem;
     font-size: 1rem;
     font-weight: 500;
     color: #333;
     text-decoration: none;
-}
-
-header nav a.active {
+  }
+  
+  header nav a.active {
     font-weight: bold;
     color: #007bff; 
     text-decoration: underline;
-}
-
-header nav a:hover {
+  }
+  
+  header nav a:hover {
     color: #000;
     text-decoration: underline;
-}
-
-header .icons i {
+  }
+  
+  header .icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  header .icons i {
     font-size: 1.25rem;
     color: #4b4b4b;
     cursor: pointer;
-    margin-right: 1rem;
-}
-
-header .icons i:hover {
+  }
+  
+  header .icons i:hover {
     color: #000;
-}
+  }
+  
+  .menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+  /* Search container styles */
+  .search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search-input {
+    width: 0;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    background: transparent;
+    height: 30px;
+    margin-right: 0;
+  }
+  
+  .search-input.active {
+    width: 180px;
+    padding: 0 10px;
+    opacity: 1;
+    margin-right: 5px;
+  }
+  
+  .bi-search {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative; /* Giữ icon luôn hiển thị */
+    z-index: 1; /* Đảm bảo icon nằm trên cùng */
+  }
+  
+  .bi-search:hover {
+    color: #007bff;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    header {
+      padding: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .menu-toggle {
+      display: block;
+      order: 1;
+    }
+    
+    .logo {
+      order: 0;
+    }
+    
+    .icons {
+      order: 2;
+      margin-left: auto;
+    }
+    
+    nav {
+      display: none;
+      width: 100%;
+      order: 3;
+      flex-direction: column;
+      padding-top: 1rem;
+    }
+    
+    nav.active {
+      display: flex;
+    }
+    
+    nav a {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .search-input.active {
+      width: 120px;
+    }
+  }

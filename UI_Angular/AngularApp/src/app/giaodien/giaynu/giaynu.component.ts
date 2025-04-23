@@ -22,8 +22,14 @@ export class GiaynuComponent {
       next: (data) => {
         console.log('Fetched data:', data);
         this.sanPhams = Array.isArray(data) ? data : [];
-        this.giayNam = this.sanPhams.filter((sp) => sp.loai === 'Nam');
-        this.giayNu = this.sanPhams.filter((sp) => sp.loai === 'Nữ');
+        
+
+        this.giayNu = this.sanPhams
+          .filter((sp) => sp.loai === 'Nữ')
+          .map((sp) => ({
+            ...sp,
+            soLuongTon: sp.soLuong || 0,
+          }));
       },
       error: (err) => {
         console.error('Error fetching SanPhams:', err);

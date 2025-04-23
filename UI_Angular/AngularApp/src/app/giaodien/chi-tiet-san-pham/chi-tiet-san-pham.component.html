@@ -3,9 +3,7 @@
     <div class="product-left">
       <div class="option-label-size">CHỌN KÍCH THƯỚC</div>
       <div class="size-options">
-        <span *ngFor="let s of [38, 39, 40, 41, 42]" class="size-box">{{
-          s
-        }}</span>
+        <span *ngFor="let s of [38, 39, 40, 41, 42]" class="size-box">{{ s }}</span>
       </div>
 
       <div class="option-label-color">CHỌN MÀU</div>
@@ -18,21 +16,23 @@
     </div>
 
     <div class="product-center">
-      <img
-        *ngIf="product.anh"
-        [src]="'data:image/jpeg;base64,' + product.anh"
-        alt="{{ product.ten }}"
-      />
+      <img *ngIf="product.anh" [src]="'data:image/jpeg;base64,' + product.anh" alt="{{ product.ten }}" />
     </div>
 
     <div class="product-right">
-      <p class="subheading">Giày Nam</p>
+      <p class="subheading">Giày {{ product.loai }}</p>
       <div class="thong-tin">
         <h1 class="product-name">{{ product.ten }}</h1>
         <p class="product-price">{{ product.gia | currency : "VND" }}</p>
         <p class="product-description">{{ product.thongTin }}</p>
+        <!-- Hiển thị trạng thái hàng -->
+        <p *ngIf="product.soLuongTon <= 0" class="stock-status out-of-stock">HẾT HÀNG</p>
+        <p *ngIf="product.soLuongTon > 0" class="stock-status in-stock">CÒN HÀNG</p>
       </div>
-      <button class="add-to-cart">Thêm vào giỏ hàng</button>
+      
+      <!-- Nút thêm vào giỏ hàng hoặc thông báo hết hàng -->
+      <button *ngIf="product.soLuongTon > 0" class="add-to-cart">THÊM VÀO GIỎ HÀNG</button>
+      <div *ngIf="product.soLuongTon <= 0" class="out-of-stock-button">HẾT HÀNG</div>
     </div>
   </div>
 </div>

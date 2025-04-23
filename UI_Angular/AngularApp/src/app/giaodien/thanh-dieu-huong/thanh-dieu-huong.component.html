@@ -6,16 +6,33 @@
   <div class="logo">
     <a href="trang-chu"><img src="assets/logo.png" alt="Logo" /></a>
   </div>
-  <nav>
+  
+  <!-- Thêm nút menu mobile -->
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <i class="bi bi-list"></i>
+  </div>
+  
+  <nav [class.active]="isMenuActive">
     <a href="#">Trang Chủ</a>
     <a routerLink="/giaynam">Giày Nam</a>
     <a href="giaynu">Giày Nữ</a>
     <a href="khuyenmai">Khuyến Mãi</a>
     <a href="lien-he">Liên Hệ</a>
   </nav>
+  
   <div class="icons">
-    <i class="bi bi-search"></i>
-    <i class="bi bi-bag"></i>
+    <div class="search-container">
+      <input 
+        type="text" 
+        placeholder="Tìm kiếm..." 
+        class="search-input" 
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="performSearch()"
+        [class.active]="isSearchActive"
+      />
+      <i class="bi bi-search" (click)="toggleSearch()"></i>
+    </div>
+    <a href="giohang"><i class="bi bi-bag"></i></a>
     <a href="login"><i class="bi bi-person"></i></a>
   </div>
 </header>
