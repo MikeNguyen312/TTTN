@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPI_ForTTTN.Models;
 using WebAPI_ForTTTN.MyModels;
 
@@ -18,8 +19,8 @@ namespace WebAPI_ForTTTN.Controllers
                 return Ok(
                     db.PhieuKhos.Select(t => new
                     {
-                       IdPhieuKho = t.IdPhieuKho,
-                       NgayLap = t.NgayLap,
+                        IdPhieuKho = t.IdPhieuKho,
+                        NgayLap = t.NgayLap,
                     }).ToList()
                     );
             }
@@ -85,7 +86,7 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
-        
+
         [HttpDelete("XoaID")]
         public IActionResult xoaItemtrongPK(string idPK, string idSanPham)
         {
@@ -93,7 +94,7 @@ namespace WebAPI_ForTTTN.Controllers
             {
                 DBThuctapContext db = new DBThuctapContext();
                 var a = db.SanPhamPhieuKhos.FirstOrDefault(sp => sp.IdPhieuKho == idPK && sp.IdSanPham == idSanPham);
-                if(a == null)
+                if (a == null)
                 {
                     return NotFound("Khong tim thay san pham trong PK");
                 }
@@ -127,30 +128,73 @@ namespace WebAPI_ForTTTN.Controllers
         {
             try
             {
-                DBThuctapContext db = new DBThuctapContext();
+                using var db = new DBThuctapContext();
 
+                // Tìm phiếu kho theo id
                 var pk = db.PhieuKhos.Find(idPhieuKho);
                 if (pk == null)
                 {
                     return NotFound("Phiếu kho không tồn tại.");
                 }
 
-                var a = new CSanPhamPhieuKho
+                // Tìm sản phẩm theo IdSanPham
+                var sanPham = db.SanPhams.Find(x.IdSanPham);
+                if (sanPham == null)
+                {
+                    return NotFound("Sản phẩm không tồn tại.");
+                }
+
+                // Cập nhật số lượng trong SanPhamPhieuKho
+                var spPhieuKho = new CSanPhamPhieuKho
                 {
                     IdPhieuKho = idPhieuKho,
                     IdSanPham = x.IdSanPham,
-                    SoLuong = x.SoLuong,
                     SoLuongNhap = x.SoLuongNhap,
                     SoLuongXuat = x.SoLuongXuat,
+                    SoLuong = sanPham.SoLuong + (x.SoLuongNhap ?? 0) - (x.SoLuongXuat ?? 0),  // Tính lại SoLuong trong SanPhamPhieuKho
                 };
-                db.SanPhamPhieuKhos.Add(CSanPhamPhieuKho.chuyendoi(a));
+
+                // Thêm sản phẩm vào phiếu kho
+                db.SanPhamPhieuKhos.Add(CSanPhamPhieuKho.chuyendoi(spPhieuKho));
+
+                // Cập nhật lại số lượng của sản phẩm trong bảng SanPham
+                sanPham.SoLuong = sanPham.SoLuong + (x.SoLuongNhap ?? 0) - (x.SoLuongXuat ?? 0);
+
                 db.SaveChanges();
+
                 return Ok();
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest();
+                // Log lỗi chi tiết (có thể log trong hệ thống hoặc ghi vào console)
+                return BadRequest("Lỗi khi thêm sản phẩm vào phiếu kho: " + ex.Message);
             }
         }
+
+        [HttpPost("CapNhatSoLuongMoiNhat")]
+        public IActionResult CapNhatSoLuong()
+        {
+            using var db = new DBThuctapContext();
+
+            var danhSachSanPham = db.SanPhams.ToList();
+
+            foreach (var sanPham in danhSachSanPham)
+            {
+                var danhSachPhieuKho = db.SanPhamPhieuKhos
+                    .Where(spk => spk.IdSanPham == sanPham.IdSanPham)
+                    .ToList();
+
+                int tongNhap = danhSachPhieuKho.Sum(spk => spk.SoLuongNhap ?? 0);
+                int tongXuat = danhSachPhieuKho.Sum(spk => spk.SoLuongXuat ?? 0);
+                int soLuongMoi = tongNhap - tongXuat;
+
+                sanPham.SoLuong = soLuongMoi;
+            }
+
+            db.SaveChanges();
+
+            return Ok("Đã cập nhật số lượng của tất cả sản phẩm theo nhập-xuất.");
+        }
     }
+
 }

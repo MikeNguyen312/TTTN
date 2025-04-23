@@ -2,19 +2,44 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import Swal from 'sweetalert2';
-
+import { ChartConfiguration, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 @Component({
   selector: 'app-chitietphieukho',
-  imports: [CommonModule,RouterLink],
+  standalone: true,
+  imports: [CommonModule,RouterLink,BaseChartDirective],
   templateUrl: './chitietphieukho.component.html',
   styleUrl: './chitietphieukho.component.css'
 })
+
 export class ChitietphieukhoComponent implements OnInit {
   idPhieuKho!: string;
   sanPhamList: any[] = [];
   showConfirmPopup: boolean = false;
   idSanPhamDangXoa: string | null = null;
+
+
+  isChartVisible: boolean = true;
+  toggleChartVisibility() {
+    this.isChartVisible = !this.isChartVisible; // Đảo trạng thái hiển thị biểu đồ
+  }
+  barChartType: ChartType = 'bar';
+  barChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    indexAxis: 'y', 
+    plugins: {
+      legend: {
+        display: true
+      }
+    },
+    scales:{
+      x: {},
+      y: {}
+    }
+  };
+  barChartLabels: string[] = [];
+  barChartData: ChartConfiguration['data']['datasets'] = [];
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
@@ -28,7 +53,29 @@ export class ChitietphieukhoComponent implements OnInit {
     this.http.get<any[]>(`https://localhost:7141/api/Kho/${this.idPhieuKho}`)
       .subscribe(data => {
         this.sanPhamList = data;
+        this.prepareChartData(); 
       });
+  }
+
+  prepareChartData() {
+    this.barChartLabels = this.sanPhamList.map(sp => sp.idSanPham);
+    this.barChartData = [
+      {
+        data: this.sanPhamList.map(sp => sp.soLuong),
+        label: 'Số lượng tồn',
+        backgroundColor: '#2196f3'
+      },
+      {
+        data: this.sanPhamList.map(sp => sp.soLuongNhap),
+        label: 'Số lượng nhập',
+        backgroundColor: '#4caf50'
+      },
+      {
+        data: this.sanPhamList.map(sp => sp.soLuongXuat),
+        label: 'Số lượng xuất',
+        backgroundColor: '#f44336'
+      }
+    ];
   }
 
   hienXacNhan(idSanPham: string) {

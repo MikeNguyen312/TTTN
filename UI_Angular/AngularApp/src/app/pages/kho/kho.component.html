@@ -16,7 +16,7 @@
           <td>{{ pk.idPhieuKho }}</td>
           <td>{{ pk.ngayLap | date:'dd/MM/yyyy'}}</td>
           <td class="abc">
-            <button class="btn btn-info" [routerLink]="['/admin/phieukho', pk.idPhieuKho]">Chi tiết</button>
+            <button class="btn btn-info" [routerLink]="['/admin/kho', pk.idPhieuKho]">Chi tiết</button>
             <button class="btn btn-danger" style="margin-left: 20px;" (click)="xoaPhieuKho(pk.idPhieuKho)">Xoá</button>
           </td>
         </tr>
