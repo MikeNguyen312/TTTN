@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>Thêm Khách Hàng</h2>
+    <form #form="ngForm" (ngSubmit)="themKhachHang()" novalidate>
+      <div class="mb-3">
+        <label>ID_KhachHang</label>
+        <input type="text" class="form-control" [(ngModel)]="khachHang.idKhachHang" name="idKhachHang" required #idKh="ngModel">
+        <div class="text-danger" *ngIf="idKh.invalid && idKh.touched">ID không được để trống</div>
+      </div>
+  
+      <div class="mb-3">
+        <label>Họ tên</label>
+        <input type="text" class="form-control" [(ngModel)]="khachHang.hoTen" name="hoTen" required #hoTen="ngModel">
+        <div class="text-danger" *ngIf="hoTen.invalid && hoTen.touched">Họ tên không được để trống</div>
+      </div>
+  
+      <div class="mb-3">
+        <label>Số điện thoại</label>
+        <input type="text" class="form-control" [(ngModel)]="khachHang.soDienThoai" name="soDienThoai" required minlength="9" #soDt="ngModel">
+        <div class="text-danger" *ngIf="soDt.invalid && soDt.touched">
+          Số điện thoại không hợp lệ (tối thiểu 9 số)
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" [(ngModel)]="khachHang.email" name="email" required email #email="ngModel">
+        <div class="text-danger" *ngIf="email.invalid && email.touched">Email không hợp lệ</div>
+      </div>
+  
+      <div class="mb-3">
+        <label>Password</label>
+        <input type="password" class="form-control" [(ngModel)]="khachHang.passwords" name="passwords" required minlength="6" #pass="ngModel">
+        <div class="text-danger" *ngIf="pass.invalid && pass.touched">
+          Mật khẩu tối thiểu 6 ký tự
+        </div>
+      </div>
+      <button class="btn btn-info" style="margin-right: 10px;" [routerLink]="['/admin/khachhang']">Trở lại</button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Thêm</button>
+    </form>
+  </div>
+  

@@ -35,7 +35,7 @@ export class TaoPhieuKhoComponent {
       },
       error: err => {
         console.error('Error creating Phieu Kho:', err);
-        alert('Lỗi khi tạo phiếu kho');
+        alert('Trùng ID');
       }
     });
   }
