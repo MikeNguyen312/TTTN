@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Sửa Khách Hàng</h2>
+    <form (ngSubmit)="capNhatKhachHang()">
+      <div class="mb-3">
+        <label>Họ tên</label>
+        <input type="text" class="form-control" [(ngModel)]="khachHang.hoTen" required name="hoTen" #hoTen="ngModel">
+        <div *ngIf="hoTen.invalid && hoTen.touched" class="text-danger">
+            Vui lòng nhập lại họ Tên.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Số điện thoại</label>
+        <input type="text" class="form-control" [(ngModel)]="khachHang.soDienThoai" required name="soDienThoai">
+      </div>
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" [(ngModel)]="khachHang.email" required name="email">
+      </div>
+      <div class="mb-3">
+        <label>Password</label>
+        <input type="text" class="form-control" [(ngModel)]="khachHang.passwords" required name="passwords">
+      </div>
+      <button class="btn btn-primary" type="submit">Cập nhật</button>
+      <button class="btn btn-info" style="margin-left: 30px;" [routerLink]="['/admin/khachhang']">Trở lại</button>
+    </form>
+  </div>
+  <div *ngIf="thongBaoThanhCong" class="thong-bao-thanh-cong">
+    ✅ Sửa khách hàng thành công!
+  </div>

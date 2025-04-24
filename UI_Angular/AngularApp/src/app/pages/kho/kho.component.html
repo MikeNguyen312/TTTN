@@ -14,7 +14,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let pk of phieuKhos">
-          <td>{{ pk.idPhieuKho }}</td>
+          <td>
+            {{ pk.idPhieuKho }}
+          </td>
           <td>{{ pk.ngayLap | date:'dd/MM/yyyy'}}</td>
           <td class="abc">
             <button class="btn btn-info" [routerLink]="['/admin/kho', pk.idPhieuKho]">Chi tiết</button>

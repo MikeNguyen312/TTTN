@@ -19,7 +19,7 @@ export class ChitietphieukhoComponent implements OnInit {
   idSanPhamDangXoa: string | null = null;
 
 
-  isChartVisible: boolean = true;
+  isChartVisible: boolean = false;
   toggleChartVisibility() {
     this.isChartVisible = !this.isChartVisible; // Đảo trạng thái hiển thị biểu đồ
   }

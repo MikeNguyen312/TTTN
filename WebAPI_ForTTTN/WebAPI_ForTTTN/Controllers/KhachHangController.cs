@@ -84,6 +84,7 @@ namespace WebAPI_ForTTTN.Controllers
                 mh.SoDienThoai = x.SoDienThoai;
                 mh.Passwords =x.Passwords;
                 mh.Email = x.Email;
+
                 db.SaveChanges();
                 return Ok();
             }

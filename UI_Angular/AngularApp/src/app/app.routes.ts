@@ -20,6 +20,8 @@ import { GioHangComponent } from './giaodien/gio-hang/gio-hang.component';
 import { TaoPhieuKhoComponent } from './pages/kho/taophieukho/taophieukho.component';
 import { FormThemSanPhamComponent } from './pages/kho/formthemsanpham/formthemsanpham.component';
 import { ThongkeComponent } from './pages/kho/thongke/thongke.component';
+import { FormSuakhComponent } from './pages/khachhang/form-suakh/form-suakh.component';
+import { FormThemkhComponent } from './pages/khachhang/form-themkh/form-themkh.component';
 
 export const routes: Routes = [
     {
@@ -77,6 +79,14 @@ export const routes: Routes = [
             {
                 path: 'khachhang',
                 component: KhachhangComponent
+            },
+            {
+                path:'khachhang/themkhachhang',
+                component:FormThemkhComponent
+            },
+            {
+                path:'khachhang/suakhachhang/:id',
+                component: FormSuakhComponent
             }
         ]
     },
