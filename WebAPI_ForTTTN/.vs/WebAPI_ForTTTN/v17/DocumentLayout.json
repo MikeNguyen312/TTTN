@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\TTTN\\WebAPI_ForTTTN\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tttn\\webapi_fortttn\\webapi_fortttn\\controllers\\khocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\controllers\\khocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tttn\\webapi_fortttn\\webapi_fortttn\\models\\dbthuctapcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\models\\dbthuctapcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,16 +15,8 @@
       "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\controllers\\sanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tttn\\webapi_fortttn\\webapi_fortttn\\models\\phieukho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\models\\phieukho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tttn\\webapi_fortttn\\webapi_fortttn\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tttn\\webapi_fortttn\\webapi_fortttn\\controllers\\khocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\controllers\\khocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tttn\\webapi_fortttn\\webapi_fortttn\\webapi_fortttn.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -37,6 +33,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tttn\\webapi_fortttn\\webapi_fortttn\\models\\chitietdonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\models\\chitietdonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tttn\\webapi_fortttn\\webapi_fortttn\\models\\phieukho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|solutionrelative:webapi_fortttn\\models\\phieukho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{68DF5EF8-394C-4F8E-A0C7-D18511B5C74D}|WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj|d:\\tttn\\webapi_fortttn\\webapi_fortttn\\controllers\\donhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -78,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -102,28 +102,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "DBThuctapContext.cs",
               "DocumentMoniker": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\DBThuctapContext.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Models\\DBThuctapContext.cs",
               "ToolTip": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\DBThuctapContext.cs",
               "RelativeToolTip": "WebAPI_ForTTTN\\Models\\DBThuctapContext.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAqwDwAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAqwDwAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T10:52:39.153Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SanPhamController.cs",
-              "DocumentMoniker": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
-              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
-              "ToolTip": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
-              "RelativeToolTip": "WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T10:52:39.158Z",
               "EditorCaption": ""
             },
             {
@@ -136,12 +123,11 @@
               "RelativeToolTip": "WebAPI_ForTTTN\\Models\\SanPham.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAwwBYAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T10:52:39.161Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T10:52:39.161Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "WebAPI_ForTTTN.csproj",
               "DocumentMoniker": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\WebAPI_ForTTTN.csproj",
@@ -153,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "CPhieuKho.cs",
               "DocumentMoniker": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\MyModels\\CPhieuKho.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\MyModels\\CPhieuKho.cs",
@@ -165,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "DonHang.cs",
               "DocumentMoniker": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\DonHang.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Models\\DonHang.cs",
@@ -177,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "ChiTietDonHang.cs",
               "DocumentMoniker": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\ChiTietDonHang.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Models\\ChiTietDonHang.cs",
@@ -189,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "PhieuKho.cs",
               "DocumentMoniker": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Models\\PhieuKho.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Models\\PhieuKho.cs",
@@ -197,20 +183,32 @@
               "RelativeToolTip": "WebAPI_ForTTTN\\Models\\PhieuKho.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T10:52:39.193Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T10:52:39.193Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "KhoController.cs",
               "DocumentMoniker": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\KhoController.cs",
               "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Controllers\\KhoController.cs",
               "ToolTip": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\KhoController.cs",
               "RelativeToolTip": "WebAPI_ForTTTN\\Controllers\\KhoController.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAuwJwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMUAAAAAAAAAAAAAANgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T10:52:39.13Z"
+              "WhenOpened": "2025-04-23T10:52:39.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SanPhamController.cs",
+              "DocumentMoniker": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
+              "RelativeDocumentMoniker": "WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
+              "ToolTip": "D:\\TTTN\\WebAPI_ForTTTN\\WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
+              "RelativeToolTip": "WebAPI_ForTTTN\\Controllers\\SanPhamController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T10:52:39.158Z"
             },
             {
               "$type": "Document",

@@ -158,6 +158,16 @@
   },
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
+    "Method": "ThongKeSanPham",
+    "RelativePath": "api/Kho/ThongKe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhoController",
     "Method": "xoaItemtrongPK",
     "RelativePath": "api/Kho/XoaID",
     "HttpMethod": "DELETE",

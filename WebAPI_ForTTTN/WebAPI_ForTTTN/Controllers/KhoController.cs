@@ -195,6 +195,22 @@ namespace WebAPI_ForTTTN.Controllers
 
             return Ok("Đã cập nhật số lượng của tất cả sản phẩm theo nhập-xuất.");
         }
-    }
+        [HttpGet("ThongKe")]
+        public IActionResult ThongKeSanPham()
+        {
+            using var db = new DBThuctapContext();
 
+            var result = db.SanPhamPhieuKhos
+                .GroupBy(sp => sp.IdSanPham)
+                .Select(g => new {
+                    IdSanPham = g.Key,
+                    SoLuongNhap = g.Sum(x => x.SoLuongNhap ?? 0),
+                    SoLuongXuat = g.Sum(x => x.SoLuongXuat ?? 0),
+                    TenSanPham = db.SanPhams.Where(sp => sp.IdSanPham == g.Key).Select(sp => sp.Ten).FirstOrDefault()
+                }).ToList();
+
+            return Ok(result);
+        }
+
+    }
 }
