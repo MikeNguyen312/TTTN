@@ -1,0 +1,16 @@
+.charts-container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các biểu đồ xuống hàng */
+    gap: 20px; /* Khoảng cách giữa các biểu đồ */
+  }
+  
+  .chart-item {
+    flex: 1 1 48%; /* Mỗi biểu đồ chiếm tối đa 48% chiều rộng */
+    max-width: 48%;
+  }
+  
+  .chart-item canvas {
+    width: 100% !important;
+    height: auto;
+  }
+  

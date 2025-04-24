@@ -19,6 +19,7 @@ import { ChitietphieukhoComponent } from './pages/kho/chitietphieukho/chitietphi
 import { GioHangComponent } from './giaodien/gio-hang/gio-hang.component';
 import { TaoPhieuKhoComponent } from './pages/kho/taophieukho/taophieukho.component';
 import { FormThemSanPhamComponent } from './pages/kho/formthemsanpham/formthemsanpham.component';
+import { ThongkeComponent } from './pages/kho/thongke/thongke.component';
 
 export const routes: Routes = [
     {
@@ -51,18 +52,24 @@ export const routes: Routes = [
                 path: 'kho',
                 component: KhoComponent
             },
-            {
-                path: 'kho/:id',
-                component:ChitietphieukhoComponent
-            },
+           
             {
                 path: 'kho/taophieukho',
                 component:TaoPhieuKhoComponent
             },
             {
+                path: 'kho/thongke',
+                component:ThongkeComponent
+            },
+            {
+                path: 'kho/:id',
+                component:ChitietphieukhoComponent
+            },
+            {
                 path: 'kho/:id/formthemsanpham',
                 component:FormThemSanPhamComponent
             },
+    
             {
                 path: 'donhang',
                 component: DonhangComponent

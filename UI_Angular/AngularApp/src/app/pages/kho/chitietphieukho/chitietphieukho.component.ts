@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 @Component({
   selector: 'app-chitietphieukho',
   standalone: true,
