@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { KhachhangService } from '../../../services/khachhang.service';
 
@@ -17,7 +17,7 @@ export class FormThemkhComponent {
     hoTen: '',
     soDienThoai: '',
     email: '',
-    passwords: '',
+    password: '',
     trangthai: 'Chờ xác nhận',  // Gán mặc định luôn từ đầu
     roleWeb: 'user'             // Gán mặc định luôn từ đầu
   };

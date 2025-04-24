@@ -1,6 +1,6 @@
 <div class="container">
     <h2>Thêm Khách Hàng</h2>
-    <form #form="ngForm" (ngSubmit)="themKhachHang()" novalidate>
+    <form #form="ngForm" novalidate>
       <div class="mb-3">
         <label>ID_KhachHang</label>
         <input type="text" class="form-control" [(ngModel)]="khachHang.idKhachHang" name="idKhachHang" required #idKh="ngModel">
@@ -29,13 +29,12 @@
   
       <div class="mb-3">
         <label>Password</label>
-        <input type="password" class="form-control" [(ngModel)]="khachHang.passwords" name="passwords" required minlength="6" #pass="ngModel">
+        <input type="password" class="form-control" [(ngModel)]="khachHang.password" name="password" required minlength="6" #pass="ngModel">
         <div class="text-danger" *ngIf="pass.invalid && pass.touched">
           Mật khẩu tối thiểu 6 ký tự
         </div>
       </div>
       <button class="btn btn-info" style="margin-right: 10px;" [routerLink]="['/admin/khachhang']">Trở lại</button>
-      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Thêm</button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid"  (click)="themKhachHang()">Thêm</button>
     </form>
   </div>
-  
