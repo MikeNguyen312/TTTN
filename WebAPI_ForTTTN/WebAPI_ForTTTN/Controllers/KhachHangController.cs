@@ -24,6 +24,7 @@ namespace WebAPI_ForTTTN.Controllers
                         SoDienThoai = t.SoDienThoai,
                         Email = t.Email,
                         Passwords = t.Passwords,
+                        trangthai = t.Trangthai,
                     }).ToList()
                     );
             }
@@ -39,7 +40,10 @@ namespace WebAPI_ForTTTN.Controllers
             try
             {
                 DBThuctapContext db = new DBThuctapContext();
-                db.KhachHangs.Add(CKhachHang.chuyendoi(x));
+                var kh = CKhachHang.chuyendoi(x);
+                kh.Trangthai = "Chờ xác nhận"; // bắt buộc gán
+                kh.RoleWeb = "user";
+                db.KhachHangs.Add(kh);
                 db.SaveChanges();
                 return Ok();
 
@@ -84,7 +88,6 @@ namespace WebAPI_ForTTTN.Controllers
                 mh.SoDienThoai = x.SoDienThoai;
                 mh.Passwords =x.Passwords;
                 mh.Email = x.Email;
-
                 db.SaveChanges();
                 return Ok();
             }
@@ -102,13 +105,14 @@ namespace WebAPI_ForTTTN.Controllers
 
                 // Tìm đúng khách hàng theo email + password
                 var user = db.KhachHangs
-                    .Where(kh => kh.Email == request.Email && kh.Passwords == request.Password)
+                    .Where(kh => kh.Email == request.Email && kh.Passwords == request.Password )
                     .Select(kh => new
                     {
                         ID_KhachHang = kh.IdKhachHang,
                         HoTen = kh.HoTen,
                         Email = kh.Email,
-                        SoDienThoai = kh.SoDienThoai
+                        SoDienThoai = kh.SoDienThoai,
+                        Trangthai = kh.Trangthai
                     })
                     .FirstOrDefault();
 
@@ -122,6 +126,23 @@ namespace WebAPI_ForTTTN.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new { message = "Lỗi server", error = ex.Message });
+            }
+        }
+        [HttpPut("CapNhatTrangThai")]
+        public IActionResult CapNhatTrangThai(string id, string trangThai)
+        {
+            try
+            {
+                var db = new DBThuctapContext();
+                var kh = db.KhachHangs.Find(id);
+                if (kh == null) return NotFound();
+                kh.Trangthai = trangThai;
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
             }
         }
 

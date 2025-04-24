@@ -19,18 +19,26 @@ export class LoginComponent {
   constructor(private khachHangservice: KhachhangService, private router: Router) {}
 
   onLogin() {
-    // Kiểm tra tài khoản admin cứng
     if (this.email === 'admin' && this.password === '1') {
       localStorage.setItem('username', 'Admin');
       localStorage.setItem('isAdmin', 'true');
       this.router.navigate(['/admin/dashboard']);
       return;
     }
-
-    // Đăng nhập thông thường từ database
+  
     this.khachHangservice.login(this.email, this.password).subscribe({
       next: (res) => {
-        console.log('Login success:', res);
+        console.log('Login response:', res);  
+        // Kiểm tra trạng thái trước khi cho đăng nhập
+        if (res.trangthai !== 'Đã xác nhận') {
+          this.errorMessage = 'Tài khoản chưa xác nhận';
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 1000);
+          return;
+        }
+  
+        // Nếu đã xác nhận thì tiếp tục đăng nhập
         localStorage.setItem('username', res.hoTen);
         localStorage.setItem('isAdmin', 'false');
         this.router.navigate([`/trang-chu/${res.iD_KhachHang}`]);
@@ -41,4 +49,5 @@ export class LoginComponent {
       }
     });
   }
+  
 }

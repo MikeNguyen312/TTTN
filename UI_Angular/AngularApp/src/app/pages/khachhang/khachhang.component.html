@@ -1,31 +1,53 @@
-<div class="container">
-    <div class="d-flex justify-content-between align-items-center">
-      <h2>Danh Sách Khách Hàng</h2>
-      <button class="btn btn-success" [routerLink]="['/admin/khachhang/themkhachhang']">Thêm Khách Hàng</button>
-    </div>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>ID_KhachHang</th>
-          <th>Họ Tên</th>
-          <th>Số Điện thoại</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let kh of khachHangs">
-          <td>{{ kh.idKhachHang }}</td>
-          <td>{{ kh.hoTen }}</td>
-          <td>{{ kh.soDienThoai }}</td>
-          <td>{{ kh.email }}</td>
-          <td>{{ kh.passwords }}</td>
-          <td class="abc">
-            <button class="btn btn-danger" style="margin-right: 10px;" (click)="xoaKhachHang(kh.idKhachHang)">Xoá</button>
-            <button class="btn btn-info" [routerLink]="['/admin/khachhang/suakhachhang', kh.idKhachHang]">Sửa</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<!-- 🟩 Bảng khách hàng đã xác nhận -->
+<h2>Danh Sách Khách Hàng (Đã xác nhận)</h2>
+<button class="btn btn-success" [routerLink]="['/admin/khachhang/themkhachhang']">Thêm Khách Hàng</button>
+<table class="table table-bordered" *ngIf="khachHangsDaXacNhan.length > 0">
+  <thead>
+    <tr>
+      <th>ID_KhachHang</th>
+      <th>Họ Tên</th>
+      <th>Số Điện thoại</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let kh of khachHangsDaXacNhan">
+      <td>{{ kh.idKhachHang }}</td>
+      <td>{{ kh.hoTen }}</td>
+      <td>{{ kh.soDienThoai }}</td>
+      <td>{{ kh.email }}</td>
+      <td>{{ kh.passwords }}</td>
+      <td>
+        <button class="btn btn-danger" style="margin-right: 10px;" (click)="xoaKhachHang(kh.idKhachHang)">Xoá</button>
+        <button class="btn btn-info" [routerLink]="['/admin/khachhang/suakhachhang', kh.idKhachHang]">Sửa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 🟥 Bảng khách hàng chưa xác nhận -->
+<h3>Khách hàng chờ xác nhận</h3>
+<table class="table table-bordered" *ngIf="khachHangsChoXacNhan.length > 0">
+  <thead>
+    <tr>
+      <th>Mã KH</th>
+      <th>Họ tên</th>
+      <th>SĐT</th>
+      <th>Email</th>
+      <th>Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let kh of khachHangsChoXacNhan">
+      <td>{{ kh.idKhachHang }}</td>
+      <td>{{ kh.hoTen }}</td>
+      <td>{{ kh.soDienThoai }}</td>
+      <td>{{ kh.email }}</td>
+      <td>
+        <button class="btn btn-success" (click)="xacNhan(kh.idKhachHang)">Xác nhận</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

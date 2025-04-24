@@ -142,8 +142,25 @@
   .login-image {
     display: none;
   }
-
   .login-form {
     padding: 40px 20px;
   }
 }
+.error-message {
+  position: fixed;           /* Đặt thông báo ở vị trí cố định */
+  top: 5%;                  /* Đặt cách mép trên 50% của màn hình */
+  left: 25.5%;                 /* Đặt cách mép trái 50% của màn hình */
+  transform: translate(-50%, -50%); /* Dịch chuyển để căn giữa chính xác */
+  padding: 20px;             /* Khoảng cách trong phần tử */
+  background-color: #f8d7da; /* Màu nền đỏ */
+  color: red;                /* Màu chữ */
+  border: 1px solid #f5c6cb; /* Đường viền */
+  border-radius: 5px;        /* Bo góc */
+  z-index: 9999;             /* Đảm bảo thông báo luôn nằm trên cùng */
+  font-size: 16px;           /* Kích thước chữ */
+  width: auto;               /* Chiều rộng tự động */
+  max-width: 80%;            /* Đảm bảo không rộng quá */
+  text-align: center;        /* Căn giữa nội dung */
+}
+
+
