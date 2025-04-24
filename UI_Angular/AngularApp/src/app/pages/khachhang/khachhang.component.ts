@@ -6,36 +6,39 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-khachhang',
-  imports: [CommonModule,RouterLink],
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './khachhang.component.html',
   styleUrl: './khachhang.component.css'
 })
 export class KhachhangComponent {
- khachHangs: any[] = [];
+  khachHangsDaXacNhan: any[] = [];
+  khachHangsChoXacNhan: any[] = [];
 
-  // Inject the service in the constructor
   constructor(private KhachhangService: KhachhangService) {}
 
   ngOnInit(): void {
-    // Load products when the component initializes
     this.loadKhachHang();
   }
 
   loadKhachHang(): void {
     this.KhachhangService.getKhachHangs().subscribe({
       next: (data) => {
-        console.log('Fetched data:', data); 
-        this.khachHangs = Array.isArray(data) ? data : []; // Ensure data is an array
+        console.log('Fetched data:', data);
+        const danhSach = Array.isArray(data) ? data : [];
+        this.khachHangsDaXacNhan = danhSach.filter(kh => kh.trangthai === 'Đã xác nhận');
+        this.khachHangsChoXacNhan = danhSach.filter(kh => kh.trangthai === 'Chờ xác nhận');
       },
       error: (err) => {
-        console.error('Error fetching KhachHangs:', err);
+        console.error('Lỗi khi tải khách hàng:', err);
       }
     });
   }
+
   xoaKhachHang(id: string) {
     Swal.fire({
       title: 'Xác nhận xoá',
-      text: `Bạn có chắc chắn xoá ${id} ?`,
+      text: `Bạn có chắc chắn muốn xoá khách hàng ${id}?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
@@ -45,20 +48,19 @@ export class KhachhangComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.KhachhangService.deleteKhachHang(id).subscribe(() => {
-          this.loadKhachHang(); // Load lại danh sách
-          Swal.fire(
-            'Đã xoá!',
-            'Khách hàng đã được xoá thành công.',
-            'success'
-          );
+          this.loadKhachHang();
+          Swal.fire('Đã xoá!', 'Khách hàng đã được xoá thành công.', 'success');
         }, error => {
-          Swal.fire(
-            'Lỗi!',
-            'Đã có lỗi xảy ra khi xoá.',
-            'error'
-          );
+          Swal.fire('Lỗi!', 'Đã xảy ra lỗi khi xoá.', 'error');
         });
       }
+    });
+  }
+
+  xacNhan(id: string) {
+    this.KhachhangService.updateTrangThai(id, 'Đã xác nhận').subscribe(() => {
+      Swal.fire('Thành công!', 'Đã xác nhận khách hàng.', 'success');
+      this.loadKhachHang();
     });
   }
 }

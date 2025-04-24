@@ -27,6 +27,9 @@ export class KhachhangService {
   udpateKhachhang(khachHang:any): Observable<any> {
     return this.http.put(this.apiUrlSua,khachHang);
   }
+  updateTrangThai(id: string, trangThai: string): Observable<any> {
+    return this.http.put(`https://localhost:7141/api/KhachHang/CapNhatTrangThai?id=${id}&trangThai=${trangThai}`, {});
+  }
 
   login(email: string, password: string): Observable<any> {
     const body = { email, password }; // Không cần model

@@ -90,6 +90,10 @@ namespace WebAPI_ForTTTN.Models
 
                 entity.Property(e => e.TongTien).HasColumnType("decimal(18, 2)");
 
+                entity.Property(e => e.TrangthaiDh)
+                    .HasMaxLength(150)
+                    .HasColumnName("trangthaiDH");
+
                 entity.HasOne(d => d.IdKhachHangNavigation)
                     .WithMany(p => p.DonHangs)
                     .HasForeignKey(d => d.IdKhachHang)
@@ -116,7 +120,15 @@ namespace WebAPI_ForTTTN.Models
                     .HasMaxLength(150)
                     .IsUnicode(false);
 
+                entity.Property(e => e.RoleWeb)
+                    .HasMaxLength(150)
+                    .HasColumnName("roleWeb");
+
                 entity.Property(e => e.SoDienThoai).HasMaxLength(20);
+
+                entity.Property(e => e.Trangthai)
+                    .HasMaxLength(150)
+                    .HasColumnName("trangthai");
             });
 
             modelBuilder.Entity<KhuyenMai>(entity =>
