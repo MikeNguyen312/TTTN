@@ -209,6 +209,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhuyenMaiController",
+    "Method": "getDSKM",
+    "RelativePath": "api/KhuyenMai",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
     "Method": "Login",
     "RelativePath": "api/login",

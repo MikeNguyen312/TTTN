@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebAPI_ForTTTN.Models
+namespace WebAPI_ForTTTN
 {
     public partial class SanPham
     {
         public SanPham()
         {
+            ChiTietDonHangs = new HashSet<ChiTietDonHang>();
+            SanPhamPhieuKhos = new HashSet<SanPhamPhieuKho>();
             IdKhuyenMais = new HashSet<KhuyenMai>();
         }
 
@@ -19,6 +21,9 @@ namespace WebAPI_ForTTTN.Models
         public byte[]? Anh { get; set; }
         public string? Loai { get; set; }
         public int? SoLuong { get; set; }
+
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual ICollection<SanPhamPhieuKho> SanPhamPhieuKhos { get; set; }
 
         public virtual ICollection<KhuyenMai> IdKhuyenMais { get; set; }
     }

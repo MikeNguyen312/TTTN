@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebAPI_ForTTTN.Models
+namespace WebAPI_ForTTTN
 {
     public partial class KhuyenMai
     {
