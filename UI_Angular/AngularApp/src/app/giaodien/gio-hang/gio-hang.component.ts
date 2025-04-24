@@ -1,49 +1,41 @@
-// gio-hang.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CartService, CartItem } from '../../services/cart.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-gio-hang',
+  imports: [CommonModule],
   templateUrl: './gio-hang.component.html',
-  styleUrls: ['./gio-hang.component.css']
+  styleUrls: ['./gio-hang.component.css'],
 })
 export class GioHangComponent implements OnInit {
   cartItems: CartItem[] = [];
-  shippingFee = 3680000;
+  shippingFee = 0;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartService.cartItems$.subscribe(items => {
+    this.cartService.cartItems$.subscribe((items) => {
       this.cartItems = items;
     });
   }
 
-  get totalPrice(): number {
-    return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  get subtotal(): number {
+    return this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }
 
-  get totalAmount(): number {
-    return this.totalPrice + this.shippingFee;
+  get total(): number {
+    return this.subtotal + this.shippingFee;
   }
 
-  increaseQty(index: number): void {
-    const item = this.cartItems[index];
-    this.cartService.updateItemQuantity(index, item.quantity + 1);
+  increaseQty(index: number) {
+    this.cartService.increaseQuantity(index);
   }
 
-  decreaseQty(index: number): void {
-    const item = this.cartItems[index];
-    if (item.quantity > 1) {
-      this.cartService.updateItemQuantity(index, item.quantity - 1);
-    }
+  decreaseQty(index: number) {
+    this.cartService.decreaseQuantity(index);
   }
 
-  removeItem(index: number): void {
+  removeItem(index: number) {
     this.cartService.removeItem(index);
-  }
-
-  checkout(): void {
-    alert('Thanh toán thành công!');
-    this.cartService.clearCart();
   }
 }

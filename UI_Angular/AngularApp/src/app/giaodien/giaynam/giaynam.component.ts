@@ -61,15 +61,16 @@ export class GiaynamComponent {
   }
 
   
-themVaoGioHang(sp: any): void {
-  this.cartService.addToCart({
-    image: 'data:image/jpeg;base64,' + sp.anh,
-    name: sp.ten,
-    quantity: 1,
-    price: sp.gia
-  });
-  alert('Đã thêm vào giỏ: ' + sp.ten);
-}
+  addToCart(sp: any): void {
+    this.cartService.addToCart({
+      id: sp.idSanPham,              // cần có id
+      image: 'data:image/jpeg;base64,' + sp.anh,
+      name: sp.ten,
+      price: sp.gia,
+      quantity: 1
+    });
+  }
+  
   viewProductDetail(productId: string): void {
     this.router.navigate(['/chi-tiet-san-pham', productId]);
   }
