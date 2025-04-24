@@ -9,7 +9,6 @@ namespace WebAPI_ForTTTN.MyModels
         public string? SoDienThoai { get; set; }
         public string? Email { get; set; }
         public string? Passwords { get; set; }
-        public string? Trangthai { get; set; }
         public static KhachHang chuyendoi(CKhachHang x)
         {
             return new KhachHang
@@ -19,7 +18,6 @@ namespace WebAPI_ForTTTN.MyModels
                 SoDienThoai = x.SoDienThoai,
                 Email = x.Email,
                 Passwords = x.Passwords,
-                Trangthai = x.Trangthai ,
             };
         }
         public static CKhachHang chuyendoi(KhachHang x)
@@ -31,7 +29,6 @@ namespace WebAPI_ForTTTN.MyModels
                 SoDienThoai = x.SoDienThoai,
                 Email = x.Email,
                 Passwords = x.Passwords,
-                Trangthai = x.Trangthai,
             };
         }
     }
