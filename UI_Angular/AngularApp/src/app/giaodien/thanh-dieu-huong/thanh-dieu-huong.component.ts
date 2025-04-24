@@ -9,9 +9,16 @@ import { CartService, CartItem } from '../../services/cart.service';
 @Component({
   selector: 'app-thanh-dieu-huong',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, RouterLink, FormsModule, CommonModule, NgIf],
+  imports: [
+    RouterOutlet,
+    FooterComponent,
+    RouterLink,
+    FormsModule,
+    CommonModule,
+    NgIf,
+  ],
   templateUrl: './thanh-dieu-huong.component.html',
-  styleUrls: ['./thanh-dieu-huong.component.css']
+  styleUrls: ['./thanh-dieu-huong.component.css'],
 })
 export class ThanhDieuHuongComponent {
   isSearchActive: boolean = false;
@@ -19,9 +26,10 @@ export class ThanhDieuHuongComponent {
   isMenuActive: boolean = false;
   isUserMenuOpen: boolean = false;
   cartItems: CartItem[] = [];
+  cartItemCount = 0;
   showCartPreview = false;
   constructor(private router: Router, private cartService: CartService) {
-    this.cartService.cartItems$.subscribe(items => {
+    this.cartService.cartItems$.subscribe((items) => {
       this.cartItems = items;
     });
   }
@@ -35,7 +43,11 @@ export class ThanhDieuHuongComponent {
       }, 0);
     }
   }
-
+  ngOnInit(): void {
+    this.cartService.cartItemCount$.subscribe((count) => {
+      this.cartItemCount = count;
+    });
+  }
   get totalQuantity(): number {
     return this.cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }
@@ -53,9 +65,13 @@ export class ThanhDieuHuongComponent {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('username') && !!localStorage.getItem('userId');
+    return (
+      !!localStorage.getItem('username') && !!localStorage.getItem('userId')
+    );
   }
-
+  navigateToCart() {
+    this.router.navigate(['/giohang']);
+  }
   getUsername(): string {
     return localStorage.getItem('username') || '';
   }

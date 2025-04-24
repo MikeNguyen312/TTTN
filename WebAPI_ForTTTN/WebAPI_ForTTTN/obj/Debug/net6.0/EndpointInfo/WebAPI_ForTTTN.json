@@ -348,6 +348,18 @@
         }
       }
     },
+    "/api/KhuyenMai": {
+      "get": {
+        "tags": [
+          "KhuyenMai"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/SanPham": {
       "get": {
         "tags": [
@@ -405,10 +417,6 @@
             "nullable": true
           },
           "passwords": {
-            "type": "string",
-            "nullable": true
-          },
-          "trangthai": {
             "type": "string",
             "nullable": true
           }

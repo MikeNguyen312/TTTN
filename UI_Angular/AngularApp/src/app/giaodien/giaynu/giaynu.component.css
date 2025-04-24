@@ -1,14 +1,35 @@
-.item-container .text-content {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    color: #333;
-  }
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.text-content {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sort-section select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+}
+
+.sort-section select:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.item-container {
+  padding: 5%;
+}
 .product-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    padding: 0 30px;
   }
   .product-card {
     border: 1px solid #ddd;

@@ -34,10 +34,11 @@
     (mouseenter)="toggleCartPreview(true)" 
     (mouseleave)="toggleCartPreview(false)"
   >
-    <a routerLink="/giohang">
-      <i class="bi bi-bag"></i>
-      <span *ngIf="totalQuantity > 0" class="badge">{{ totalQuantity }}</span>
-    </a>
+  <div class="cart-icon-container" (click)="navigateToCart()">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+  </div>
+  
 
     <!-- Hiển thị preview giỏ hàng -->
     <div class="cart-preview" *ngIf="showCartPreview">
