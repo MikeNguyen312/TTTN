@@ -2,19 +2,21 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-giaynam',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './giaynam.component.html',
-  styleUrl: './giaynam.component.css',
+  styleUrls: ['./giaynam.component.css'],
 })
 export class GiaynamComponent {
-  constructor(private sanphamService: ProductService, private router: Router) {}
+  constructor(private sanphamService: ProductService, private router: Router,private cartService: CartService) {}
 
   sanPhams: any[] = [];
   giayNam: any[] = [];
-  giayNu: any[] = [];
+  selectedSortOption: string = '';
 
   ngOnInit(): void {
     this.loadSanPhams();
@@ -39,6 +41,35 @@ export class GiaynamComponent {
     });
   }
 
+  sortProducts(): void {
+    switch(this.selectedSortOption) {
+      case 'price-asc':
+        this.giayNam.sort((a, b) => a.gia - b.gia);
+        break;
+      case 'price-desc':
+        this.giayNam.sort((a, b) => b.gia - a.gia);
+        break;
+      case 'name-asc':
+        this.giayNam.sort((a, b) => a.ten.localeCompare(b.ten));
+        break;
+      case 'name-desc':
+        this.giayNam.sort((a, b) => b.ten.localeCompare(a.ten));
+        break;
+      default:
+        this.loadSanPhams();
+    }
+  }
+
+  
+themVaoGioHang(sp: any): void {
+  this.cartService.addToCart({
+    image: 'data:image/jpeg;base64,' + sp.anh,
+    name: sp.ten,
+    quantity: 1,
+    price: sp.gia
+  });
+  alert('Đã thêm vào giỏ: ' + sp.ten);
+}
   viewProductDetail(productId: string): void {
     this.router.navigate(['/chi-tiet-san-pham', productId]);
   }

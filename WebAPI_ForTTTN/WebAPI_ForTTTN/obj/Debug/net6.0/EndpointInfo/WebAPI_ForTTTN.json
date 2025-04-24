@@ -143,6 +143,34 @@
         }
       }
     },
+    "/api/KhachHang/CapNhatTrangThai": {
+      "put": {
+        "tags": [
+          "KhachHang"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trangThai",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Kho": {
       "get": {
         "tags": [
@@ -296,6 +324,30 @@
         }
       }
     },
+    "/api/Kho/CapNhatSoLuongMoiNhat": {
+      "post": {
+        "tags": [
+          "Kho"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Kho/ThongKe": {
+      "get": {
+        "tags": [
+          "Kho"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/SanPham": {
       "get": {
         "tags": [
@@ -353,6 +405,10 @@
             "nullable": true
           },
           "passwords": {
+            "type": "string",
+            "nullable": true
+          },
+          "trangthai": {
             "type": "string",
             "nullable": true
           }

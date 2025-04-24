@@ -1,26 +1,22 @@
+// gio-hang.component.ts
 import { Component, OnInit } from '@angular/core';
-
+import { CartService, CartItem } from '../../services/cart.service';
 @Component({
   selector: 'app-gio-hang',
-  imports: [],
   templateUrl: './gio-hang.component.html',
-  styleUrl: './gio-hang.component.css'
+  styleUrls: ['./gio-hang.component.css']
 })
-export class GioHangComponent implements OnInit{
-  cartItems = [
-    {
-      image: 'assets/images/nike-pegasus.jpg',
-      name: 'Nike Pegasus Premium',
-      quantity: 1,
-      price: 6320000
-    }
-  ];
-
+export class GioHangComponent implements OnInit {
+  cartItems: CartItem[] = [];
   shippingFee = 3680000;
 
-  constructor() {}
+  constructor(private cartService: CartService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cartService.cartItems$.subscribe(items => {
+      this.cartItems = items;
+    });
+  }
 
   get totalPrice(): number {
     return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -31,20 +27,23 @@ export class GioHangComponent implements OnInit{
   }
 
   increaseQty(index: number): void {
-    this.cartItems[index].quantity++;
+    const item = this.cartItems[index];
+    this.cartService.updateItemQuantity(index, item.quantity + 1);
   }
 
   decreaseQty(index: number): void {
-    if (this.cartItems[index].quantity > 1) {
-      this.cartItems[index].quantity--;
+    const item = this.cartItems[index];
+    if (item.quantity > 1) {
+      this.cartService.updateItemQuantity(index, item.quantity - 1);
     }
   }
 
   removeItem(index: number): void {
-    this.cartItems.splice(index, 1);
+    this.cartService.removeItem(index);
   }
 
   checkout(): void {
     alert('Thanh toán thành công!');
+    this.cartService.clearCart();
   }
 }
