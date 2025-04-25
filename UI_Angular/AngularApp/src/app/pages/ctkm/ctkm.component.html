@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Danh Sách Khuyến Mãi</h2>
+      <div>
+        <button class="btn btn-success me-2" [routerLink]="['/admin/ctkm/taoKM']">Tạo Khuyến Mãi</button>
+      </div>
+    </div>
+  
+    <div class="grid-container">
+      <div class="km-card" *ngFor="let km of danhSachKhuyenMai">
+        <h4 class="km-id">🎁 Mã KM: {{ km.idkhuyenmai }}</h4>
+        <p class="km-pt">Giảm: <strong>{{ km.phanTram }}%</strong></p>
+        <div class="card-buttons">
+          <button class="btn btn-info" [routerLink]="['/admin/ctkm/',km.idkhuyenmai]">Chi tiết</button>
+          <button class="btn btn-danger" (click)="xoaKhuyenMai(km.idkhuyenmai)">Xoá</button>
+        </div>
+      </div>
+    </div>
+
+  
