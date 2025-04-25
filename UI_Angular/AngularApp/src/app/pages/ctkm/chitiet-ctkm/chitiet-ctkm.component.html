@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Chi Tiết Khuyến Mãi</h2>
+    <div *ngIf="danhSachSanPham.length > 0" class="product-grid">
+      <div class="product-card" *ngFor="let sp of danhSachSanPham">
+        <h5 class="product-title">{{ sp.ten }}</h5>
+        <p><strong>ID:</strong> {{ sp.idSanPham }}</p>
+        <p><strong>Size:</strong> {{ sp.size }}</p>
+        <p><strong>Hãng:</strong> {{ sp.hang }}</p>
+        <p><strong>Giá:</strong> {{ sp.gia }}</p>
+        <button class="btn btn-danger"  (click)="xoaSanPham(sp.idSanPham)">Xoá</button>
+      </div>
+    </div>
+    <div *ngIf="danhSachSanPham.length === 0">
+      <p>Không có sản phẩm nào áp dụng khuyến mãi này.</p>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-info" [routerLink]="['/admin/ctkm']">Trở lại</button>
+  </div>
+  

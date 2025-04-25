@@ -1,0 +1,66 @@
+/* Style for the product grid container */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Flexible layout */
+    gap: 20px;
+    margin-top: 20px;
+    padding: 0 10px;
+    width: 100%;
+  }
+  
+  /* Style for each product card */
+  .product-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Fit the card to the screen aspect ratio */
+    height: 38vh; /* Height will be 30% of the viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  /* Hover effect on product card */
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style for product title */
+  .product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Optional: Add some margin to the container */
+  .container {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Optional: Make cards responsive */
+  @media (max-width: 768px) {
+    .product-card {
+      height: 25vh; /* Adjust height for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-card {
+      height: 20vh; /* Further adjust height for very small screens */
+    }
+  }
+  

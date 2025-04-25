@@ -1,0 +1,40 @@
+.container {
+    padding: 20px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  
+  .km-card {
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .km-card:hover {
+    background-color: #e6f3fa;
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  
+  .km-id {
+    font-size: 1.2rem;
+    color: #00b7eb;
+  }
+  
+  .km-pt {
+    font-size: 1.1rem;
+    margin: 10px 0 20px;
+  }
+  
+  .card-buttons button {
+    margin: 0 5px;
+  }
+
+  
