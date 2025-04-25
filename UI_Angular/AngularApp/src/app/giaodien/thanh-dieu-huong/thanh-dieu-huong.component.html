@@ -1,13 +1,16 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+/>
 <header>
   <div class="logo">
     <a href="trang-chu"><img src="assets/logo.png" alt="Logo" /></a>
   </div>
-  
+
   <div class="menu-toggle" (click)="toggleMenu()">
     <i class="bi bi-list"></i>
   </div>
-  
+
   <nav [class.active]="isMenuActive">
     <a href="#">Trang Chủ</a>
     <a routerLink="/giaynam">Giày Nam</a>
@@ -15,40 +18,45 @@
     <a href="khuyenmai">Khuyến Mãi</a>
     <a href="lien-he">Liên Hệ</a>
   </nav>
-  
+
   <div class="icons">
     <div class="search-container">
-      <input 
-        type="text" 
-        placeholder="Tìm kiếm..." 
-        class="search-input" 
+      <input
+        type="text"
+        placeholder="Tìm kiếm..."
+        class="search-input"
         [(ngModel)]="searchQuery"
         (keyup.enter)="performSearch()"
         [class.active]="isSearchActive"
       />
       <i class="bi bi-search" (click)="toggleSearch()"></i>
     </div>
-    
-    <div 
-    class="cart-icon" 
-    (mouseenter)="toggleCartPreview(true)" 
-    (mouseleave)="toggleCartPreview(false)"
-  >
-  <div class="cart-icon-container" (click)="navigateToCart()">
-    <i class="fas fa-shopping-cart"></i>
-    <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
-  </div>
-  
 
-    <!-- Hiển thị preview giỏ hàng -->
-    <div class="cart-preview" *ngIf="showCartPreview">
-      <div *ngFor="let item of cartItems">
-        <img [src]="item.image" width="30" />
-        <span>{{ item.name }} x {{ item.quantity }}</span>
+    <div
+      class="cart-icon"
+      (mouseenter)="toggleCartPreview(true)"
+      (mouseleave)="toggleCartPreview(false)"
+    >
+      <div class="cart-icon-container" (click)="navigateToCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" *ngIf="cartItemCount > 0">{{
+          cartItemCount
+        }}</span>
+      </div>
+
+      <div class="cart-preview" *ngIf="showCartPreview && cartItems.length > 0">
+        <div
+          *ngFor="let item of cartItems; let i = index"
+          class="cart-item-preview"
+        >
+          <img [src]="item.image" alt="{{ item.name }}" width="50" />
+          <p>{{ item.name }}</p>
+          <p>{{ item.price | number }}đ x {{ item.quantity }}</p>
+          <button class="delete-btn" (click)="removeFromCart(i)">🗑️</button>
+        </div>
       </div>
     </div>
-  </div>
-    
+
     <a href="login" *ngIf="!isLoggedIn()"><i class="bi bi-person"></i></a>
 
     <div class="user-menu" *ngIf="isLoggedIn()">
@@ -58,7 +66,7 @@
         <i class="bi bi-caret-down-fill"></i>
       </div>
       <div class="dropdown-content" [class.show]="isUserMenuOpen">
-        <a routerLink="/thong-tin-khach-hang">Thông tin tài khoản</a>
+        <a routerLink="/thongtin">Thông tin tài khoản</a>
         <a (click)="logout()">Đăng xuất</a>
       </div>
     </div>

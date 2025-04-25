@@ -12,7 +12,8 @@ import { CartService } from '../../services/cart.service';
 })
 export class GiaynuComponent {
   sanPhams: any[] = [];
-  giayNu: any[] = [];selectedSortOption: string = '';
+  giayNu: any[] = [];
+  selectedSortOption: string = '';
   constructor(private sanphamService: ProductService, private router: Router, private cartService: CartService) {}
   ngOnInit(): void {
     this.loadSanPhams();

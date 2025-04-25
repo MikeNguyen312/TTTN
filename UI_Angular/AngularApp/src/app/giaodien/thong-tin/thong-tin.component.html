@@ -1,0 +1,27 @@
+<div class="customer-info-container">
+    <!-- Menu trái -->
+    <div class="sidebar">
+      <ul class="menu">
+        <li (click)="chonTab('info')" [class.active]="tab === 'info'">Thông tin tài khoản</li>
+        <li (click)="chonTab('history')" [class.active]="tab === 'history'">Lịch sử mua hàng</li>
+      </ul>
+    </div>
+  
+    <!-- Nội dung ở giữa -->
+    <div class="content">
+      <div *ngIf="tab === 'info' && khachHang">
+        <h2>Thông tin tài khoản</h2>
+        <p><strong>Họ tên:</strong> {{ khachHang.hoTen }}</p>
+        <p><strong>Số điện thoại:</strong> {{ khachHang.soDienThoai }}</p>
+        <p><strong>Email:</strong> {{ khachHang.email }}</p>
+      </div>
+  
+      <div *ngIf="tab === 'history'">
+        <h2>Lịch sử mua hàng</h2>
+        <p>Chức năng đang được phát triển...</p>
+      </div>
+    </div>
+  
+    <!-- Phần phải: khoảng trống -->
+    <div class="right-placeholder"></div>
+  </div>
