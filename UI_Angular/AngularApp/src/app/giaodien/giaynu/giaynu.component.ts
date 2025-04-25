@@ -13,7 +13,7 @@ import { CartService } from '../../services/cart.service';
 export class GiaynuComponent {
   sanPhams: any[] = [];
   giayNu: any[] = [];selectedSortOption: string = '';
-  constructor(private sanphamService: ProductService, private router: Router) {}
+  constructor(private sanphamService: ProductService, private router: Router, private cartService: CartService) {}
   ngOnInit(): void {
     this.loadSanPhams();
   }
@@ -56,6 +56,17 @@ export class GiaynuComponent {
       },
     });
   }
+
+  addToCart(sp: any): void {
+    this.cartService.addToCart({
+      id: sp.idSanPham,              
+      image: 'data:image/jpeg;base64,' + sp.anh,
+      name: sp.ten,
+      price: sp.gia,
+      quantity: 1
+    });
+  }
+
   viewProductDetail(productId: string): void {
     this.router.navigate(['/chi-tiet-san-pham', productId]);
   }
