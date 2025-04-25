@@ -26,41 +26,51 @@
   </div>
 </div>
 <div class="item-container">
-  <div class="text-content">Sản Phẩm:</div>
+  <div class="header-section">
+    <div class="text-content">Sản Phẩm</div>
+    <div class="sort-section">
+      <select [(ngModel)]="selectedSortOption" (change)="sortProducts()">
+        <option value="">Sắp xếp theo</option>
+        <option value="price-asc">Giá: Thấp đến cao</option>
+        <option value="price-desc">Giá: Cao đến thấp</option>
+        <option value="name-asc">Tên: A-Z</option>
+        <option value="name-desc">Tên: Z-A</option>
+      </select>
+    </div>
+  </div>
   <div class="product-list">
-    <div class="product-card" *ngFor="let sp of sanPhams">
+    <div class="product-card" *ngFor="let sp of sanPhams" (click)="viewProductDetail(sp.idSanPham)">
       <img
         *ngIf="sp.anh"
         [src]="'data:image/jpeg;base64,' + sp.anh"
         alt="{{ sp.ten }}"
         class="product-image"
       />
-
-      <h3 (click)="viewProductDetail(sp.idSanPham)" style="cursor: pointer">
+      <h3>
         {{ sp.ten }}
       </h3>
       <p>Hãng: {{ sp.hang }}</p>
-      <p>Giá: {{ sp.gia | currency : "VND" }}</p>
-
-      <p *ngIf="sp.soLuongTon === 0" style="color: red; font-weight: bold">
-        Hết hàng
-      </p>
-
-      <button
-        *ngIf="sp.soLuongTon > 0"
-        (click)="addToCart(sp); $event.stopPropagation()"
-        class="add-to-cart-button"
-      >
-        Thêm vào giỏ
-      </button>
-    </div>
+      <p>Giá: {{ sp.gia | currency: 'VND' }}</p>
+    
+      <ng-container *ngIf="sp.soLuongTon > 0; else hetHang">
+        <button
+          (click)="addToCart(sp); $event.stopPropagation()"
+          class="add-to-cart-button"
+        >
+          Thêm vào giỏ
+        </button>
+      </ng-container>
+      <ng-template #hetHang>
+        <p style="color: red; font-weight: bold">Hết hàng</p>
+      </ng-template>
+    </div>    
   </div>
 </div>
 
 <div class="item-container">
   <div class="text-content">Giày Nam</div>
   <div class="product-list">
-    <div class="product-card" *ngFor="let sp of giayNam">
+    <div class="product-card" *ngFor="let sp of giayNam" (click)="viewProductDetail(sp.idSanPham)">
       <img
         *ngIf="sp.anh"
         [src]="'data:image/jpeg;base64,' + sp.anh"
@@ -68,7 +78,7 @@
         class="product-image"
       />
 
-      <h3 (click)="viewProductDetail(sp.idSanPham)" style="cursor: pointer">
+      <h3>
         {{ sp.ten }}
       </h3>
       <p>Hãng: {{ sp.hang }}</p>
@@ -92,7 +102,7 @@
 <div class="item-container">
   <div class="text-content">Giày Nữ</div>
   <div class="product-list">
-    <div class="product-card" *ngFor="let sp of giayNu">
+    <div class="product-card" *ngFor="let sp of giayNu" (click)="viewProductDetail(sp.idSanPham)">
       <img
         *ngIf="sp.anh"
         [src]="'data:image/jpeg;base64,' + sp.anh"
@@ -100,7 +110,7 @@
         class="product-image"
       />
 
-      <h3 (click)="viewProductDetail(sp.idSanPham)" style="cursor: pointer">
+      <h3>
         {{ sp.ten }}
       </h3>
       <p>Hãng: {{ sp.hang }}</p>

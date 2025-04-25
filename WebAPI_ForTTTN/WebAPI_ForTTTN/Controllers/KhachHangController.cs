@@ -145,6 +145,37 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet("{id}")]
+        public IActionResult GetKhachHangById(string id)
+        {
+            try
+            {
+                var db = new DBThuctapContext();
+                var kh = db.KhachHangs
+                    .Where(k => k.IdKhachHang == id)
+                    .Select(k => new
+                    {
+                        IdKhachHang = k.IdKhachHang,
+                        HoTen = k.HoTen,
+                        SoDienThoai = k.SoDienThoai,
+                        Email = k.Email,
+                        Passwords = k.Passwords,
+                        Trangthai = k.Trangthai,
+                    })
+                    .FirstOrDefault();
+
+                if (kh == null)
+                {
+                    return NotFound(); // Không tìm thấy khách hàng với id này
+                }
+
+                return Ok(kh); // Trả về khách hàng
+            }
+            catch
+            {
+                return BadRequest(); // Lỗi server
+            }
+        }
 
         public class LoginRequest
         {

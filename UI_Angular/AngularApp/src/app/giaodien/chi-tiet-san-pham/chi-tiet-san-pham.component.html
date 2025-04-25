@@ -25,13 +25,9 @@
         <h1 class="product-name">{{ product.ten }}</h1>
         <p class="product-price">{{ product.gia | currency : "VND" }}</p>
         <p class="product-description">{{ product.thongTin }}</p>
-        <!-- Hiển thị trạng thái hàng -->
-        <p *ngIf="product.soLuongTon <= 0" class="stock-status out-of-stock">HẾT HÀNG</p>
-        <p *ngIf="product.soLuongTon > 0" class="stock-status in-stock">CÒN HÀNG</p>
       </div>
       
-      <!-- Nút thêm vào giỏ hàng hoặc thông báo hết hàng -->
-      <button *ngIf="product.soLuongTon > 0" class="add-to-cart">THÊM VÀO GIỎ HÀNG</button>
+      <button *ngIf="product.soLuongTon > 0" class="add-to-cart" (click)="addToCart()">THÊM VÀO GIỎ HÀNG</button>
       <div *ngIf="product.soLuongTon <= 0" class="out-of-stock-button">HẾT HÀNG</div>
     </div>
   </div>

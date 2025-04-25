@@ -1,7 +1,6 @@
 <div class="cart-wrapper">
   <h2 class="cart-title">Giỏ Hàng Của Bạn</h2>
   <div class="cart-content">
-    <!-- DANH SÁCH SẢN PHẨM -->
     <div class="cart-left">
       <div class="cart-item" *ngFor="let item of cartItems; index as i">
         <img class="product-img" [src]="item.image" alt="{{ item.name }}" />
@@ -20,7 +19,6 @@
       </div>
     </div>
 
-    <!-- CHI TIẾT ĐƠN HÀNG -->
     <div class="cart-right">
       <h4 class="summary-title">Chi Tiết Đơn Hàng</h4>
       <div class="summary-row">
@@ -35,7 +33,7 @@
         <span>Tổng Tiền</span>
         <span>{{ total | number }}đ</span>
       </div>
-      <button class="checkout-btn">Thanh Toán</button>
+      <button class="checkout-btn">Đặt Hàng</button>
     </div>
   </div>
 </div>

@@ -22,6 +22,7 @@ import { FormThemSanPhamComponent } from './pages/kho/formthemsanpham/formthemsa
 import { ThongkeComponent } from './pages/kho/thongke/thongke.component';
 import { FormSuakhComponent } from './pages/khachhang/form-suakh/form-suakh.component';
 import { FormThemkhComponent } from './pages/khachhang/form-themkh/form-themkh.component';
+import { ThongTinComponent } from './giaodien/thong-tin/thong-tin.component';
 
 export const routes: Routes = [
     {
@@ -122,6 +123,10 @@ export const routes: Routes = [
                 path: 'giohang',
                 component: GioHangComponent
             },
+            {
+                path: 'thongtin',
+                component: ThongTinComponent
+            },
             { 
                 path: 'trang-chu/:id',
                 component: TrangChuComponent,
@@ -131,9 +136,8 @@ export const routes: Routes = [
     },
 ];
 
-    // Tạo module để cấu hình RouterModule
     @NgModule({
-    imports: [RouterModule.forRoot(routes)], // Import routes vào RouterModule
-    exports: [RouterModule]  // Xuất RouterModule để có thể sử dụng trong các component
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
     })
     export class AppRoutingModule { }

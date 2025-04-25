@@ -31,9 +31,29 @@
   box-sizing: border-box;
 }
 
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .text-content {
-  flex: 1;
-  text-align: left;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sort-section select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+}
+
+.sort-section select:focus {
+  outline: none;
+  border-color: #555;
 }
 
 .subtitle {

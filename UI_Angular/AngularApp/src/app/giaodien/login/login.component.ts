@@ -43,12 +43,15 @@ onLogin() {
 
       localStorage.setItem('username', res.hoTen);
       localStorage.setItem('isAdmin', 'false');
-      localStorage.setItem('userId', res.iD_KhachHang.toString()); // Add this
+      localStorage.setItem('userId', res.iD_KhachHang.toString());
       this.router.navigate([`/trang-chu/${res.iD_KhachHang}`]);
     },
     error: (err) => {
       console.error('Login failed:', err);
       this.errorMessage = err.error?.message || 'Đăng nhập thất bại!';
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 1000);
     }
   });
 }

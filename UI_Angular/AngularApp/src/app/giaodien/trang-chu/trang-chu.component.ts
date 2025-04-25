@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-trang-chu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './trang-chu.component.html',
   styleUrls: ['./trang-chu.component.css'],
 })
@@ -34,7 +35,7 @@ export class TrangChuComponent implements OnInit, OnDestroy {
 
   currentSlide = 0;
   slideInterval: any;
-
+  selectedSortOption: string = '';
   sanPhams: any[] = [];
   giayNam: any[] = [];
   giayNu: any[] = [];
@@ -80,10 +81,38 @@ export class TrangChuComponent implements OnInit, OnDestroy {
     }
   }
 
+  sortProducts(): void {
+    switch(this.selectedSortOption) {
+      case 'price-asc':
+        this.sanPhams.sort((a, b) => a.gia - b.gia);
+        break;
+      case 'price-desc':
+        this.sanPhams.sort((a, b) => b.gia - a.gia);
+        break;
+      case 'name-asc':
+        this.sanPhams.sort((a, b) => a.ten.localeCompare(b.ten));
+        break;
+      case 'name-desc':
+        this.sanPhams.sort((a, b) => b.ten.localeCompare(a.ten));
+        break;
+      default:
+        this.loadSanPhams();
+    }
+  }
+
   loadSanPhams(): void {
     this.sanphamService.getSanPhams().subscribe({
       next: (data) => {
-        this.sanPhams = Array.isArray(data) ? data : [];
+        console.log('Dữ liệu sản phẩm từ API:', data);
+  
+        this.sanPhams = data.map((sp: any) => {
+          const soLuong = Number(sp.soLuong ?? 0); 
+          return {
+            ...sp,
+            soLuongTon: soLuong,
+            hetHang: soLuong <= 0,
+          };
+        });
         this.giayNam = this.sanPhams
           .filter((sp) => sp.loai === 'Nam')
           .map((sp) => ({
@@ -105,6 +134,7 @@ export class TrangChuComponent implements OnInit, OnDestroy {
       },
     });
   }
+  
 
   addToCart(sp: any): void {
     this.cartService.addToCart({

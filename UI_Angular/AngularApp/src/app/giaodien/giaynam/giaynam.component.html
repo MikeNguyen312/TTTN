@@ -13,7 +13,7 @@
   </div>
 
   <div class="product-list">
-    <div class="product-card" *ngFor="let sp of giayNam">
+    <div class="product-card" *ngFor="let sp of giayNam" (click)="viewProductDetail(sp.idSanPham)">
       <img
         *ngIf="sp.anh"
         [src]="'data:image/jpeg;base64,' + sp.anh"
@@ -21,7 +21,7 @@
         class="product-image"
       />
 
-      <h3 (click)="viewProductDetail(sp.idSanPham)" style="cursor: pointer">
+      <h3>
         {{ sp.ten }}
       </h3>
       <p>Hãng: {{ sp.hang }}</p>

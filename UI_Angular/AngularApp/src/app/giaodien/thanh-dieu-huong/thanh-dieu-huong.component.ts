@@ -55,7 +55,9 @@ export class ThanhDieuHuongComponent {
   toggleCartPreview(show: boolean) {
     this.showCartPreview = show;
   }
-
+  removeFromCart(index: number) {
+    this.cartService.removeItem(index);
+  }
   toggleMenu() {
     this.isMenuActive = !this.isMenuActive;
   }
@@ -83,7 +85,6 @@ export class ThanhDieuHuongComponent {
     this.isUserMenuOpen = false;
     this.router.navigate(['/trang-chu']);
   }
-
   performSearch() {
     if (this.searchQuery.trim()) {
       console.log('Searching for:', this.searchQuery);
