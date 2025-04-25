@@ -63,7 +63,7 @@ export class GiaynamComponent {
   
   addToCart(sp: any): void {
     this.cartService.addToCart({
-      id: sp.idSanPham,              // cần có id
+      id: sp.idSanPham,              
       image: 'data:image/jpeg;base64,' + sp.anh,
       name: sp.ten,
       price: sp.gia,
