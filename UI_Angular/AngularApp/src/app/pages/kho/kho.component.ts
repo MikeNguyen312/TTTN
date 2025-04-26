@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { KhoService, PhieuKho } from '../../services/kho.service';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-kho',
@@ -13,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 export class KhoComponent {
   
   hienForm = false;
-  thongbaoXoaThanhCong = false;
 
   phieuKhos: any[] = [];
   formModel: PhieuKho = {
@@ -44,38 +44,66 @@ export class KhoComponent {
       // Kiểm tra Phiếu Kho có sản phẩm hay không
       this.phieuKhoService.getSanPhamsByPhieuKho(idPhieuKho).subscribe(sanPhams => {
         if (sanPhams.length === 0) {
-          // Gửi yêu cầu xóa Phiếu Kho
-          this.phieuKhoService.xoaPhieuKho(idPhieuKho).subscribe({
-            next: () => {
-              this.thongbaoXoaThanhCong = true;
-              setTimeout(()=>{
-                this.thongbaoXoaThanhCong = false;
-                this.loadPhieuKho(); // Reload lại danh sách
-              },2000);
-            },
-            error: (error) => {
-              console.error('Lỗi khi xóa Phiếu Kho:', error);
-              alert('Xóa Phiếu Kho thất bại!');
+          // Hiển thị thông báo xác nhận trước khi xóa
+          Swal.fire({
+            title: 'Bạn có chắc chắn muốn xóa không?',
+            text: 'Hành động này không thể hoàn tác!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Hủy'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Gửi yêu cầu xóa Phiếu Kho
+              this.phieuKhoService.xoaPhieuKho(idPhieuKho).subscribe({
+                next: () => {
+                  Swal.fire('Thành công!', 'Phiếu Kho đã được xóa.', 'success');
+                  setTimeout(() => {
+                    this.loadPhieuKho(); // Reload lại danh sách
+                  }, 2000);
+                },
+                error: (error) => {
+                  console.error('Lỗi khi xóa Phiếu Kho:', error);
+                  Swal.fire('Lỗi!', 'Xóa Phiếu Kho thất bại!', 'error');
+                }
+              });
             }
           });
         } else {
-          alert('Phiếu Kho vẫn còn sản phẩm, không thể xóa!');
+          Swal.fire('Thông báo!', 'Phiếu Kho vẫn còn sản phẩm, không thể xóa!', 'info');
         }
       });
     }
+    
 
     taoPhieuKho(): void {
-      this.phieuKhoService.taoPhieuKho(this.formModel).subscribe({
-        next: () => {
-          alert('Tạo phiếu kho thành công!');
-          this.hienForm = false;
-          this.formModel = { idPhieuKho: '', ngayLap: '' };
-          this.loadPhieuKho();
-        },
-        error: err => {
-          console.error(err);
-          alert('Lỗi khi tạo phiếu kho');
+      // Hiển thị hộp thoại xác nhận tạo phiếu kho
+      Swal.fire({
+        title: 'Bạn có muốn tạo phiếu kho mới?',
+        text: 'Thông tin sẽ được lưu trữ sau khi xác nhận!',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Tạo',
+        cancelButtonText: 'Hủy'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Gửi yêu cầu tạo phiếu kho
+          this.phieuKhoService.taoPhieuKho(this.formModel).subscribe({
+            next: () => {
+              Swal.fire('Thành công!', 'Phiếu kho mới đã được tạo.', 'success');
+              this.hienForm = false;
+              this.formModel = { idPhieuKho: '', ngayLap: '' }; // Đặt lại form
+              this.loadPhieuKho(); // Tải lại danh sách phiếu kho
+            },
+            error: (err) => {
+              console.error('Lỗi khi tạo phiếu kho:', err);
+              Swal.fire('Thất bại!', 'Tạo phiếu kho không thành công.', 'error');
+            }
+          });
+        } else {
+          Swal.fire('Đã hủy!', 'Phiếu kho không được tạo.', 'info');
         }
       });
     }
+    
 }
