@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Thêm sản phẩm</h2>
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <div class="form-group">
+            <label for="ten">ID sản phẩm:</label>
+            <input type="text" id="idSanPham" class="form-control" [(ngModel)]="sanPham.idSanPham" name="idSanPham" required />
+          </div>
+      <div class="form-group">
+        <label for="ten">Tên sản phẩm:</label>
+        <input type="text" id="ten" class="form-control" [(ngModel)]="sanPham.ten" name="ten" required />
+      </div>
+      <div class="form-group">
+        <label for="gia">Giá:</label>
+        <input type="number" id="gia" class="form-control" [(ngModel)]="sanPham.gia" name="gia" required />
+      </div>
+      <div class="form-group">
+        <label for="hang">Hãng:</label>
+        <input type="text" id="hang" class="form-control" [(ngModel)]="sanPham.hang" name="hang" />
+      </div>
+      <div class="form-group">
+        <label for="size">Size:</label>
+        <input type="text" id="size" class="form-control" [(ngModel)]="sanPham.size" name="size" />
+      </div>
+      <div class="form-group">
+        <label for="thongtin">Thông tin:</label>
+        <textarea id="thongtin" class="form-control" [(ngModel)]="sanPham.thongTin" name="thongtin"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="soLuong">Số lượng:</label>
+        <input type="number" id="soLuong" class="form-control" [(ngModel)]="sanPham.soLuong" name="soLuong" />
+      </div>
+      <div class="form-group">
+        <label for="anh">Ảnh:</label>
+        <input type="file" id="anh" class="form-control" (change)="onFileSelected($event)" />
+      </div>
+      <button type="submit" class="btn btn-primary">Lưu sản phẩm</button>
+    </form>
+  </div>
