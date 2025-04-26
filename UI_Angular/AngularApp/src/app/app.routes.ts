@@ -23,6 +23,7 @@ import { ThongkeComponent } from './pages/kho/thongke/thongke.component';
 import { FormSuakhComponent } from './pages/khachhang/form-suakh/form-suakh.component';
 import { FormThemkhComponent } from './pages/khachhang/form-themkh/form-themkh.component';
 import { ThongTinComponent } from './giaodien/thong-tin/thong-tin.component';
+import { ThemsanphamComponent } from './pages/product/themsanpham/themsanpham.component';
 
 export const routes: Routes = [
     {
@@ -50,6 +51,10 @@ export const routes: Routes = [
             {
                 path: 'product',
                 component: ProductComponent
+            },
+            {
+                path: 'product/themsanpham',
+                component: ThemsanphamComponent
             },
             {
                 path: 'kho',

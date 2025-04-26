@@ -11,6 +11,8 @@ namespace WebAPI_ForTTTN.MyModels
         public string? Size { get; set; }
         public string? ThongTin { get; set; }
         public string? Loai { get; set; }
+        public byte[]? Anh { get; set; }
+        public int? SoLuong { get; set; }
         public static SanPham chuyendoi(CSanPham x)
         {
             return new SanPham
@@ -21,7 +23,9 @@ namespace WebAPI_ForTTTN.MyModels
                 Hang = x.Hang,
                 Size = x.Size,
                 ThongTin = x.ThongTin,
-                Loai = x.Loai
+                Loai = x.Loai,
+                SoLuong = x.SoLuong,
+                Anh = x.Anh,
             };
         }
         public static CSanPham chuyendoi(SanPham x)
@@ -34,7 +38,9 @@ namespace WebAPI_ForTTTN.MyModels
                 Hang = x.Hang,
                 Size = x.Size,
                 ThongTin = x.ThongTin,
-                Loai = x.Loai
+                Loai = x.Loai,
+                Anh = x.Anh,
+                SoLuong = x.SoLuong,
             };
         }
     }

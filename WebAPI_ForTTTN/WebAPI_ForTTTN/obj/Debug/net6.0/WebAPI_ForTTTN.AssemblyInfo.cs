@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebAPI_ForTTTN")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cfc193b7e32c30cd17000e1b7efc9a5327ef3225")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aff5700ba2e7111faf7946caf8e39c60f63a7d32")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebAPI_ForTTTN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebAPI_ForTTTN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
