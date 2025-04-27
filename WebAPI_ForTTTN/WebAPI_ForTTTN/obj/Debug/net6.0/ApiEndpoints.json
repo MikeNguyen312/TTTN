@@ -10,6 +10,96 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.DonHangController",
+    "Method": "ThemSPDH",
+    "RelativePath": "api/DonHang/{idDonHang}/SanPham",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "x",
+        "Type": "WebAPI_ForTTTN.MyModels.CCTDH",
+        "IsRequired": true
+      },
+      {
+        "Name": "idDonHang",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.DonHangController",
+    "Method": "getCTDH",
+    "RelativePath": "api/DonHang/ChitietDonHang",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.DonHangController",
+    "Method": "taoDonHang",
+    "RelativePath": "api/DonHang/TaoDonHang",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "x",
+        "Type": "WebAPI_ForTTTN.MyModels.CDonHang",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.DonHangController",
+    "Method": "xoaDonHang",
+    "RelativePath": "api/DonHang/XoaDonHang",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.DonHangController",
+    "Method": "xoaItemtrongDH",
+    "RelativePath": "api/DonHang/XoaID",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idDonHang",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "idSanPham",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
     "Method": "getDSKhachHang",
     "RelativePath": "api/KhachHang",
@@ -232,6 +322,96 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhuyenMaiController",
+    "Method": "getDSSPKM",
+    "RelativePath": "api/KhuyenMai/LayDSKM/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhuyenMaiController",
+    "Method": "TaoKM",
+    "RelativePath": "api/KhuyenMai/TaoKM",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "x",
+        "Type": "WebAPI_ForTTTN.MyModels.CKhuyenMai",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhuyenMaiController",
+    "Method": "ThemSanPhamVaoKhuyenMai",
+    "RelativePath": "api/KhuyenMai/ThemSanPhamKM",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idKhuyenMai",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "x",
+        "Type": "WebAPI_ForTTTN.MyModels.CSanPhamKhuyenMai",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhuyenMaiController",
+    "Method": "xoaKM",
+    "RelativePath": "api/KhuyenMai/XoaKMID",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhuyenMaiController",
+    "Method": "XoaSanPhamKhoiKhuyenMai",
+    "RelativePath": "api/KhuyenMai/XoaSanPhamKM",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idKhuyenMai",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "idSanPham",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

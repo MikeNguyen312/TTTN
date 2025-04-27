@@ -9,7 +9,6 @@ namespace WebAPI_ForTTTN.Models
         {
             ChiTietDonHangs = new HashSet<ChiTietDonHang>();
         }
-
         public string IdDonHang { get; set; } = null!;
         public string? IdKhachHang { get; set; }
         public DateTime? NgayDatHang { get; set; }
