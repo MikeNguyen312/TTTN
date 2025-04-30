@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.WebSockets;
 using WebAPI_ForTTTN.Models;
+using WebAPI_ForTTTN.MyModels;
 
 namespace WebAPI_ForTTTN.Controllers
 {
@@ -64,6 +66,43 @@ namespace WebAPI_ForTTTN.Controllers
                     Anh = sanPham.Anh != null ? Convert.ToBase64String(sanPham.Anh) : null,
                     SoLuongTon = soLuongTon 
                 });
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        [HttpPost("TaoSanPham")]
+        public IActionResult themSanPham(CSanPham x)
+        {
+            try
+            {
+                DBThuctapContext db = new DBThuctapContext();
+                var a = CSanPham.chuyendoi(x);
+                db.SanPhams.Add(a);
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete("XoaSanPham")]
+        public IActionResult xoaSanPham(string id)
+        {
+            try
+            {
+                DBThuctapContext db = new DBThuctapContext();
+                var a = db.SanPhams.Find(id);
+                if (a == null)
+                {
+                    return NotFound("Sản Phẩm không tồn tại");
+                }
+                db.SanPhams.Remove(a);
+                db.SaveChanges();
+                return Ok();
             }
             catch
             {

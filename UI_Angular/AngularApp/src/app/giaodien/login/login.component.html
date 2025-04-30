@@ -24,7 +24,7 @@
         />
 
         <div class="remember">
-          <input type="checkbox" id="remember" />
+          <input type="checkbox" id="remember" [(ngModel)]="rememberMe"/>
           <label for="remember">Lưu tài khoản</label>
           <a class="dangki" href="register">
             Đăng kí tài khoản
@@ -35,17 +35,6 @@
           <span>
               OR
           </span>
-        </div>
-        <div class="social-login">
-          <button class="google-btn">
-            <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
-            Google
-          </button>
-
-          <button class="apple-btn">
-            <img src="https://img.icons8.com/ios-filled/16/000000/mac-os.png" />
-            Apple
-          </button>
         </div>
         <button class="back">
           <a href="trang-chu">Quay lại trang chủ</a>

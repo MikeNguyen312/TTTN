@@ -3,16 +3,15 @@ import { Router, RouterLink } from '@angular/router';
 import { KhoService } from '../../../services/kho.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tao-phieu-kho',
-  imports:[FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './taophieukho.component.html',
   styleUrls: ['./taophieukho.component.css']
 })
 export class TaoPhieuKhoComponent {
-
-  thongBaoThanhCong = false;
 
   formModel = {
     idPhieuKho: '',
@@ -27,16 +26,26 @@ export class TaoPhieuKhoComponent {
   taoPhieuKho(): void {
     this.phieuKhoService.taoPhieuKho(this.formModel).subscribe({
       next: () => {
-        this.thongBaoThanhCong = true;
         setTimeout(() => {
-          this.thongBaoThanhCong = false;
+          Swal.fire({
+            title: 'Thành công!',
+            text: 'Phiếu kho mới đã được tạo.',
+            icon: 'success',
+            confirmButtonText: 'Đóng'
+          });
           this.router.navigate(['/admin/kho']); // Chuyển về trang danh sách Phiếu Kho
         }, 2000);
       },
-      error: err => {
+      error: (err) => {
         console.error('Error creating Phieu Kho:', err);
-        alert('Trùng ID');
+        Swal.fire({
+          title: 'Lỗi!',
+          text: 'Trùng ID hoặc dữ liệu không hợp lệ.',
+          icon: 'error',
+          confirmButtonText: 'Thử lại'
+        });
       }
     });
   }
+
 }

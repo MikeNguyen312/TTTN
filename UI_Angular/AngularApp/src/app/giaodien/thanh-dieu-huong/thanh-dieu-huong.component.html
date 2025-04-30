@@ -6,12 +6,11 @@
   <div class="logo">
     <a href="trang-chu"><img src="assets/logo.png" alt="Logo" /></a>
   </div>
-  
-  <!-- Thêm nút menu mobile -->
+
   <div class="menu-toggle" (click)="toggleMenu()">
     <i class="bi bi-list"></i>
   </div>
-  
+
   <nav [class.active]="isMenuActive">
     <a href="#">Trang Chủ</a>
     <a routerLink="/giaynam">Giày Nam</a>
@@ -19,21 +18,58 @@
     <a href="khuyenmai">Khuyến Mãi</a>
     <a href="lien-he">Liên Hệ</a>
   </nav>
-  
+
   <div class="icons">
     <div class="search-container">
-      <input 
-        type="text" 
-        placeholder="Tìm kiếm..." 
-        class="search-input" 
+      <input
+        type="text"
+        placeholder="Tìm kiếm..."
+        class="search-input"
         [(ngModel)]="searchQuery"
         (keyup.enter)="performSearch()"
         [class.active]="isSearchActive"
       />
       <i class="bi bi-search" (click)="toggleSearch()"></i>
     </div>
-    <a href="giohang"><i class="bi bi-bag"></i></a>
-    <a href="login"><i class="bi bi-person"></i></a>
+
+    <div
+      class="cart-icon"
+      (mouseenter)="toggleCartPreview(true)"
+      (mouseleave)="toggleCartPreview(false)"
+    >
+      <div class="cart-icon-container" (click)="navigateToCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" *ngIf="cartItemCount > 0">{{
+          cartItemCount
+        }}</span>
+      </div>
+
+      <div class="cart-preview" *ngIf="showCartPreview && cartItems.length > 0">
+        <div
+          *ngFor="let item of cartItems; let i = index"
+          class="cart-item-preview"
+        >
+          <img [src]="item.image" alt="{{ item.name }}" width="50" />
+          <p>{{ item.name }}</p>
+          <p>{{ item.price | number }}đ x {{ item.quantity }}</p>
+          <button class="delete-btn" (click)="removeFromCart(i)">🗑️</button>
+        </div>
+      </div>
+    </div>
+
+    <a href="login" *ngIf="!isLoggedIn()"><i class="bi bi-person"></i></a>
+
+    <div class="user-menu" *ngIf="isLoggedIn()">
+      <div class="user-dropdown" (click)="toggleUserMenu()">
+        <i class="bi bi-person"></i>
+        <span>{{ getUsername() }}</span>
+        <i class="bi bi-caret-down-fill"></i>
+      </div>
+      <div class="dropdown-content" [class.show]="isUserMenuOpen">
+        <a routerLink="/thongtin">Thông tin tài khoản</a>
+        <a (click)="logout()">Đăng xuất</a>
+      </div>
+    </div>
   </div>
 </header>
 <div>

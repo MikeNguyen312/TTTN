@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service'; 
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-chi-tiet-san-pham',
   imports: [CommonModule],
   templateUrl: './chi-tiet-san-pham.component.html',
-  styleUrl: './chi-tiet-san-pham.component.css'
+  styleUrls: ['./chi-tiet-san-pham.component.css']
 })
 export class ChiTietSanPhamComponent implements OnInit {
   product: any;
@@ -15,7 +16,8 @@ export class ChiTietSanPhamComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private sanphamService: ProductService
+    private sanphamService: ProductService,
+    private cartService: CartService 
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,21 @@ export class ChiTietSanPhamComponent implements OnInit {
           this.loading = false;
         }
       });
+    }
+  }
+
+  addToCart(): void {
+    if (this.product && this.product.soLuongTon > 0) {
+      this.cartService.addToCart({
+        id: this.product.idSanPham, 
+        image: 'data:image/jpeg;base64,' + this.product.anh,
+        name: this.product.ten,
+        price: this.product.gia,
+        quantity: 1  
+      });
+      console.log('Sản phẩm đã được thêm vào giỏ hàng');
+    } else {
+      console.log('Sản phẩm hết hàng');
     }
   }
 }
