@@ -2,13 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
-
+import { CartService } from '../../services/cart.service';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-trang-chu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './trang-chu.component.html',
-  styleUrls: ['./trang-chu.component.css']
+  styleUrls: ['./trang-chu.component.css'],
 })
 export class TrangChuComponent implements OnInit, OnDestroy {
   slides = [
@@ -16,30 +17,34 @@ export class TrangChuComponent implements OnInit, OnDestroy {
       image: 'assets/slide/anh1.jpg',
       subtitle: 'Sneaker Collection',
       title: 'GOOD SHOES TAKE YOU GOOD PLACES',
-      buttonText: 'Shop Now'
+      buttonText: 'Shop Now',
     },
     {
       image: 'assets/slide/anh2.jpg',
       subtitle: 'New Arrivals',
       title: 'STEP INTO STYLE',
-      buttonText: 'Explore Now'
+      buttonText: 'Explore Now',
     },
     {
       image: 'assets/slide/anh3.jpg',
       subtitle: 'Limited Edition',
       title: 'GRAB YOURS TODAY',
-      buttonText: 'Buy Now'
-    }
+      buttonText: 'Buy Now',
+    },
   ];
 
   currentSlide = 0;
   slideInterval: any;
-
+  selectedSortOption: string = '';
   sanPhams: any[] = [];
   giayNam: any[] = [];
   giayNu: any[] = [];
 
-  constructor(private sanphamService: ProductService, private router: Router) {}
+  constructor(
+    private sanphamService: ProductService,
+    private router: Router,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.loadSanPhams();
@@ -51,11 +56,13 @@ export class TrangChuComponent implements OnInit, OnDestroy {
   }
 
   prevSlide(): void {
-    this.currentSlide = (this.currentSlide === 0) ? this.slides.length - 1 : this.currentSlide - 1;
+    this.currentSlide =
+      this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
   }
 
   nextSlide(): void {
-    this.currentSlide = (this.currentSlide === this.slides.length - 1) ? 0 : this.currentSlide + 1;
+    this.currentSlide =
+      this.currentSlide === this.slides.length - 1 ? 0 : this.currentSlide + 1;
   }
 
   goToSlide(index: number): void {
@@ -65,7 +72,7 @@ export class TrangChuComponent implements OnInit, OnDestroy {
   startAutoSlide(): void {
     this.slideInterval = setInterval(() => {
       this.nextSlide();
-    }, 3000); // Chuyển slide mỗi 3 giây
+    }, 3000);
   }
 
   stopAutoSlide(): void {
@@ -74,32 +81,68 @@ export class TrangChuComponent implements OnInit, OnDestroy {
     }
   }
 
+  sortProducts(): void {
+    switch(this.selectedSortOption) {
+      case 'price-asc':
+        this.sanPhams.sort((a, b) => a.gia - b.gia);
+        break;
+      case 'price-desc':
+        this.sanPhams.sort((a, b) => b.gia - a.gia);
+        break;
+      case 'name-asc':
+        this.sanPhams.sort((a, b) => a.ten.localeCompare(b.ten));
+        break;
+      case 'name-desc':
+        this.sanPhams.sort((a, b) => b.ten.localeCompare(a.ten));
+        break;
+      default:
+        this.loadSanPhams();
+    }
+  }
+
   loadSanPhams(): void {
     this.sanphamService.getSanPhams().subscribe({
       next: (data) => {
-        this.sanPhams = Array.isArray(data) ? data : [];
-
-        // Lọc giày nam
+        console.log('Dữ liệu sản phẩm từ API:', data);
+  
+        this.sanPhams = data.map((sp: any) => {
+          const soLuong = Number(sp.soLuong ?? 0); 
+          return {
+            ...sp,
+            soLuongTon: soLuong,
+            hetHang: soLuong <= 0,
+          };
+        });
         this.giayNam = this.sanPhams
           .filter((sp) => sp.loai === 'Nam')
           .map((sp) => ({
             ...sp,
             soLuongTon: sp.soLuong || 0,
-            hetHang: (sp.soLuong || 0) <= 0
+            hetHang: (sp.soLuong || 0) <= 0,
           }));
 
-        // Lọc giày nữ
         this.giayNu = this.sanPhams
           .filter((sp) => sp.loai === 'Nữ')
           .map((sp) => ({
             ...sp,
             soLuongTon: sp.soLuong || 0,
-            hetHang: (sp.soLuong || 0) <= 0
+            hetHang: (sp.soLuong || 0) <= 0,
           }));
       },
       error: (err) => {
         console.error('Lỗi khi tải danh sách sản phẩm:', err);
-      }
+      },
+    });
+  }
+  
+
+  addToCart(sp: any): void {
+    this.cartService.addToCart({
+      id: sp.idSanPham,
+      image: 'data:image/jpeg;base64,' + sp.anh,
+      name: sp.ten,
+      price: sp.gia,
+      quantity: 1,
     });
   }
 

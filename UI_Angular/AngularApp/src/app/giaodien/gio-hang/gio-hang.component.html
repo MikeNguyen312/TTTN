@@ -1,36 +1,39 @@
-<div class="cart-container">
+<div class="cart-wrapper">
+  <h2 class="cart-title">Giỏ Hàng Của Bạn</h2>
   <div class="cart-content">
-    <div class="cart-items">
-        <h2>Giỏ Hàng Của Bạn</h2>
+    <div class="cart-left">
       <div class="cart-item" *ngFor="let item of cartItems; index as i">
-        <img [src]="item.image" alt="{{item.name}}" class="product-img" />
-        <div class="product-details">
-          <h4>{{ item.name }}</h4>
+        <img class="product-img" [src]="item.image" alt="{{ item.name }}" />
+        <div class="product-info">
+          <p class="product-name">{{ item.name }}</p>
         </div>
-
-        <div class="quantity">
-          <button (click)="decreaseQty(i)">−</button>
+        <div class="product-qty">
           <span>{{ item.quantity }}</span>
-          <button (click)="increaseQty(i)">+</button>
+          <div class="qty-controls">
+            <button (click)="increaseQty(i)">▲</button>
+            <button (click)="decreaseQty(i)">▼</button>
+          </div>
         </div>
-
-
-        <button class="remove-btn" (click)="removeItem(i)">🗑️</button>
+        <div class="product-price">{{ item.price * item.quantity | number }}đ</div>
+        <button class="delete-btn" (click)="removeItem(i)">🗑️</button>
       </div>
     </div>
 
-    <div class="order-summary">
-      <h4>Chi Tiết Đơn Hàng</h4>
+    <div class="cart-right">
+      <h4 class="summary-title">Chi Tiết Đơn Hàng</h4>
       <div class="summary-row">
         <span>Giá</span>
+        <span>{{ subtotal | number }}đ</span>
       </div>
       <div class="summary-row">
         <span>Giao Hàng</span>
+        <span>{{ shippingFee | number }}đ</span>
       </div>
       <div class="summary-row total">
         <span>Tổng Tiền</span>
+        <span>{{ total | number }}đ</span>
       </div>
-      <button class="checkout-btn" (click)="checkout()">Thanh Toán</button>
+      <button class="checkout-btn">Đặt Hàng</button>
     </div>
   </div>
 </div>

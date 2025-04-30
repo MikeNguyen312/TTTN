@@ -15,4 +15,10 @@ export class ProductService {
   getSanPhamById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
+  addSanPham(sanPham: any):Observable<any>{
+    return this.http.post<any>(`${this.apiUrl}/TaoSanPham`,sanPham);
+  }
+  deleteSanPham(id: string):Observable<any>{
+    return this.http.delete<any>(`${this.apiUrl}/XoaSanPham?id=${id}`);
+  }
 }

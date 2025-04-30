@@ -143,6 +143,56 @@
         }
       }
     },
+    "/api/KhachHang/CapNhatTrangThai": {
+      "put": {
+        "tags": [
+          "KhachHang"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trangThai",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/KhachHang/{id}": {
+      "get": {
+        "tags": [
+          "KhachHang"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Kho": {
       "get": {
         "tags": [
@@ -289,6 +339,42 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Kho/CapNhatSoLuongMoiNhat": {
+      "post": {
+        "tags": [
+          "Kho"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Kho/ThongKe": {
+      "get": {
+        "tags": [
+          "Kho"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/KhuyenMai": {
+      "get": {
+        "tags": [
+          "KhuyenMai"
+        ],
         "responses": {
           "200": {
             "description": "Success"

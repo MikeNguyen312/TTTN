@@ -21,6 +21,22 @@
   },
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
+    "Method": "GetKhachHangById",
+    "RelativePath": "api/KhachHang/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
     "Method": "CapNhatTrangThai",
     "RelativePath": "api/KhachHang/CapNhatTrangThai",
     "HttpMethod": "PUT",
@@ -256,6 +272,38 @@
         "Name": "id",
         "Type": "System.String",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.SanPhamController",
+    "Method": "themSanPham",
+    "RelativePath": "api/SanPham/TaoSanPham",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "x",
+        "Type": "WebAPI_ForTTTN.MyModels.CSanPham",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.SanPhamController",
+    "Method": "xoaSanPham",
+    "RelativePath": "api/SanPham/XoaSanPham",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
