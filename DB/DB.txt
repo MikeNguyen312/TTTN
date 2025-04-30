@@ -1,0 +1,6 @@
+Public: 44.204.183.65
+Private: 172.31.86.92
+
+Port = 1433
+
+version DB: 2022 MSSQL
