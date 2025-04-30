@@ -17,6 +17,179 @@
         }
       }
     },
+    "/api/DonHang/ChitietDonHang": {
+      "get": {
+        "tags": [
+          "DonHang"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/DonHang/TaoDonHang": {
+      "post": {
+        "tags": [
+          "DonHang"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CDonHang"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CDonHang"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CDonHang"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/DonHang/{idDonHang}/SanPham": {
+      "post": {
+        "tags": [
+          "DonHang"
+        ],
+        "parameters": [
+          {
+            "name": "idDonHang",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CCTDH"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CCTDH"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CCTDH"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/DonHang/XoaDonHang": {
+      "delete": {
+        "tags": [
+          "DonHang"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/DonHang/XoaID": {
+      "delete": {
+        "tags": [
+          "DonHang"
+        ],
+        "parameters": [
+          {
+            "name": "idDonHang",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idSanPham",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/DonHang/TaoDonHangVaChiTiet": {
+      "post": {
+        "tags": [
+          "DonHang"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DonHangVaChiTietModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DonHangVaChiTietModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DonHangVaChiTietModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/KhachHang": {
       "get": {
         "tags": [
@@ -382,6 +555,148 @@
         }
       }
     },
+    "/api/KhuyenMai/LayDSKM/{id}": {
+      "get": {
+        "tags": [
+          "KhuyenMai"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/KhuyenMai/TaoKM": {
+      "post": {
+        "tags": [
+          "KhuyenMai"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CKhuyenMai"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CKhuyenMai"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CKhuyenMai"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/KhuyenMai/XoaKMID": {
+      "delete": {
+        "tags": [
+          "KhuyenMai"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/KhuyenMai/XoaSanPhamKM": {
+      "delete": {
+        "tags": [
+          "KhuyenMai"
+        ],
+        "parameters": [
+          {
+            "name": "idKhuyenMai",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idSanPham",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/KhuyenMai/ThemSanPhamKM": {
+      "post": {
+        "tags": [
+          "KhuyenMai"
+        ],
+        "parameters": [
+          {
+            "name": "idKhuyenMai",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CSanPhamKhuyenMai"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CSanPhamKhuyenMai"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CSanPhamKhuyenMai"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/SanPham": {
       "get": {
         "tags": [
@@ -415,10 +730,126 @@
           }
         }
       }
+    },
+    "/api/SanPham/TaoSanPham": {
+      "post": {
+        "tags": [
+          "SanPham"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CSanPham"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CSanPham"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CSanPham"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/SanPham/XoaSanPham": {
+      "delete": {
+        "tags": [
+          "SanPham"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "CCTDH": {
+        "type": "object",
+        "properties": {
+          "idDonHang": {
+            "type": "string",
+            "nullable": true
+          },
+          "idSanPham": {
+            "type": "string",
+            "nullable": true
+          },
+          "soLuong": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gia": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "idKhachHang": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CDonHang": {
+        "type": "object",
+        "properties": {
+          "idDonHang": {
+            "type": "string",
+            "nullable": true
+          },
+          "idKhachHang": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngayDatHang": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "tongTien": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "diaChi": {
+            "type": "string",
+            "nullable": true
+          },
+          "phuongThuc": {
+            "type": "string",
+            "nullable": true
+          },
+          "trangthaiDh": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CKhachHang": {
         "type": "object",
         "properties": {
@@ -445,6 +876,21 @@
         },
         "additionalProperties": false
       },
+      "CKhuyenMai": {
+        "type": "object",
+        "properties": {
+          "idKhuyenMai": {
+            "type": "string",
+            "nullable": true
+          },
+          "phanTramKm": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CPhieuKho": {
         "type": "object",
         "properties": {
@@ -455,6 +901,65 @@
           "ngayLap": {
             "type": "string",
             "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CSanPham": {
+        "type": "object",
+        "properties": {
+          "idSanPham": {
+            "type": "string",
+            "nullable": true
+          },
+          "ten": {
+            "type": "string",
+            "nullable": true
+          },
+          "gia": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "hang": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "thongTin": {
+            "type": "string",
+            "nullable": true
+          },
+          "loai": {
+            "type": "string",
+            "nullable": true
+          },
+          "anh": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "soLuong": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CSanPhamKhuyenMai": {
+        "type": "object",
+        "properties": {
+          "idKhuyenMai": {
+            "type": "string",
+            "nullable": true
+          },
+          "idSanPham": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -484,6 +989,68 @@
           "soLuongNhap": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChiTietModel": {
+        "type": "object",
+        "properties": {
+          "idSanPham": {
+            "type": "string",
+            "nullable": true
+          },
+          "soLuong": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gia": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DonHangVaChiTietModel": {
+        "type": "object",
+        "properties": {
+          "idDonHang": {
+            "type": "string",
+            "nullable": true
+          },
+          "idKhachHang": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngayDatHang": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "tongTien": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "diaChi": {
+            "type": "string",
+            "nullable": true
+          },
+          "phuongThuc": {
+            "type": "string",
+            "nullable": true
+          },
+          "trangthaiDh": {
+            "type": "string",
+            "nullable": true
+          },
+          "chiTiet": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChiTietModel"
+            },
             "nullable": true
           }
         },

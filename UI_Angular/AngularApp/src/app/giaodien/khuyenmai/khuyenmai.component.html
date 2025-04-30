@@ -1,1 +1,58 @@
-<p>khuyenmai works!</p>
+<div class="item-container">
+    <div class="header-section">
+      <div class="text-content">Sản Phẩm Khuyến Mãi</div>
+      <div class="sort-section">
+        <select [(ngModel)]="selectedSortOption" (change)="sortProducts()">
+          <option value="">Sắp xếp theo</option>
+          <option value="price-asc">Giá: Thấp đến cao</option>
+          <option value="price-desc">Giá: Cao đến thấp</option>
+          <option value="name-asc">Tên: A-Z</option>
+          <option value="name-desc">Tên: Z-A</option>
+        </select>
+      </div>
+      <div class="promotion-select">
+        <select [(ngModel)]="selectedKhuyenMai" (change)="loadSanPhamsKhuyenMai()">
+          <option value="">Tất cả khuyến mãi</option>
+          <option *ngFor="let km of danhSachKhuyenMai" [value]="km.idkhuyenmai">
+            Khuyến mãi: {{km.phanTram}}%
+          </option>
+        </select>
+      </div>
+    </div>
+  
+    <div class="product-list">
+      <div class="product-card" *ngFor="let sp of sanPhamKhuyenMai" (click)="viewProductDetail(sp.idSanPham)">
+        <div class="discount-badge">-{{getDiscount(sp)}}%</div>
+        <img
+          *ngIf="sp.anh"
+          [src]="'data:image/jpeg;base64,' + sp.anh"
+          alt="{{ sp.ten }}"
+          class="product-image"
+        />
+        
+        <h3>{{ sp.ten }}</h3>
+        <p>Hãng: {{ sp.hang }}</p>
+        <p>Size: {{ sp.size }}</p>
+        <div class="price-container">
+          <span class="original-price">{{ sp.giaGoc | currency : "VND" }}</span>
+          <span class="sale-price">{{ sp.gia | currency : "VND" }}</span>
+        </div>
+        
+        <p *ngIf="sp.soLuongTon === 0" class="out-of-stock">
+          Hết hàng
+        </p>
+        
+        <button
+          *ngIf="sp.soLuongTon > 0"
+          (click)="addToCart(sp); $event.stopPropagation()"
+          class="add-to-cart-button"
+        >
+          Thêm vào giỏ
+        </button>
+      </div>
+    </div>
+    
+    <div class="no-products" *ngIf="sanPhamKhuyenMai.length === 0">
+      <p>Không có sản phẩm khuyến mãi nào.</p>
+    </div>
+  </div>

@@ -64,6 +64,22 @@
   },
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.DonHangController",
+    "Method": "TaoDonHangVaChiTiet",
+    "RelativePath": "api/DonHang/TaoDonHangVaChiTiet",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "WebAPI_ForTTTN.Models.DonHang\u002BDonHangVaChiTietModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.DonHangController",
     "Method": "xoaDonHang",
     "RelativePath": "api/DonHang/XoaDonHang",
     "HttpMethod": "DELETE",

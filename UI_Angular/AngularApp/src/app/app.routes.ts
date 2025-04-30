@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -24,12 +25,18 @@ import { FormSuakhComponent } from './pages/khachhang/form-suakh/form-suakh.comp
 import { FormThemkhComponent } from './pages/khachhang/form-themkh/form-themkh.component';
 import { ThongTinComponent } from './giaodien/thong-tin/thong-tin.component';
 import { ThemsanphamComponent } from './pages/product/themsanpham/themsanpham.component';
-
+import { ThanhtoanComponent } from './giaodien/thanhtoan/thanhtoan.component';
+import { ChitietCtkmComponent } from './pages/ctkm/chitiet-ctkm/chitiet-ctkm.component';
+import { TaoKMComponent } from './pages/ctkm/tao-km/tao-km.component';
 export const routes: Routes = [
     {
         path: '',
         redirectTo: 'trang-chu',
         pathMatch: 'full',
+    },
+    {
+        path: 'thanh-toan',
+        component: ThanhtoanComponent
     },
     {
         path: 'login',
@@ -142,7 +149,7 @@ export const routes: Routes = [
 ];
 
     @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes), HttpClientModule],
     exports: [RouterModule]
     })
     export class AppRoutingModule { }

@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class TaoKMComponent {
   khuyenMai = {
     idkhuyenmai: '',
-    PhanTramKm: 0, // Dữ liệu mặc định
+    PhanTramKm: 0,
   };
 
   constructor(private khuyenmaiService: KhuyenmaiService) {}

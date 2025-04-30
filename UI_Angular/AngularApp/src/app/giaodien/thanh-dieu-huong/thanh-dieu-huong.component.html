@@ -49,7 +49,14 @@
           *ngFor="let item of cartItems; let i = index"
           class="cart-item-preview"
         >
-          <img [src]="item.image" alt="{{ item.name }}" width="50" />
+          <img
+            [src]="item.image"
+            alt="{{ item.name }}"
+            *ngIf="showCartPreview && cartItems.length > 0"
+            (mouseenter)="toggleCartPreview(true)"
+            (mouseleave)="toggleCartPreview(false)"
+            width="50"
+          />
           <p>{{ item.name }}</p>
           <p>{{ item.price | number }}đ x {{ item.quantity }}</p>
           <button class="delete-btn" (click)="removeFromCart(i)">🗑️</button>

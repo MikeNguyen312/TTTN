@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class DonhangService {
-  private apiUrl = 'https://localhost:7141/api/DonHang'; // Replace with your actual API URL
+  private apiUrl = 'https://localhost:7141/api/DonHang';
 
   constructor(private http: HttpClient) { }
 

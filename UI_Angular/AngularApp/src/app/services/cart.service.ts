@@ -13,77 +13,97 @@ export interface CartItem {
   providedIn: 'root',
 })
 export class CartService {
+  private storageKey = 'cartItems';
   private cartItemsSubject = new BehaviorSubject<CartItem[]>([]);
   cartItems$ = this.cartItemsSubject.asObservable();
-  private storageKey = 'cartItems';
+
   private cartItemCountSubject = new BehaviorSubject<number>(0);
   cartItemCount$ = this.cartItemCountSubject.asObservable();
-  get cartItems(): CartItem[] {
-    return this.cartItemsSubject.value;
-  }
+
   constructor() {
     const storedItems = localStorage.getItem(this.storageKey);
     if (storedItems) {
-      const parsedItems = JSON.parse(storedItems);
+      const parsedItems = JSON.parse(storedItems) as CartItem[];
       this.cartItemsSubject.next(parsedItems);
-      this.updateCartState();
+      this.updateCartCount(parsedItems);
     }
   }
-  private updateCartState() {
-    const items = this.cartItems;
+
+  private saveCart(items: CartItem[]) {
+    localStorage.setItem(this.storageKey, JSON.stringify(items));
+    this.cartItemsSubject.next(items);
+    this.updateCartCount(items);
+  }
+
+  private updateCartCount(items: CartItem[]) {
     const totalCount = items.reduce((sum, item) => sum + item.quantity, 0);
     this.cartItemCountSubject.next(totalCount);
-    this.cartItemsSubject.next([...items]);
-    localStorage.setItem(this.storageKey, JSON.stringify(items));
+  }
+
+  get cartItems(): CartItem[] {
+    return this.cartItemsSubject.value;
   }
 
   addToCart(item: CartItem) {
-    const existing = this.cartItems.find((i) => i.id === item.id);
+    const items = [...this.cartItems];
+    const index = items.findIndex((i) => i.id === item.id);
 
-    if (existing) {
-      existing.quantity += item.quantity;
+    if (index !== -1) {
+      items[index].quantity += item.quantity;
     } else {
-      this.cartItems.push(item);
+      items.push(item);
     }
-    this.updateCartState();
-    this.cartItemsSubject.next([...this.cartItems]);
+
+    this.saveCart(items);
   }
 
   increaseQuantity(index: number) {
     const items = [...this.cartItems];
-    items[index].quantity += 1;
-    this.cartItemsSubject.next(items);
-    this.updateCartState();
+    if (items[index]) {
+      items[index].quantity += 1;
+      this.saveCart(items);
+    }
   }
-  
+
   decreaseQuantity(index: number) {
     const items = [...this.cartItems];
-    if (items[index].quantity > 1) {
-      items[index].quantity -= 1;
-    } else {
-      items.splice(index, 1);
+    if (items[index]) {
+      if (items[index].quantity > 1) {
+        items[index].quantity -= 1;
+      } else {
+        items.splice(index, 1);
+      }
+      this.saveCart(items);
     }
-    this.cartItemsSubject.next(items);
-    this.updateCartState();
-  }
-
-  removeItem(index: number) {
-    const items = [...this.cartItems];
-    items.splice(index, 1);
-    this.cartItemsSubject.next(items);
-    this.updateCartState();
-  }
-
-  clearCart() {
-    this.cartItemsSubject.next([]);
-    this.cartItemCountSubject.next(0);
-    localStorage.removeItem(this.storageKey);
   }
 
   updateItemQuantity(index: number, quantity: number) {
     const items = [...this.cartItems];
-    items[index].quantity = quantity;
-    this.cartItemsSubject.next(items);
-    this.updateCartState();
+    if (items[index]) {
+      items[index].quantity = quantity;
+      this.saveCart(items);
+    }
+  }
+
+  removeItem(index: number) {
+    const items = [...this.cartItems];
+    if (index >= 0 && index < items.length) {
+      items.splice(index, 1);
+      this.saveCart(items);
+    }
+  }
+
+  clearCart() {
+    localStorage.removeItem(this.storageKey);
+    this.cartItemsSubject.next([]);
+    this.cartItemCountSubject.next(0);
+  }
+
+  getGioHang(): CartItem[] {
+    return [...this.cartItems];
+  }
+
+  getTongTien(): number {
+    return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   }
 }

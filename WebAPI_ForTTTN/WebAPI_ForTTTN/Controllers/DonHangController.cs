@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebAPI_ForTTTN.Models;
 using WebAPI_ForTTTN.MyModels;
+using static WebAPI_ForTTTN.Models.DonHang;
 
 namespace WebAPI_ForTTTN.Controllers
 {
@@ -61,11 +62,6 @@ namespace WebAPI_ForTTTN.Controllers
             try
             {
                 DBThuctapContext db = new DBThuctapContext();
-                var kt = db.DonHangs.Where(a => a.IdDonHang == x.IdDonHang);
-                if(kt != null)
-                {
-                    return NotFound("trung ID");
-                }
                 db.DonHangs.Add(CDonHang.chuyendoi(x));
                 db.SaveChanges();
                 return Ok();
@@ -144,5 +140,52 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+        [HttpPost("TaoDonHangVaChiTiet")]
+        public IActionResult TaoDonHangVaChiTiet(DonHangVaChiTietModel model)
+        {
+            try
+            {
+                DBThuctapContext db = new DBThuctapContext();
+                using var tran = db.Database.BeginTransaction();
+
+                var donHang = new DonHang
+                {
+                    IdDonHang = model.IdDonHang,
+                    IdKhachHang = model.IdKhachHang,
+                    NgayDatHang = model.NgayDatHang,
+                    TongTien = model.TongTien,
+                    DiaChi = model.DiaChi,
+                    PhuongThuc = model.PhuongThuc,
+                    TrangthaiDh = model.TrangthaiDh
+                };
+
+                db.DonHangs.Add(donHang);
+
+                foreach (var ct in model.ChiTiet)
+                {
+                    var sanPham = db.SanPhams.Find(ct.IdSanPham);
+                    if (sanPham == null)
+                        return NotFound("Sản phẩm không tồn tại: " + ct.IdSanPham);
+                    sanPham.SoLuong -= ct.SoLuong ?? 0;
+
+                    db.ChiTietDonHangs.Add(new ChiTietDonHang
+                    {
+                        IdDonHang = model.IdDonHang,
+                        IdSanPham = ct.IdSanPham,
+                        SoLuong = ct.SoLuong,
+                        Gia = ct.Gia
+                    });
+                }
+
+                db.SaveChanges();
+                tran.Commit();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Lỗi khi tạo đơn hàng và chi tiết: " + ex.Message);
+            }
+        }
+
     }
 }

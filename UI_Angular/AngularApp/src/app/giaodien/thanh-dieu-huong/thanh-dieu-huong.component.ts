@@ -1,4 +1,3 @@
-// thanh-dieu-huong.component.ts
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
@@ -21,6 +20,7 @@ import { CartService, CartItem } from '../../services/cart.service';
   styleUrls: ['./thanh-dieu-huong.component.css'],
 })
 export class ThanhDieuHuongComponent {
+  hideCartTimeout: any = null;
   isSearchActive: boolean = false;
   searchQuery: string = '';
   isMenuActive: boolean = false;
@@ -48,13 +48,30 @@ export class ThanhDieuHuongComponent {
       this.cartItemCount = count;
     });
   }
+  ngOnDestroy() {
+    if (this.hideCartTimeout) {
+      clearTimeout(this.hideCartTimeout);
+    }
+  }
   get totalQuantity(): number {
     return this.cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }
 
   toggleCartPreview(show: boolean) {
-    this.showCartPreview = show;
+    if (this.hideCartTimeout) {
+      clearTimeout(this.hideCartTimeout);
+      this.hideCartTimeout = null;
+    }
+  
+    if (show) {
+      this.showCartPreview = true;
+    } else {
+      this.hideCartTimeout = setTimeout(() => {
+        this.showCartPreview = false;
+      }, 500);
+    }
   }
+  
   removeFromCart(index: number) {
     this.cartService.removeItem(index);
   }
