@@ -1,29 +1,38 @@
 <div class="container">
-    <h2>Sửa Khách Hàng</h2>
-    <form (ngSubmit)="capNhatKhachHang()">
-      <div class="mb-3">
-        <label>Họ tên</label>
-        <input type="text" class="form-control" [(ngModel)]="khachHang.hoTen" required name="hoTen" #hoTen="ngModel">
-        <div *ngIf="hoTen.invalid && hoTen.touched" class="text-danger">
-            Vui lòng nhập lại họ Tên.
-        </div>
+  <h2>Sửa Khách Hàng</h2>
+  <form #form="ngForm" (ngSubmit)="capNhatKhachHang()" class="form-group">
+
+    <div class="form-row">
+      <label>Họ Tên</label>
+      <input type="text" [(ngModel)]="khachHang.hoTen" name="hoTen" required #hoTen="ngModel">
+      <div class="error-msg" *ngIf="hoTen.invalid && hoTen.touched">
+        Vui lòng nhập họ tên
       </div>
-      <div class="mb-3">
-        <label>Số điện thoại</label>
-        <input type="text" class="form-control" [(ngModel)]="khachHang.soDienThoai" required name="soDienThoai">
+    </div>
+
+    <div class="form-row">
+      <label>Số Điện Thoại</label>
+      <input type="text" [(ngModel)]="khachHang.soDienThoai" name="soDienThoai" required minlength="9" #soDt="ngModel">
+      <div class="error-msg" *ngIf="soDt.invalid && soDt.touched">
+        Số điện thoại không hợp lệ (tối thiểu 9 số)
       </div>
-      <div class="mb-3">
-        <label>Email</label>
-        <input type="email" class="form-control" [(ngModel)]="khachHang.email" required name="email">
-      </div>
-      <div class="mb-3">
-        <label>Password</label>
-        <input type="text" class="form-control" [(ngModel)]="khachHang.passwords" required name="passwords">
-      </div>
-      <button class="btn btn-primary" type="submit">Cập nhật</button>
-      <button class="btn btn-info" style="margin-left: 30px;" [routerLink]="['/admin/khachhang']">Trở lại</button>
-    </form>
-  </div>
-  <div *ngIf="thongBaoThanhCong" class="thong-bao-thanh-cong">
-    ✅ Sửa khách hàng thành công!
-  </div>
+    </div>
+
+    <div class="form-row">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="khachHang.email" name="email" required email #email="ngModel">
+      <div class="error-msg" *ngIf="email.invalid && email.touched">Email không hợp lệ</div>
+    </div>
+
+    <div class="form-row">
+      <label>Mật Khẩu</label>
+      <input type="text" [(ngModel)]="khachHang.passwords" name="passwords" required minlength="6" #pass="ngModel">
+      <div class="error-msg" *ngIf="pass.invalid && pass.touched">Mật khẩu tối thiểu 6 ký tự</div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="btn-submit" [disabled]="form.invalid">Cập nhật</button>
+      <button type="button" class="btn-back" [routerLink]="['/admin/khachhang']">Trở lại</button>
+    </div>
+  </form>
+</div>

@@ -28,6 +28,7 @@ import { ThemsanphamComponent } from './pages/product/themsanpham/themsanpham.co
 import { ThanhtoanComponent } from './giaodien/thanhtoan/thanhtoan.component';
 import { ChitietCtkmComponent } from './pages/ctkm/chitiet-ctkm/chitiet-ctkm.component';
 import { TaoKMComponent } from './pages/ctkm/tao-km/tao-km.component';
+import { ChitietdhComponent } from './pages/donhang/chitietdh/chitietdh.component';
 export const routes: Routes = [
     {
         path: '',
@@ -88,6 +89,10 @@ export const routes: Routes = [
             {
                 path: 'donhang',
                 component: DonhangComponent
+            },
+            {
+                path: 'donhang/chitietdh/:id',
+                component:ChitietdhComponent
             },
             {
                 path: 'khachhang',

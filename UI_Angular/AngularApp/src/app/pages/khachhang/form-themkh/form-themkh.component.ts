@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { KhachhangService } from '../../../services/khachhang.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-themkh',
@@ -32,11 +33,11 @@ export class FormThemkhComponent {
     
     this.khachHangService.addKhachHang(this.khachHang).subscribe({
       next: () => {
-        alert('Thêm thành công!');
+        Swal.fire('Thành công!', 'Khách hàng mới đã được tạo.', 'success');
         this.router.navigate(['/admin/khachhang']);
       },
       error: () => {
-        alert('Thêm thất bại!');
+          Swal.fire('Thất bại!', 'Tạo Thất Bại.', 'success');
       }
     });
   }

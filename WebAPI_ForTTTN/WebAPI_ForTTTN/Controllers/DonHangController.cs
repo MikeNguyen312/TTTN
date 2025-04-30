@@ -22,7 +22,10 @@ namespace WebAPI_ForTTTN.Controllers
                         IdDonHang = t.IdDonHang,
                         IdKhachHang = t.IdKhachHang,
                         NgayDatHang = t.NgayDatHang,
-                        TongTien = t.TongTien
+                        TongTien = t.TongTien,
+                        DiaChi = t.DiaChi,
+                        PhuongThuc = t.PhuongThuc,
+                        TrangThaiDh = t.TrangthaiDh
                     }).ToList()
                     );
             }
@@ -32,13 +35,13 @@ namespace WebAPI_ForTTTN.Controllers
             }
         }
         [HttpGet("ChitietDonHang")]
-        public IActionResult getCTDH (string id)
+        public IActionResult getCTDH(string id)
         {
             try
             {
-                DBThuctapContext db = new DBThuctapContext ();
+                DBThuctapContext db = new DBThuctapContext();
                 var a = db.DonHangs.Find(id);
-                if(a == null) { return NotFound("Khong tim thay ID don hang"); }
+                if (a == null) { return NotFound("Khong tim thay ID don hang"); }
                 var kq = db.ChiTietDonHangs
                     .Where(sp => sp.IdDonHang == id)
                     .Select(sp => new CCTDH
@@ -49,7 +52,7 @@ namespace WebAPI_ForTTTN.Controllers
                         Gia = sp.Gia,
                         IdKhachHang = sp.IdDonHangNavigation.IdKhachHang
                     }).ToList();
-                return Ok( kq );
+                return Ok(kq);
             }
             catch
             {
@@ -62,6 +65,13 @@ namespace WebAPI_ForTTTN.Controllers
             try
             {
                 DBThuctapContext db = new DBThuctapContext();
+
+
+                var khachHang = db.KhachHangs.FirstOrDefault(kh => kh.IdKhachHang == x.IdKhachHang);
+                if (khachHang == null)
+                {
+                    return BadRequest("Khách hàng không tồn tại.");
+                }
                 db.DonHangs.Add(CDonHang.chuyendoi(x));
                 db.SaveChanges();
                 return Ok();
@@ -109,10 +119,11 @@ namespace WebAPI_ForTTTN.Controllers
             {
                 DBThuctapContext db = new DBThuctapContext();
                 var a = db.DonHangs.Find(id);
-                if(a == null) { return NotFound(); }
+                if (a == null) { return NotFound(); }
                 var kt = db.ChiTietDonHangs.Any(sp => sp.IdDonHang == id);
                 if (kt) { return BadRequest("Con SanPham"); }
                 db.DonHangs.Remove(a);
+                db.SaveChanges();
                 return Ok();
             }
             catch
@@ -140,6 +151,28 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+        [HttpPut("capnhatDH/{id}")]
+        public IActionResult CapNhatDonHang(string id, DonHang donhang)
+        {
+            try
+            {
+                var db = new DBThuctapContext();
+                var existing = db.DonHangs.Find(id);
+                if (existing == null)
+                    return NotFound("Không tìm thấy đơn hàng");
+
+                existing.TrangthaiDh = donhang.TrangthaiDh;
+                // nếu cần cập nhật thêm thông tin, gán vào đây
+
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest("Có lỗi xảy ra khi cập nhật");
+            }
+        }
+
         [HttpPost("TaoDonHangVaChiTiet")]
         public IActionResult TaoDonHangVaChiTiet(DonHangVaChiTietModel model)
         {
@@ -186,6 +219,5 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest("Lỗi khi tạo đơn hàng và chi tiết: " + ex.Message);
             }
         }
-
     }
 }

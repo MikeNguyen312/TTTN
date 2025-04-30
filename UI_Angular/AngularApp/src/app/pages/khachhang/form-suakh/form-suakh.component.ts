@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { KhachhangService } from '../../../services/khachhang.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-suakh',
@@ -31,7 +32,7 @@ export class FormSuakhComponent implements OnInit {
     this.khachHangService.udpateKhachhang(this.khachHang).subscribe(() => {
       this.thongBaoThanhCong = true;
         setTimeout(() => {
-          this.thongBaoThanhCong = false;
+          Swal.fire('Thành công!', 'Cập nhật khách hàng.', 'success');
           this.router.navigate(['/admin/khachhang']); // Chuyển về trang danh sách Phiếu Kho
         }, 2000);
     });

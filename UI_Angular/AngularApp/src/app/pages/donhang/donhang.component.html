@@ -1,28 +1,76 @@
 <div class="container">
-    <div class="d-flex justify-content-between align-items-center">
-      <h2>Danh Sách Đơn Hàng</h2>
-      <button class="btn btn-success">Tạo Đơn</button>
-    </div>
-    <table class="table table-bordered">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="page-title">📦 Danh Sách Đơn Hàng</h2>
+    <button class="btn btn-success create-btn" [routerLink]="['/admin/donhang/taodon']">➕ Tạo Đơn</button>
+  </div>
+
+  <!-- Bảng 1 -->
+  <div class="order-section">
+    <h4 class="section-title text-success">✅ Đã xác nhận - Chờ thanh toán</h4>
+    <table class="order-table table table-bordered">
       <thead>
         <tr>
-          <th>ID_DonHang</th>
-          <th>ID_KhachHang</th>
-          <th>Ngày Đặt Hàng</th>
+          <th>ID Đơn Hàng</th>
+          <th>ID Khách Hàng</th>
+          <th>Ngày Đặt</th>
           <th>Tổng Tiền</th>
+          <th>Địa Chỉ</th>
+          <th>Phương Thức</th>
+          <th>Trạng Thái</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let dh of donHangs">
+        <tr *ngFor="let dh of donHangsDaXacNhan"  >
           <td>{{ dh.idDonHang }}</td>
           <td>{{ dh.idKhachHang }}</td>
-          <td>{{ dh.ngayDatHang| date:'dd/MM/yyyy' }}</td>
-          <td>{{ dh.tongTien }}</td>
-          <td class="abc">
-            <button class="btn btn-danger">Delete</button>
+          <td>{{ dh.ngayDatHang | date:'dd/MM/yyyy' }}</td>
+          <td>{{ dh.tongTien | number:'1.0-0' }}₫</td>
+          <td>{{ dh.diaChi }}</td>
+          <td>{{ dh.phuongThuc }}</td>
+          <td>{{ dh.trangThaiDh }}</td>
+          <td class="text-center d-flex flex-column gap-1 align-items-center">
+            <button class="btn btn-info w-100" (click)="xacNhanDonHang(dh); $event.stopPropagation()">✅ Xác nhận</button>
+            <button class="btn btn-danger w-100" (click)="deleteDonHang(dh.idDonHang)">🗑 Xoá</button>
+            <button class="btn btn-primary w-100 mt-2" [routerLink]="['/admin/donhang/chitietdh', dh.idDonHang]">🔍 Chi Tiết</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <!-- Bảng 2 -->
+  <div class="order-section">
+    <h4 class="section-title text-warning">⏳ Chờ xác nhận - Chưa thanh toán</h4>
+    <table class="order-table table table-bordered">
+      <thead>
+        <tr>
+          <th>ID Đơn Hàng</th>
+          <th>ID Khách Hàng</th>
+          <th>Ngày Đặt</th>
+          <th>Tổng Tiền</th>
+          <th>Địa Chỉ</th>
+          <th>Phương Thức</th>
+          <th>Trạng Thái</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dh of donHangsChoXacNhan" >
+          <td>{{ dh.idDonHang }}</td>
+          <td>{{ dh.idKhachHang }}</td>
+          <td>{{ dh.ngayDatHang | date:'dd/MM/yyyy' }}</td>
+          <td>{{ dh.tongTien | number:'1.0-0' }}₫</td>
+          <td>{{ dh.diaChi }}</td>
+          <td>{{ dh.phuongThuc }}</td>
+          <td>{{ dh.trangThaiDh }}</td>
+          <td class="text-center d-flex flex-column gap-1 align-items-center">
+            <button class="btn btn-info w-100" (click)="xacNhanDonHang(dh); $event.stopPropagation()">✅ Xác nhận</button>
+            <button class="btn btn-danger w-100" (click)="deleteDonHang(dh.idDonHang)">🗑 Xoá</button>
+            <button class="btn btn-primary w-100 mt-2" [routerLink]="['/admin/donhang/chitietdh', dh.idDonHang]">🔍 Chi Tiết</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

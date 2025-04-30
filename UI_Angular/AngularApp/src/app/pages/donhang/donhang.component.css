@@ -1,70 +1,80 @@
-/* Table Styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #00b7eb;
-    color: white;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  /* Enhanced Hover Effect for Rows */
-  tr {
-    transition: all 0.3s ease;
-  }
-  
-  tr:hover {
-    background-color: #e6f3fa; /* Light blue tint for hover */
-    transform: scale(1.01); /* Slight scale-up effect */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    cursor: pointer; /* Indicates interactivity */
-  }
-  
-  /* Ensure the Delete button stays aligned */
-  .abc {
-    text-align: center;
-  }
-  
-  .btn-danger {
-    padding: 6px 12px;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-danger:hover {
-    background-color: #c82333;
-    transform: scale(1.1);
-  }
-  
-  /* Other Styling */
-  h2 {
-    font-size: 1.75rem;
-    color: #333;
-  }
-  
-  .btn-success {
-    padding: 10px 20px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-success:hover {
-    background-color: #28a745;
-    transform: scale(1.05);
-  }
+.container {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.create-btn {
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+
+.order-table th, .order-table td {
+  padding: 12px 14px;
+  border: 1px solid #dee2e6;
+  text-align: left;
+}
+
+.order-table th {
+  background-color: #17a2b8;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.order-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.order-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.order-table tbody tr:hover {
+  background-color: #e6f3fa;
+  transform: scale(1.005);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.btn-danger {
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: scale(1.08);
+}
+.order-table {
+  table-layout: fixed;
+}
+
+.order-table th, .order-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
