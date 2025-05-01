@@ -117,20 +117,43 @@ namespace WebAPI_ForTTTN.Controllers
         {
             try
             {
-                DBThuctapContext db = new DBThuctapContext();
-                var a = db.DonHangs.Find(id);
-                if (a == null) { return NotFound(); }
-                var kt = db.ChiTietDonHangs.Any(sp => sp.IdDonHang == id);
-                if (kt) { return BadRequest("Con SanPham"); }
-                db.DonHangs.Remove(a);
+                using var db = new DBThuctapContext();
+
+                var donHang = db.DonHangs.Find(id);
+                if (donHang == null)
+                    return NotFound("Không tìm thấy đơn hàng.");
+
+                // Lấy danh sách chi tiết đơn hàng
+                var chiTietDonHang = db.ChiTietDonHangs.Where(ct => ct.IdDonHang == id).ToList();
+
+                // ✅ Cộng lại số lượng sản phẩm
+                foreach (var ct in chiTietDonHang)
+                {
+                    var sp = db.SanPhams.Find(ct.IdSanPham);
+                    if (sp != null)
+                    {
+                        sp.SoLuong += ct.SoLuong ?? 0;
+                    }
+                }
+
+                // ✅ Xoá chi tiết đơn hàng nếu có
+                if (chiTietDonHang.Any())
+                {
+                    db.ChiTietDonHangs.RemoveRange(chiTietDonHang);
+                }
+
+                // ✅ Xoá đơn hàng
+                db.DonHangs.Remove(donHang);
+
                 db.SaveChanges();
                 return Ok();
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest("Lỗi khi xoá đơn hàng: " + ex.Message);
             }
         }
+
         [HttpDelete("XoaID")]
         public IActionResult xoaItemtrongDH(string idDonHang, string idSanPham)
         {

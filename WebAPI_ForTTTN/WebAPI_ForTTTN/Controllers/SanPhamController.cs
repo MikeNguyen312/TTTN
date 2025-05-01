@@ -109,5 +109,43 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPut("SuaSanPham/{id}")]
+        public IActionResult SuaSanPham(string id, [FromBody] CSanPham spMoi)
+        {
+            try
+            {
+                using var db = new DBThuctapContext();
+
+                var sp = db.SanPhams.Find(id);
+                if (sp == null)
+                {
+                    return NotFound("Không tìm thấy sản phẩm.");
+                }
+
+                // Cập nhật thông tin sản phẩm
+                sp.Ten = spMoi.Ten;
+                sp.Gia = spMoi.Gia;
+                sp.Hang = spMoi.Hang;
+                sp.Size = spMoi.Size;
+                sp.ThongTin = spMoi.ThongTin;
+                sp.Loai = spMoi.Loai;
+                sp.SoLuong = spMoi.SoLuong;
+
+                // Nếu ảnh có giá trị thì cập nhật (tránh ghi đè null lên ảnh hiện tại)
+                if (spMoi.Anh != null && spMoi.Anh.Length > 0)
+                {
+                    sp.Anh = spMoi.Anh;
+                }
+
+                db.SaveChanges();
+                return Ok("");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Lỗi khi cập nhật sản phẩm: " + ex.Message);
+            }
+        }
+
     }
 }
