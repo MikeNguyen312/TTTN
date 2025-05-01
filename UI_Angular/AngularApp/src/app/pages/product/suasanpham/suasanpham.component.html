@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Sửa Sản Phẩm</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-2">
+        <label>Tên</label>
+        <input formControlName="ten" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>Giá</label>
+        <input type="number" formControlName="gia" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>Hãng</label>
+        <input formControlName="hang" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>Size</label>
+        <input formControlName="size" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>Thông tin</label>
+        <textarea formControlName="thongtin" class="form-control"></textarea>
+      </div>
+      <div class="mb-2">
+        <label>Loại</label>
+        <input formControlName="loai" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>Số lượng</label>
+        <input type="number" formControlName="soLuong" class="form-control" />
+      </div>
+      <div class="button-form">
+        <button type="submit" class="btn btn-info" [routerLink]="['/admin/product']" style="margin-right:50% ;">Trở lại</button>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+      </div>
+    </form>
+  </div>
+  

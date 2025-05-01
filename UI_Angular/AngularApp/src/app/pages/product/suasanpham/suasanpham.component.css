@@ -1,0 +1,86 @@
+/* suasanpham.component.css */
+
+/* Đặt một số margin và padding cho form */
+form {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Các label cho input fields */
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Các trường nhập liệu */
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Đặt kiểu cho nút Submit */
+  button {
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Hover effect cho nút */
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Các thông báo lỗi */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Thêm padding cho các phần tử input ở cuối form */
+  .form-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+  
+  /* Các mục tiêu của bảng ảnh */
+  img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  /* Các phần tử form-group */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    form {
+      width: 90%;
+    }
+  }
+.button-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}  
