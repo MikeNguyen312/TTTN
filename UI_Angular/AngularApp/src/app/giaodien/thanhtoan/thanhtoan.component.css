@@ -1,11 +1,67 @@
-.checkout-container {
+header {
   display: flex;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 20px;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
+header .logo img {
+  width: 100px;
+  height: auto;
+}
+
+header nav a {
+  margin-right: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+}
+
+header nav a.active {
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+header nav a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+header .icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+header .icons i {
+  font-size: 1.25rem;
+  color: #4b4b4b;
+  cursor: pointer;
+}
+
+header .icons i:hover {
+  color: #000;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+
+.checkout-container {
+    display: flex;
+    padding: 3%;
+    gap: 30px;
+  }
 .checkout-left {
   width: 60%;
   padding: 20px;
@@ -135,21 +191,33 @@
   background: #0056b3;
 }
 
-.cart-item {
-  display: flex;
+.cart-summary {
   margin-bottom: 20px;
 }
 
+
+.cart-item {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .cart-item img {
-  margin-right: 20px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.item-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
 }
 
-.item-info h4 {
-  margin: 0;
-  font-size: 16px;
-}
-
-.item-info p {
-  margin: 5px 0;
-  font-size: 14px;
+.item-info p, .item-info h4 {
+  margin: 0 10px 0 0;
 }

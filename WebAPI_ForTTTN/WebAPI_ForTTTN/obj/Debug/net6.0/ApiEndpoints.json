@@ -185,6 +185,38 @@
   },
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
+    "Method": "GetDonHangVaChiTiet",
+    "RelativePath": "api/KhachHang/don-hang-chi-tiet/{idKhachHang}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idKhachHang",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
+    "Method": "GetDonHangByKhachHang",
+    "RelativePath": "api/KhachHang/donhang",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idKhachHang",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhachHangController",
     "Method": "EditKhachHang",
     "RelativePath": "api/KhachHang/SuaKhachHang",
     "HttpMethod": "PUT",

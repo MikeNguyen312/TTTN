@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using WebAPI_ForTTTN.Models;
 using WebAPI_ForTTTN.MyModels;
@@ -182,6 +183,68 @@ namespace WebAPI_ForTTTN.Controllers
             public string Email { get; set; }
             public string Password { get; set; }
         }
+        [HttpGet("donhang")]
+        public IActionResult GetDonHangByKhachHang(string idKhachHang)
+        {
+            try
+            {
+                DBThuctapContext db = new DBThuctapContext();
+                var donHangs = db.DonHangs
+                    .Where(d => d.IdKhachHang == idKhachHang)
+                    .Select(d => new
+                    {
+                        d.IdDonHang,
+                        d.NgayDatHang,
+                        d.TongTien,
+                        d.DiaChi,
+                        d.PhuongThuc,
+                        d.TrangthaiDh
+                    }).ToList();
 
+                return Ok(donHangs);
+            }
+            catch
+            {
+                return BadRequest("Lỗi khi truy vấn đơn hàng");
+            }
+        }
+
+        [HttpGet("don-hang-chi-tiet/{idKhachHang}")]
+        public IActionResult GetDonHangVaChiTiet(string idKhachHang)
+        {
+            try
+            {
+                var db = new DBThuctapContext();
+
+                var donHangs = db.DonHangs
+                    .Include(dh => dh.ChiTietDonHangs)
+                        .ThenInclude(ct => ct.IdSanPhamNavigation)
+                    .Where(dh => dh.IdKhachHang == idKhachHang)
+                    .Select(dh => new KhachHang.DonHangVaChiTietModelKH
+                    {
+                        IdDonHang = dh.IdDonHang,
+                        IdKhachHang = dh.IdKhachHang,
+                        NgayDatHang = dh.NgayDatHang ?? DateTime.MinValue,
+                        TongTien = dh.TongTien ?? 0,
+                        DiaChi = dh.DiaChi,
+                        PhuongThuc = dh.PhuongThuc,
+                        TrangthaiDh = dh.TrangthaiDh,
+                        ChiTiet = dh.ChiTietDonHangs.Select(ct => new KhachHang.ChiTietModelKH
+                        {
+                            IdSanPham = ct.IdSanPham,
+                            TenSanPham = ct.IdSanPhamNavigation != null ? ct.IdSanPhamNavigation.Ten : "",
+                            SoLuong = ct.SoLuong ?? 0,
+                            Gia = ct.Gia ?? 0
+                        }).ToList()
+                    })
+                    .ToList();
+
+                return Ok(donHangs);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Lỗi khi lấy đơn hàng chi tiết", error = ex.Message });
+            }
+        }
     }
 }

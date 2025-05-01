@@ -42,4 +42,12 @@ export class KhachhangService {
     return this.http.get<any>(`${this.apiUrl}/${idKhachHang}`);
   }
 
+  getDonHang(idKhachHang: string): Observable<any[]> {
+    return this.http.get<any[]>(`https://localhost:7141/api/KhachHang/donhang?idKhachHang=${idKhachHang}`);
+  }
+
+  // Lấy chi tiết đơn hàng theo idKhachHang
+  getDonHangVaChiTiet(idKhachHang: string): Observable<any[]> {
+    return this.http.get<any[]>(`https://localhost:7141/api/KhachHang/don-hang-chi-tiet/${idKhachHang}`);
+  }
 }
