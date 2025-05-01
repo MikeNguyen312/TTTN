@@ -6,93 +6,94 @@
   <div class="logo">
     <a href="trang-chu"><img src="assets/logo.png" alt="Logo" /></a>
   </div>
-
-  <!-- <div class="menu-toggle" (click)="toggleMenu()">
-    <i class="bi bi-list"></i>
-  </div>
-
-  
-
-    <div
-      class="cart-icon"
-      (mouseenter)="toggleCartPreview(true)"
-      (mouseleave)="toggleCartPreview(false)"
-    >
-      <div class="cart-icon-container" (click)="navigateToCart()">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-badge" *ngIf="cartItemCount > 0">{{
-          cartItemCount
-        }}</span>
-      </div>
-
-      <div class="cart-preview" *ngIf="showCartPreview && cartItems.length > 0">
-        <div
-          *ngFor="let item of cartItems; let i = index"
-          class="cart-item-preview"
-        >
-          <img [src]="item.image" alt="{{ item.name }}" width="50" />
-          <p>{{ item.name }}</p>
-          <p>{{ item.price | number }}đ x {{ item.quantity }}</p>
-          <button class="delete-btn" (click)="removeFromCart(i)">🗑️</button>
-        </div>
-      </div>
-    </div>
-
-    <a href="login" *ngIf="!isLoggedIn()"><i class="bi bi-person"></i></a>
-
-    <div class="user-menu" *ngIf="isLoggedIn()">
-      <div class="user-dropdown" (click)="toggleUserMenu()">
-        <i class="bi bi-person"></i>
-        <span>{{ getUsername() }}</span>
-        <i class="bi bi-caret-down-fill"></i>
-      </div>
-      <div class="dropdown-content" [class.show]="isUserMenuOpen">
-        <a routerLink="/thongtin">Thông tin tài khoản</a>
-        <a (click)="logout()">Đăng xuất</a>
-      </div>
-    </div>
-  </div> -->
 </header>
 
 <div class="checkout-container">
-    <div class="checkout-left">
-      <h2>Thông tin khách hàng</h2>
-      <form (ngSubmit)="datHang()">
-        <div class="form-group">
-          <label>Họ tên:</label>
-          <input type="text" [(ngModel)]="hoTen" name="hoTen" required />
+  <div class="checkout-left">
+    <h2>Thông tin khách hàng</h2>
+    <form (ngSubmit)="datHang()">
+      <div class="form-group">
+        <label>Họ tên:</label>
+        <input type="text" [(ngModel)]="hoTen" name="hoTen" required placeholder="Tên của bạn" />
+      </div>
+
+      <div class="form-group">
+        <label>Số điện thoại:</label>
+        <input type="text" [(ngModel)]="soDienThoai" name="soDienThoai" required placeholder="Số điện thoại" />
+      </div>
+
+      <div class="form-group">
+        <label>Địa chỉ:</label>
+        <input type="text" [(ngModel)]="diaChi" name="diaChi" required placeholder="Địa chỉ giao hàng" />
+      </div>
+
+      <div class="form-group">
+        <label>Phương thức thanh toán:</label>
+        <select [(ngModel)]="phuongThucThanhToan" name="phuongThucThanhToan" required>
+          <option value="Visa">Visa</option>
+          <option value="Momo">Momo</option>
+          <option value="Offline">Thanh Toán Khi Nhận Hàng</option>
+        </select>
+      </div>
+
+      <!-- Stripe Payment Form -->
+      <div class="payment-section" *ngIf="phuongThucThanhToan === 'Visa'">
+        <!-- Apple Pay Placeholder (Optional) -->
+        <button type="button" class="apple-pay-btn">
+          <i class="bi bi-apple"></i> Apple Pay
+        </button>
+        <div class="or-divider">
+          <span>Hoặc thanh toán bằng thẻ</span>
         </div>
-  
+
         <div class="form-group">
-          <label>Địa chỉ:</label>
-          <input type="text" [(ngModel)]="diaChi" name="diaChi" required />
+          <label>Email:</label>
+          <input type="email" [(ngModel)]="email" name="email" required placeholder="email@example.com" />
         </div>
-  
+
         <div class="form-group">
-          <label>Phương thức thanh toán:</label>
-          <select [(ngModel)]="phuongThucThanhToan" name="phuongThucThanhToan" required>
-            <option value="Visa">Visa</option>
-            <option value="Momo">Momo</option>
-            <option value="Offline">Thanh Toán Khi Nhận Hàng</option>
+          <label>Thông tin thẻ:</label>
+          <div id="card-element" class="card-element"></div>
+          <div *ngIf="paymentError" class="error-message">{{ paymentError }}</div>
+        </div>
+
+        <div class="form-group">
+          <label>Tên trên thẻ:</label>
+          <input type="text" [(ngModel)]="nameOnCard" name="nameOnCard" required placeholder="Tên trên thẻ" />
+        </div>
+
+        <div class="form-group">
+          <label>Quốc gia hoặc khu vực:</label>
+          <select [(ngModel)]="country" name="country" required>
+            <option value="US">United States</option>
+            <option value="VN">Vietnam</option>
+            <!-- Add more countries as needed -->
           </select>
         </div>
-  
-        <button type="submit" class="btn-pay">Thanh toán</button>
-      </form>
-    </div>
-  
-    <div class="checkout-right">
-      <h3>Chi Tiết Đơn Hàng</h3>
-      <p>Tổng Tiền: {{ tongTien | currency:'VND' }}</p>
-  
-      <div *ngFor="let item of gioHang" class="cart-item">
-        <img [src]="item.image" width="80" />
-        <div class="item-info">
-          <h4>{{ item.name }}</h4>
-          <p>Số Lượng: {{ item.quantity }}</p>
-          <p>Giá: {{ item.price | currency:'VND' }}</p>
+
+        <div class="form-group">
+          <label>Mã bưu điện (ZIP):</label>
+          <input type="text" [(ngModel)]="zip" name="zip" required placeholder="ZIP" />
         </div>
+      </div>
+
+      <button type="submit" class="pay-btn" [disabled]="!hoTen || !soDienThoai || !diaChi || !email || (phuongThucThanhToan === 'Visa' && (!nameOnCard || !country || !zip))">
+        Thanh toán {{ tongTien | currency:'VND' }}
+      </button>
+    </form>
+  </div>
+
+  <div class="checkout-right">
+    <h3>Chi Tiết Đơn Hàng</h3>
+    <p>Tổng Tiền: {{ tongTien | currency:'VND' }}</p>
+
+    <div *ngFor="let item of gioHang" class="cart-item">
+      <img [src]="item.image" width="80" />
+      <div class="item-info">
+        <h4>{{ item.name }}</h4>
+        <p>Số Lượng: {{ item.quantity }}</p>
+        <p>Giá: {{ item.price | currency:'VND' }}</p>
       </div>
     </div>
   </div>
-  
+</div>

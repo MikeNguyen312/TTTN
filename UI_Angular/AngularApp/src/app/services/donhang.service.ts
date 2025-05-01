@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -27,5 +27,10 @@ export class DonhangService {
   deleteDonHang(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/XoaDonHang?id=${id}`);
   }
-  
+  xoaSanPhamDonHang(idDonHang: string, idSanPham: string): Observable<any> {
+    const params = new HttpParams()
+      .set('idDonHang', idDonHang)
+      .set('idSanPham', idSanPham);
+    return this.http.delete(`${this.apiUrl}/XoaID`, { params });
+  }
 }

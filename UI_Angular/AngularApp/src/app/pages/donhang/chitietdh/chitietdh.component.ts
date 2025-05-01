@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DonhangService } from '../../../services/donhang.service';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chitietdh',
@@ -36,4 +37,28 @@ export class ChitietdhComponent implements OnInit {
       }
     });
   }
+  xoaSanPhamDonHang(idSanPham: string): void {
+    Swal.fire({
+      title: 'Xác nhận xoá?',
+      text: 'Bạn có chắc chắn muốn xoá sản phẩm này khỏi đơn hàng?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Xoá',
+      cancelButtonText: 'Huỷ'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.donhangService.xoaSanPhamDonHang(this.idDonHang, idSanPham).subscribe({
+          next: () => {
+            Swal.fire('Đã xoá!', 'Sản phẩm đã được xoá khỏi đơn hàng.', 'success');
+            this.chiTietDonHang = this.chiTietDonHang.filter((item: any) => item.idSanPham !== idSanPham);
+          },
+          error: (err) => {
+            Swal.fire('Lỗi!', err.error || 'Không thể xoá sản phẩm.', 'error');
+          }
+        });
+      }
+    });
+  }
+  
+  
 }

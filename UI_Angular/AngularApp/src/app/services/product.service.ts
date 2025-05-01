@@ -21,4 +21,8 @@ export class ProductService {
   deleteSanPham(id: string):Observable<any>{
     return this.http.delete<any>(`${this.apiUrl}/XoaSanPham?id=${id}`);
   }
+  updateSanPham(id: string, sp: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/SuaSanPham/${id}`, sp);
+  }
+  
 }

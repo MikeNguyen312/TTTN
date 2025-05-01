@@ -29,8 +29,9 @@
         <td>
           <img *ngIf="sp.anh" [src]="'data:image/png;base64,' + sp.anh" width="100" height="100" alt="Ảnh sản phẩm" />
         </td>
-        <td class="abc">
-          <button class="btn btn-danger" (click)="xoaSanPham(sp.idSanPham)">Xoá</button>
+        <td class="abc d-flex flex-column gap-1">
+          <button class="btn btn-danger mb-1" (click)="xoaSanPham(sp.idSanPham)">Xoá</button>
+          <button class="btn btn-warning" [routerLink]="['/admin/product/suasanpham', sp.idSanPham]">Sửa</button>
         </td>
       </tr>
     </tbody>

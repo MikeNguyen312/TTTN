@@ -174,4 +174,28 @@
   text-align: center;        /* Căn giữa nội dung */
 }
 
-
+.social-login {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  }
+  
+  .social-login button {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #000000;
+  background-color: white;
+  }
+  
+  .google-btn img,
+  .apple-btn img {
+  width: 16px;
+  height: 16px;
+  }

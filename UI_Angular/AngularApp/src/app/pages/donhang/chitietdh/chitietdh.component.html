@@ -12,6 +12,7 @@
           <th>ID Sản Phẩm</th>
           <th>Số Lượng</th>
           <th>Giá</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,9 @@
           <td>{{ ct.idSanPham }}</td>
           <td>{{ ct.soLuong }}</td>
           <td>{{ ct.gia | currency:'VND' }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="xoaSanPhamDonHang(ct.idSanPham)">Xoá</button>
+          </td>
         </tr>
       </tbody>
     </table>
