@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { CartService, CartItem } from '../../services/cart.service';
+import { SearchService } from '../../services/search.service';
 @Component({
   selector: 'app-thanh-dieu-huong',
   standalone: true,
@@ -28,12 +29,22 @@ export class ThanhDieuHuongComponent {
   cartItems: CartItem[] = [];
   cartItemCount = 0;
   showCartPreview = false;
-  constructor(private router: Router, private cartService: CartService) {
+  constructor(private router: Router,private searchService: SearchService ,private cartService: CartService) {
     this.cartService.cartItems$.subscribe((items) => {
       this.cartItems = items;
     });
   }
-
+  performSearch() {
+    const trimmedQuery = this.searchQuery.trim();
+    if (trimmedQuery) {
+      const currentUrl = this.router.url.split('?')[0]; 
+      this.router.navigate([currentUrl], {
+        queryParams: { search: trimmedQuery },
+        queryParamsHandling: 'merge',
+      });
+    }
+  }
+  
   toggleSearch() {
     this.isSearchActive = !this.isSearchActive;
     if (this.isSearchActive) {
@@ -43,6 +54,8 @@ export class ThanhDieuHuongComponent {
       }, 0);
     }
   }
+
+  
   ngOnInit(): void {
     this.cartService.cartItemCount$.subscribe((count) => {
       this.cartItemCount = count;
@@ -101,10 +114,5 @@ export class ThanhDieuHuongComponent {
     localStorage.removeItem('userId');
     this.isUserMenuOpen = false;
     this.router.navigate(['/trang-chu']);
-  }
-  performSearch() {
-    if (this.searchQuery.trim()) {
-      console.log('Searching for:', this.searchQuery);
-    }
   }
 }

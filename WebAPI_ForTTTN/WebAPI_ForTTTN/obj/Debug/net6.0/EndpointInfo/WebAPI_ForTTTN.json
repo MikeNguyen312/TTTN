@@ -781,6 +781,18 @@
         }
       }
     },
+    "/api/KhuyenMai/SanPhamKhuyenMai": {
+      "get": {
+        "tags": [
+          "KhuyenMai"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Payments/create-payment-intent": {
       "post": {
         "tags": [

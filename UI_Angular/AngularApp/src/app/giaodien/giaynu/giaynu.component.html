@@ -1,42 +1,62 @@
 <div class="item-container">
   <div class="header-section">
     <div class="text-content">Giày Nữ</div>
-    <div class="sort-section">
-      <select [(ngModel)]="selectedSortOption" (change)="sortProducts()">
-        <option value="">Sắp xếp theo</option>
-        <option value="price-asc">Giá: Thấp đến cao</option>
-        <option value="price-desc">Giá: Cao đến thấp</option>
-        <option value="name-asc">Tên: A-Z</option>
-        <option value="name-desc">Tên: Z-A</option>
-      </select>
+    <div class="filter-section">
+      <div class="sort-section">
+        <select [(ngModel)]="selectedSortOption" (change)="sortProducts()">
+          <option value="">Sắp xếp theo</option>
+          <option value="price-asc">Giá: Thấp đến cao</option>
+          <option value="price-desc">Giá: Cao đến thấp</option>
+          <option value="name-asc">Tên: A-Z</option>
+          <option value="name-desc">Tên: Z-A</option>
+          <option value="discount-desc">Giảm giá: Cao nhất</option>
+        </select>
+      </div>
     </div>
   </div>
-  <div class="product-list">
+
+  <div class="loading-spinner" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Đang tải sản phẩm...</p>
+  </div>
+  
+  <div *ngIf="giayNu.length === 0 && !isLoading">
+    <p>Không tìm thấy sản phẩm phù hợp với "{{ searchQuery }}"</p>
+  </div>
+
+  <div class="product-list" *ngIf="!isLoading">
     <div class="product-card" *ngFor="let sp of giayNu" (click)="viewProductDetail(sp.idSanPham)">
+      <div class="discount-badge" *ngIf="sp.phanTramGiam">-{{ getDiscount(sp) }}%</div>
+      
       <img
         *ngIf="sp.anh"
         [src]="'data:image/jpeg;base64,' + sp.anh"
         alt="{{ sp.ten }}"
         class="product-image"
       />
-
-      <h3>
-        {{ sp.ten }}
-      </h3>
-      <p>Hãng: {{ sp.hang }}</p>
-      <p>Giá: {{ sp.gia | currency : "VND" }}</p>
-
-      <p *ngIf="sp.soLuongTon === 0" style="color: red; font-weight: bold">
-        Hết hàng
-      </p>
-
-      <button
-        *ngIf="sp.soLuongTon > 0"
-        (click)="addToCart(sp); $event.stopPropagation()"
-        class="add-to-cart-button"
-      >
-        Thêm vào giỏ
-      </button>
+      
+      <div class="product-info">
+        <h3 class="product-name">{{ sp.ten }}</h3>
+        <p class="product-brand">Hãng: {{ sp.hang || 'Adidas' }}</p>
+        
+        <div class="price-display">
+          <span class="original-price" *ngIf="sp.phanTramGiam">{{ sp.giaGoc | currency : "VND" : "" }} ₫</span>
+          <span class="sale-price">{{ sp.gia | currency : "VND" : "" }} ₫</span>
+        </div>
+        
+        <button
+          *ngIf="sp.soLuongTon > 0"
+          (click)="addToCart(sp); $event.stopPropagation()"
+          class="add-to-cart-button"
+        >
+          Thêm vào giỏ
+        </button>
+        <p *ngIf="sp.soLuongTon === 0" class="out-of-stock">Hết hàng</p>
+      </div>
     </div>
+  </div>
+
+  <div class="no-products" *ngIf="!isLoading && giayNu.length === 0">
+    <p>Không có sản phẩm giày nữ nào.</p>
   </div>
 </div>

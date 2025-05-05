@@ -25,7 +25,16 @@
     </span>
   </div>
 </div>
-<div class="item-container">
+
+<div *ngIf="isLoading" class="loading-indicator">
+  <p>Đang tải sản phẩm...</p>
+</div>
+
+<div *ngIf="searchQuery && sanPhams.length === 0 && !isLoading" class="not-found">
+  <p>Không tìm thấy sản phẩm phù hợp với "{{ searchQuery }}"</p>
+</div>
+
+<div class="item-container" *ngIf="!isLoading">
   <div class="header-section">
     <div class="text-content">Sản Phẩm</div>
     <div class="sort-section">
@@ -35,11 +44,15 @@
         <option value="price-desc">Giá: Cao đến thấp</option>
         <option value="name-asc">Tên: A-Z</option>
         <option value="name-desc">Tên: Z-A</option>
+        <option value="discount-desc">Giảm giá: Cao đến thấp</option>
       </select>
     </div>
   </div>
   <div class="product-list">
     <div class="product-card" *ngFor="let sp of sanPhams" (click)="viewProductDetail(sp.idSanPham)">
+      <div class="discount-badge" *ngIf="sp.phanTramGiam && sp.phanTramGiam > 0">
+        -{{sp.phanTramGiam}}%
+      </div>
       <img
         *ngIf="sp.anh"
         [src]="'data:image/jpeg;base64,' + sp.anh"
@@ -50,7 +63,15 @@
         {{ sp.ten }}
       </h3>
       <p>Hãng: {{ sp.hang }}</p>
-      <p>Giá: {{ sp.gia | currency: 'VND' }}</p>
+      
+      <div class="price-container">
+        <p *ngIf="sp.phanTramGiam && sp.phanTramGiam > 0" class="original-price">
+          {{ sp.giaGoc | currency: 'VND' }}
+        </p>
+        <p class="current-price" [ngClass]="{'discounted': sp.phanTramGiam && sp.phanTramGiam > 0}">
+          {{ sp.gia | currency: 'VND' }}
+        </p>
+      </div>
     
       <ng-container *ngIf="sp.soLuongTon > 0; else hetHang">
         <button
@@ -61,16 +82,19 @@
         </button>
       </ng-container>
       <ng-template #hetHang>
-        <p style="color: red; font-weight: bold">Hết hàng</p>
+        <p class="out-of-stock">Hết hàng</p>
       </ng-template>
     </div>    
   </div>
 </div>
 
-<div class="item-container">
+<div class="item-container" *ngIf="!isLoading">
   <div class="text-content">Giày Nam</div>
   <div class="product-list">
     <div class="product-card" *ngFor="let sp of giayNam" (click)="viewProductDetail(sp.idSanPham)">
+      <div class="discount-badge" *ngIf="sp.phanTramGiam && sp.phanTramGiam > 0">
+        -{{sp.phanTramGiam}}%
+      </div>
       <img
         *ngIf="sp.anh"
         [src]="'data:image/jpeg;base64,' + sp.anh"
@@ -82,27 +106,38 @@
         {{ sp.ten }}
       </h3>
       <p>Hãng: {{ sp.hang }}</p>
-      <p>Giá: {{ sp.gia | currency : "VND" }}</p>
+      
+      <div class="price-container">
+        <p *ngIf="sp.phanTramGiam && sp.phanTramGiam > 0" class="original-price">
+          {{ sp.giaGoc | currency: 'VND' }}
+        </p>
+        <p class="current-price" [ngClass]="{'discounted': sp.phanTramGiam && sp.phanTramGiam > 0}">
+          {{ sp.gia | currency: 'VND' }}
+        </p>
+      </div>
 
-      <p *ngIf="sp.soLuongTon === 0" style="color: red; font-weight: bold">
-        Hết hàng
-      </p>
-
-      <button
-        *ngIf="sp.soLuongTon > 0"
-        (click)="addToCart(sp); $event.stopPropagation()"
-        class="add-to-cart-button"
-      >
-        Thêm vào giỏ
-      </button>
+      <ng-container *ngIf="sp.soLuongTon > 0; else hetHangNam">
+        <button
+          (click)="addToCart(sp); $event.stopPropagation()"
+          class="add-to-cart-button"
+        >
+          Thêm vào giỏ
+        </button>
+      </ng-container>
+      <ng-template #hetHangNam>
+        <p class="out-of-stock">Hết hàng</p>
+      </ng-template>
     </div>
   </div>
 </div>
 
-<div class="item-container">
+<div class="item-container" *ngIf="!isLoading">
   <div class="text-content">Giày Nữ</div>
   <div class="product-list">
     <div class="product-card" *ngFor="let sp of giayNu" (click)="viewProductDetail(sp.idSanPham)">
+      <div class="discount-badge" *ngIf="sp.phanTramGiam && sp.phanTramGiam > 0">
+        -{{sp.phanTramGiam}}%
+      </div>
       <img
         *ngIf="sp.anh"
         [src]="'data:image/jpeg;base64,' + sp.anh"
@@ -114,19 +149,27 @@
         {{ sp.ten }}
       </h3>
       <p>Hãng: {{ sp.hang }}</p>
-      <p>Giá: {{ sp.gia | currency : "VND" }}</p>
+      
+      <div class="price-container">
+        <p *ngIf="sp.phanTramGiam && sp.phanTramGiam > 0" class="original-price">
+          {{ sp.giaGoc | currency: 'VND' }}
+        </p>
+        <p class="current-price" [ngClass]="{'discounted': sp.phanTramGiam && sp.phanTramGiam > 0}">
+          {{ sp.gia | currency: 'VND' }}
+        </p>
+      </div>
 
-      <p *ngIf="sp.soLuongTon === 0" style="color: red; font-weight: bold">
-        Hết hàng
-      </p>
-
-      <button
-        *ngIf="sp.soLuongTon > 0"
-        (click)="addToCart(sp); $event.stopPropagation()"
-        class="add-to-cart-button"
-      >
-        Thêm vào giỏ
-      </button>
+      <ng-container *ngIf="sp.soLuongTon > 0; else hetHangNu">
+        <button
+          (click)="addToCart(sp); $event.stopPropagation()"
+          class="add-to-cart-button"
+        >
+          Thêm vào giỏ
+        </button>
+      </ng-container>
+      <ng-template #hetHangNu>
+        <p class="out-of-stock">Hết hàng</p>
+      </ng-template>
     </div>
   </div>
 </div>

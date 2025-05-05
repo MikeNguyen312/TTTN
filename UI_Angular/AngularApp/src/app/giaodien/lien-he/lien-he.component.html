@@ -1,1 +1,13 @@
-<h1>lien-he works!</h1>
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+    <label>Họ và tên:</label>
+    <input type="text" name="name" [(ngModel)]="contact.name" required />
+  
+    <label>Email:</label>
+    <input type="email" name="email" [(ngModel)]="contact.email" required />
+  
+    <label>Nội dung:</label>
+    <textarea name="message" [(ngModel)]="contact.message" required></textarea>
+  
+    <button type="submit">Gửi liên hệ</button>
+  </form>
+  

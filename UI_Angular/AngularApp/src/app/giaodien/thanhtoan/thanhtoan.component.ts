@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { loadStripe, Stripe, StripeElements, StripeCardElement } from '@stripe/stripe-js';
 import { environment } from '../../enviroments/environment';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-thanhtoan',
   standalone: true,
@@ -214,9 +214,15 @@ export class ThanhtoanComponent implements OnInit {
 
       await Promise.all(chiTietRequests);
 
-      alert('Đặt hàng thành công!');
-      this.cartService.clearCart();
-      this.router.navigate(['/trang-chu']);
+      Swal.fire({
+        icon: 'success',
+        title: 'Đặt hàng thành công!',
+        text: 'Cảm ơn bạn đã mua hàng. Đơn hàng đang chờ xác nhận.',
+        confirmButtonText: 'Về trang chủ',
+      }).then(() => {
+        this.cartService.clearCart();
+        this.router.navigate(['/trang-chu']);
+      });
     } catch (error: any) {
       this.paymentError = error.message || 'Có lỗi xảy ra khi đặt hàng.';
       console.error('Lỗi khi đặt hàng:', error);

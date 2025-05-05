@@ -411,6 +411,16 @@
   },
   {
     "ContainingType": "WebAPI_ForTTTN.Controllers.KhuyenMaiController",
+    "Method": "GetSanPhamKhuyenMai",
+    "RelativePath": "api/KhuyenMai/SanPhamKhuyenMai",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI_ForTTTN.Controllers.KhuyenMaiController",
     "Method": "TaoKM",
     "RelativePath": "api/KhuyenMai/TaoKM",
     "HttpMethod": "POST",

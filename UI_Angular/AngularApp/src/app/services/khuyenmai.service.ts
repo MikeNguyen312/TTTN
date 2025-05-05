@@ -16,6 +16,10 @@ export class KhuyenmaiService {
     return this.http.get<any[]>(`${this.apiUrl}/LayDSKM/${idKhuyenMai}`);
   }
 
+  getAllSanPhamKhuyenMai(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/SanPhamKhuyenMai`);
+  }
+  
   xoaSanPhamKhoiKhuyenMai(idKhuyenMai: string, idSanPham: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/XoaSanPhamKM?idKhuyenMai=${idKhuyenMai}&idSanPham=${idSanPham}`, { responseType: 'text' });
   }

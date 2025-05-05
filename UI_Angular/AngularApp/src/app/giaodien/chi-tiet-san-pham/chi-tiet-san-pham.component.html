@@ -3,19 +3,25 @@
     <div class="product-left">
       <div class="option-label-size">CHỌN KÍCH THƯỚC</div>
       <div class="size-options">
-        <span *ngFor="let s of [38, 39, 40, 41, 42]" class="size-box">{{ s }}</span>
+        <span *ngFor="let size of availableSizes" 
+              class="size-box" 
+              [class.selected]="selectedSize === size"
+              (click)="selectSize(size)">{{ size }}</span>
       </div>
 
       <div class="option-label-color">CHỌN MÀU</div>
       <div class="color-options">
-        <span class="color-circle" style="background-color: #c2b49a"></span>
-        <span class="color-circle" style="background-color: #000000"></span>
-        <span class="color-circle" style="background-color: #3a5ba0"></span>
-        <span class="color-circle" style="background-color: #eacb53"></span>
+        <span *ngFor="let color of availableColors" 
+              class="color-circle" 
+              [style.background-color]="color.code"
+              [class.selected]="selectedColor === color.code"
+              (click)="selectColor(color.code)"
+              [title]="color.name"></span>
       </div>
     </div>
 
     <div class="product-center">
+      <div *ngIf="phanTramGiam > 0" class="discount-badge">-{{ phanTramGiam }}%</div>
       <img *ngIf="product.anh" [src]="'data:image/jpeg;base64,' + product.anh" alt="{{ product.ten }}" />
     </div>
 
@@ -23,12 +29,27 @@
       <p class="subheading">Giày {{ product.loai }}</p>
       <div class="thong-tin">
         <h1 class="product-name">{{ product.ten }}</h1>
-        <p class="product-price">{{ product.gia | currency : "VND" }}</p>
+        
+        <div class="price-container">
+          <p class="product-price">{{ product.gia | currency : "VND" }}</p>
+          <p *ngIf="phanTramGiam > 0" class="original-price">{{ giaGoc | currency : "VND" }}</p>
+        </div>
+      
         <p class="product-description">{{ product.thongTin }}</p>
       </div>
-      
-      <button *ngIf="product.soLuongTon > 0" class="add-to-cart" (click)="addToCart()">THÊM VÀO GIỎ HÀNG</button>
-      <div *ngIf="product.soLuongTon <= 0" class="out-of-stock-button">HẾT HÀNG</div>
+
+      <div *ngIf="soLuongTon > 0; else outOfStock">
+        <button class="action-button add-to-cart" (click)="addToCart()" 
+                [disabled]="!selectedSize || !selectedColor">
+          THÊM VÀO GIỎ HÀNG
+        </button>
+        <div *ngIf="!selectedSize || !selectedColor" class="selection-hint">
+          Vui lòng chọn kích thước và màu sắc
+        </div>
+      </div>
+      <ng-template #outOfStock>
+        <div class="action-button out-of-stock-button">HẾT HÀNG</div>
+      </ng-template>
     </div>
   </div>
 </div>

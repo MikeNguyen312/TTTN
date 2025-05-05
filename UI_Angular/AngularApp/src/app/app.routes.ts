@@ -12,9 +12,9 @@ import { ThanhDieuHuongComponent } from './giaodien/thanh-dieu-huong/thanh-dieu-
 import { LienHeComponent } from './giaodien/lien-he/lien-he.component';
 import { LoginComponent } from './giaodien/login/login.component';
 import { RegisterComponent } from './giaodien/register/register.component';
-import { GiaynamComponent } from './giaodien/giaynam/giaynam.component';
 import { ChiTietSanPhamComponent } from './giaodien/chi-tiet-san-pham/chi-tiet-san-pham.component';
 import { GiaynuComponent } from './giaodien/giaynu/giaynu.component';
+import { GiayNamComponent } from './giaodien/giaynam/giaynam.component';
 import { KhuyenmaiComponent } from './giaodien/khuyenmai/khuyenmai.component';
 import { ChitietphieukhoComponent } from './pages/kho/chitietphieukho/chitietphieukho.component';
 import { GioHangComponent } from './giaodien/gio-hang/gio-hang.component';
@@ -141,7 +141,7 @@ export const routes: Routes = [
             },
             {
                 path: 'giaynam',
-                component: GiaynamComponent
+                component: GiayNamComponent
             },
             {
                 path:'chi-tiet-san-pham/:id',

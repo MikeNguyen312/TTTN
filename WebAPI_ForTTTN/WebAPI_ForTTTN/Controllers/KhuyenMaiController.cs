@@ -181,7 +181,50 @@ namespace WebAPI_ForTTTN.Controllers
                 return BadRequest("Lỗi khi thêm sản phẩm vào khuyến mãi: " + ex.Message);
             }
         }
+        // Thêm phương thức này vào KhuyenMaiController
+        [HttpGet("SanPhamKhuyenMai")]
+        public IActionResult GetSanPhamKhuyenMai()
+        {
+            try
+            {
+                DBThuctapContext db = new DBThuctapContext();
 
+                // Lấy tất cả các khuyến mãi và sản phẩm liên quan
+                var khuyenMais = db.KhuyenMais
+                    .Include(km => km.IdSanPhams)
+                    .ToList();
+
+                // Tạo danh sách sản phẩm khuyến mãi
+                var sanPhamKhuyenMai = new List<object>();
+
+                foreach (var km in khuyenMais)
+                {
+                    foreach (var sp in km.IdSanPhams)
+                    {
+                        sanPhamKhuyenMai.Add(new
+                        {
+                            sp.Anh,
+                            sp.IdSanPham,
+                            sp.Ten,
+                            sp.Size,
+                            sp.Hang,
+                            sp.Gia,
+                            KhuyenMai = new
+                            {
+                                IdKhuyenMai = km.IdKhuyenMai,
+                                PhanTramKm = km.PhanTramKm
+                            }
+                        });
+                    }
+                }
+
+                return Ok(sanPhamKhuyenMai);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Lỗi khi lấy danh sách sản phẩm khuyến mãi: " + ex.Message);
+            }
+        }
 
     }
 }
